@@ -1,113 +1,934 @@
 <!-- META
 TITLE: BigLinker Graduate — 대학원·논문·면접·포트폴리오 코칭 전문
-HEADER_PROMO: 2026 합격전략 가이드 오픈
+HEADER_PROMO: 2026 대학원 합격전략 가이드 오픈
 ACTIVE_TAB:
 -->
 
 <!-- PAGE_CSS -->
 <style>
-    :root {
-      --header-line: #e5e8ef; --header-line-strong: #d7dbe5;
-      --header-text: #17191f; --header-muted: #6e7687;
-      --bg: #0b0e13; --bg-soft: #121722;
-      --text: #f6f7fb; --muted: rgba(255,255,255,0.66);
-      --brand: #4a68ff; --brand-2: #7f92ff; --brand-soft: #eef0ff;
-      --max: 1320px; --radius-xl: 28px; --radius-lg: 22px; --radius-md: 18px;
-      --radius-sm: 12px; --shadow-card: 0 18px 36px rgba(36,46,78,0.08);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Noto Sans KR", "Pretendard", sans-serif;
-      background: radial-gradient(circle at 50% 0%, rgba(66,104,255,0.12), transparent 18%),
-        linear-gradient(180deg, #090b0f 0%, #0b0e13 32%, #0d1015 100%);
-      color: var(--text); -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
-    .inner { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+/* ══════════════════════════════════════════
+   DESIGN TOKENS — WHITE THEME
+══════════════════════════════════════════ */
+:root {
+  --brand:       #4a68ff;
+  --brand-2:     #7f92ff;
+  --brand-soft:  #eef0ff;
+  --brand-mid:   #dde2ff;
+  --text:        #0f1117;
+  --text-2:      #2e3344;
+  --muted:       #6b7280;
+  --muted-2:     #9ca3af;
+  --bg:          #ffffff;
+  --bg-2:        #f8f9fc;
+  --bg-3:        #f2f4f8;
+  --line:        #e5e7eb;
+  --line-2:      #d1d5db;
+  --max:         1280px;
+  --r-xl:        24px;
+  --r-lg:        18px;
+  --r-md:        14px;
+  --r-sm:        10px;
+  --shadow-xs:   0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-md:   0 8px 24px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-lg:   0 20px 48px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.05);
+  --shadow-brand: 0 8px 28px rgba(74,104,255,0.28);
+  --header-text:  #17191f;
+  --header-muted: #6e7687;
+  --header-line:  #e5e8ef;
+  --header-line-strong: #d7dbe5;
+  /* toast override for white pages */
+  --toast-bg: rgba(255,255,255,0.98);
+  --toast-text: #0f1117;
+  --toast-muted: #6b7280;
+  --toast-border: rgba(0,0,0,0.08);
+  --toast-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: "Noto Sans KR", "Pretendard", sans-serif; background: var(--bg); color: var(--text); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+.inner { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+h1, h2, h3, p, span, li { word-break: keep-all; overflow-wrap: break-word; }
 
-    /* ── HERO ── */
-    .hero { padding: 100px 0 80px; text-align: center; }
-    .hero-kicker { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(127,146,255,0.3); background: rgba(74,104,255,0.1); font-size: 12px; font-weight: 700; color: var(--brand-2); margin-bottom: 28px; }
-    .hero h1 { max-width: 780px; margin: 0 auto 20px; font-size: clamp(30px,4.6vw,60px); line-height: 1.14; letter-spacing: -0.05em; font-weight: 700; }
-    .hero h1 em { color: var(--brand-2); font-style: normal; }
-    .hero p { max-width: 560px; margin: 0 auto 36px; color: var(--muted); font-size: 15px; line-height: 1.8; }
-    .hero-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 60px; }
-    .btn-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 28px; border-radius: 13px; font-size: 15px; font-weight: 700; background: var(--brand); color: #fff; box-shadow: 0 10px 28px rgba(74,104,255,0.28); transition: transform 0.2s; }
-    .btn-primary:hover { transform: translateY(-2px); }
-    .btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 24px; border-radius: 13px; font-size: 15px; font-weight: 700; border: 1.5px solid rgba(255,255,255,0.22); color: var(--text); background: rgba(255,255,255,0.06); transition: transform 0.2s; }
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes blobFloat1 { 0%,100%{transform:translate(0,0) scale(1);} 33%{transform:translate(-20px,16px) scale(1.05);} 66%{transform:translate(12px,-10px) scale(0.97);} }
+@keyframes blobFloat2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(14px,-18px) scale(1.08);} }
+@keyframes dot-pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.load-1 { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+.load-2 { animation: fadeUp 0.7s 0.1s cubic-bezier(0.16,1,0.3,1) both; }
+.load-3 { animation: fadeUp 0.7s 0.2s cubic-bezier(0.16,1,0.3,1) both; }
+.load-4 { animation: fadeUp 0.7s 0.3s cubic-bezier(0.16,1,0.3,1) both; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.reveal.visible { opacity: 1; transform: none; }
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
 
-    /* ── SERVICE CARDS ── */
-    .service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 860px; margin: 0 auto; }
-    .service-card { padding: 32px 28px; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.04); transition: border-color 0.2s, background 0.2s; }
-    .service-card:hover { border-color: rgba(74,104,255,0.4); background: rgba(74,104,255,0.06); }
-    .service-card .sc-tag { display: inline-flex; align-items: center; min-height: 24px; padding: 0 12px; border-radius: 999px; background: rgba(74,104,255,0.15); border: 1px solid rgba(74,104,255,0.3); font-size: 11px; font-weight: 800; color: var(--brand-2); margin-bottom: 14px; }
-    .service-card h3 { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 10px; line-height: 1.3; }
-    .service-card p { font-size: 13px; color: var(--muted); line-height: 1.75; margin-bottom: 20px; }
-    .service-card .sc-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; color: var(--brand-2); }
+/* ══ §1 HERO ══ */
+.hero-main { position: relative; overflow: hidden; padding: 96px 0 80px; text-align: center; background: #fff; }
+.hero-main::before { content: ""; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 1000px; height: 700px; background: radial-gradient(ellipse at 50% 20%, rgba(74,104,255,0.08) 0%, rgba(127,146,255,0.04) 40%, transparent 70%); pointer-events: none; }
+.hero-main::after { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--line), transparent); }
+.hero-blob { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(60px); opacity: 0.5; }
+.hero-blob--1 { width: 320px; height: 320px; background: rgba(74,104,255,0.09); top: -60px; right: 10%; animation: blobFloat1 12s ease-in-out infinite; }
+.hero-blob--2 { width: 200px; height: 200px; background: rgba(167,139,250,0.07); bottom: 0; left: 8%; animation: blobFloat2 16s ease-in-out infinite; }
+.hero-main > .wrap { position: relative; z-index: 1; }
+.hero-kicker { display: inline-flex; align-items: center; gap: 7px; padding: 6px 16px; border-radius: 999px; border: 1px solid var(--brand-mid); background: var(--brand-soft); color: var(--brand); font-size: 12px; font-weight: 700; margin-bottom: 30px; }
+.hero-kicker span { width: 6px; height: 6px; border-radius: 50%; background: var(--brand); display: inline-block; animation: dot-pulse 2s ease infinite; }
+.hero-main h1 { max-width: 720px; margin: 0 auto 22px; font-size: clamp(34px, 5.2vw, 68px); font-weight: 900; letter-spacing: -0.055em; line-height: 1.12; color: var(--text); }
+.hero-main h1 em { font-style: normal; position: relative; display: inline; background: linear-gradient(135deg, var(--brand), #7c6ff7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-main h1 em svg { position: absolute; left: 0; bottom: -12px; width: 100%; height: 16px; pointer-events: none; overflow: visible; }
+.hero-sub { max-width: 520px; margin: 0 auto 40px; font-size: 17px; color: var(--muted); line-height: 1.85; font-weight: 400; }
+.hero-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 52px; padding: 0 28px; border-radius: 14px; background: var(--brand); color: #fff; font-weight: 700; font-size: 15px; box-shadow: var(--shadow-brand); transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(74,104,255,0.38); }
+.btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 52px; padding: 0 24px; border-radius: 14px; border: 1.5px solid var(--line-2); color: var(--text-2); font-weight: 600; font-size: 15px; background: #fff; box-shadow: var(--shadow-xs); transition: border-color 0.2s, transform 0.2s cubic-bezier(0.34,1.56,0.64,1); }
+.btn-outline:hover { border-color: var(--brand); color: var(--brand); transform: translateY(-2px); }
 
-    /* ── FOOTER ── */
-    .site-footer { background: #090c11; border-top: 1px solid rgba(255,255,255,0.06); padding: 64px 0 40px; }
-    .footer-inner { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
-    .footer-top { display: grid; grid-template-columns: 260px 1fr; gap: 48px; margin-bottom: 48px; }
-    .footer-logo { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 12px; }
-    .footer-brand-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
-    .footer-sns { display: flex; gap: 8px; }
-    .footer-sns-btn { width: 32px; height: 32px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); color: var(--muted); font-size: 11px; font-weight: 700; cursor: pointer; }
-    .footer-nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .footer-nav-group h4 { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.35); margin-bottom: 12px; }
-    .footer-nav-group a { display: block; font-size: 13px; color: var(--muted); margin-bottom: 8px; transition: color 0.18s; }
-    .footer-nav-group a:hover { color: #fff; }
-    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.06); flex-wrap: wrap; gap: 12px; }
-    .footer-legal { font-size: 12px; color: rgba(255,255,255,0.3); line-height: 1.6; }
-    .footer-policy-links { display: flex; gap: 16px; }
-    .footer-policy-links a { font-size: 12px; color: rgba(255,255,255,0.3); }
-    .footer-policy-links a:hover { color: rgba(255,255,255,0.6); }
+/* ══ §2 TRUST BAR ══ */
+.trust-bar { background: var(--bg-2); border-bottom: 1px solid var(--line); }
+.trust-bar__inner { display: flex; align-items: stretch; justify-content: center; flex-wrap: wrap; }
+.trust-item { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 22px 40px; text-align: center; flex: 1; min-width: 140px; position: relative; }
+.trust-item + .trust-item::before { content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 1px; height: 40%; background: var(--line); }
+.trust-item strong { font-size: clamp(18px, 2.2vw, 26px); font-weight: 900; color: var(--text); letter-spacing: -0.04em; white-space: nowrap; }
+.trust-item span { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 1px; }
+
+/* ══ SECTION SHARED ══ */
+.sec { padding: 96px 0; }
+.sec--alt { background: var(--bg-2); }
+.sec--brand { background: linear-gradient(135deg, #3a58ef 0%, #4a68ff 50%, #5a78ff 100%); padding: 100px 0 120px; }
+.sec-head { text-align: center; max-width: 600px; margin: 0 auto 60px; }
+.sec-eyebrow { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand); margin-bottom: 12px; }
+.sec--brand .sec-eyebrow { color: rgba(255,255,255,0.6); }
+.sec-head h2 { font-size: clamp(26px, 3.2vw, 44px); font-weight: 800; line-height: 1.2; letter-spacing: -0.04em; color: var(--text); margin-bottom: 14px; }
+.sec--brand .sec-head h2 { color: #fff; }
+.sec-head p { font-size: 16px; color: var(--muted); line-height: 1.8; }
+.sec--brand .sec-head p { color: rgba(255,255,255,0.7); }
+.em { position: relative; display: inline; }
+.em svg { position: absolute; left: 0; bottom: -7px; width: 100%; height: 14px; pointer-events: none; overflow: visible; }
+
+/* ══ §3 SERVICE GRID ══ */
+.service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.service-card { display: flex; flex-direction: column; padding: 28px 24px 24px; border-radius: var(--r-xl); border: 1.5px solid var(--line); background: #fff; box-shadow: var(--shadow-xs); color: var(--text); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease, border-color 0.25s ease; cursor: pointer; }
+@media (hover: hover) { .service-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--brand); } .service-card:hover .sc-arrow { transform: translateX(4px); opacity: 1; } }
+.sc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; }
+.sc-icon { width: 48px; height: 48px; border-radius: 14px; background: var(--brand-soft); display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+.sc-tag { font-size: 11px; font-weight: 800; letter-spacing: 0.04em; padding: 4px 10px; border-radius: 999px; background: var(--bg-2); color: var(--muted); border: 1px solid var(--line); }
+.service-card strong { font-size: 16px; font-weight: 700; line-height: 1.3; margin-bottom: 8px; display: block; }
+.service-card p { font-size: 13px; color: var(--muted); line-height: 1.75; flex: 1; margin: 0 0 18px; }
+.sc-footer { display: flex; align-items: center; justify-content: space-between; }
+.sc-arrow { font-size: 15px; color: var(--brand); font-weight: 700; opacity: 0.5; transition: transform 0.2s ease, opacity 0.2s ease; }
+
+/* ══ §4 GUIDE ══ */
+.guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+.guide-card { border-radius: var(--r-xl); border: 1.5px solid var(--line); background: #fff; padding: 28px 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: var(--shadow-xs); transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease; }
+.guide-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--brand-mid); }
+.guide-card--featured { border-color: var(--brand); background: var(--brand-soft); }
+.guide-card--featured:hover { border-color: var(--brand); box-shadow: 0 12px 32px rgba(74,104,255,0.14); }
+.gc-who { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 800; color: var(--brand); padding: 5px 13px; border-radius: 999px; background: var(--brand-soft); border: 1px solid var(--brand-mid); width: fit-content; }
+.guide-card--featured .gc-who { background: #fff; }
+.gc-combo { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.gc-combo a { padding: 5px 14px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; font-weight: 700; color: var(--text-2); background: #fff; transition: background 0.18s, border-color 0.18s, color 0.18s; }
+.gc-combo a:hover { background: var(--brand); border-color: var(--brand); color: #fff; }
+.guide-card--featured .gc-combo a { border-color: rgba(74,104,255,0.3); }
+.gc-combo span { color: var(--muted-2); font-size: 12px; font-weight: 700; }
+.guide-card > p { font-size: 13.5px; color: var(--muted); line-height: 1.78; flex: 1; margin: 0; }
+.gc-link { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; color: var(--brand); transition: gap 0.2s; }
+.gc-link:hover { gap: 8px; }
+.guide-footer { text-align: center; font-size: 14px; color: var(--muted); margin-top: 8px; }
+.guide-footer a { color: var(--brand); font-weight: 700; }
+
+/* ══ §5 WHY ══ */
+.why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.why-card { border-radius: var(--r-xl); border: 1.5px solid var(--line); background: #fff; padding: 36px 28px; box-shadow: var(--shadow-xs); display: flex; flex-direction: column; gap: 16px; transition: transform 0.22s ease, box-shadow 0.22s ease; }
+.why-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.why-card--featured { border-color: var(--brand); }
+.wc-num { font-size: 11px; font-weight: 900; letter-spacing: 0.1em; color: var(--brand); }
+.wc-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--brand-soft); color: var(--brand); display: flex; align-items: center; justify-content: center; }
+.wc-icon svg { width: 24px; height: 24px; }
+.why-card strong { font-size: 18px; font-weight: 700; color: var(--text); }
+.why-card > p { font-size: 14px; color: var(--muted); line-height: 1.78; margin: 0; }
+.why-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.why-card ul li { font-size: 13px; color: var(--muted); padding-left: 16px; position: relative; line-height: 1.6; }
+.why-card ul li::before { content: "✓"; position: absolute; left: 0; color: var(--brand); font-size: 10px; font-weight: 800; top: 3px; }
+
+/* ══ §6 HOW ══ */
+.how-steps { display: flex; align-items: flex-start; justify-content: center; gap: 0; }
+.how-step { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 0 28px; text-align: center; }
+.how-step__circle { width: 64px; height: 64px; border-radius: 50%; background: var(--brand-soft); border: 2px solid var(--brand-mid); display: flex; align-items: center; justify-content: center; color: var(--brand); position: relative; transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+.how-step:hover .how-step__circle { background: var(--brand); border-color: var(--brand); color: #fff; transform: scale(1.06); }
+.how-step__circle svg { width: 24px; height: 24px; }
+.how-step__num { position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; border-radius: 50%; background: var(--brand); color: #fff; font-size: 10px; font-weight: 800; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; }
+.how-step strong { font-size: 16px; font-weight: 700; color: var(--text); }
+.how-step p { font-size: 13px; color: var(--muted); line-height: 1.75; margin: 0; max-width: 220px; }
+.how-connector { padding-top: 22px; color: var(--line-2); font-size: 18px; flex-shrink: 0; }
+.how-note { text-align: center; margin-top: 48px; font-size: 13px; color: var(--muted-2); line-height: 1.8; padding-top: 28px; border-top: 1px solid var(--line); }
+.how-note a { color: var(--brand); font-weight: 700; }
+
+/* ══ §7 CASES ══ */
+.cases-tabs { display: flex; align-items: center; gap: 0; background: var(--bg-3); border-radius: 999px; border: 1.5px solid var(--line); padding: 4px; width: fit-content; margin: 0 auto 40px; }
+.cases-tab { padding: 10px 32px; border-radius: 999px; border: none; cursor: pointer; font-size: 14px; font-weight: 700; background: transparent; color: var(--muted); transition: background 0.2s, color 0.2s, box-shadow 0.2s; }
+.cases-tab.is-active { background: #fff; color: var(--text); box-shadow: 0 2px 10px rgba(0,0,0,0.10); }
+.cases-carousel-wrap { position: relative; }
+.cases-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--line); background: #fff; color: var(--muted); cursor: pointer; font-size: 20px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: border-color 0.18s, color 0.18s, box-shadow 0.18s, opacity 0.2s; z-index: 2; box-shadow: var(--shadow-xs); }
+.cases-nav--prev { left: -52px; }
+.cases-nav--next { right: -52px; }
+.cases-nav:hover:not(:disabled) { border-color: var(--brand); color: var(--brand); box-shadow: 0 2px 12px rgba(74,104,255,0.18); }
+.cases-nav:disabled { opacity: 0.28; cursor: not-allowed; }
+.cases-overflow { overflow: hidden; width: 100%; border-radius: var(--r-lg); }
+.cases-track { display: flex; transition: transform 0.42s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+.cases-slide { flex: 0 0 100%; min-width: 0; }
+.cases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.case-card { display: flex; align-items: center; gap: 14px; background: #fff; border: 1.5px solid var(--line); border-radius: var(--r-lg); padding: 16px; box-shadow: var(--shadow-xs); transition: border-color 0.2s, box-shadow 0.2s, transform 0.22s; min-width: 0; }
+.case-card:hover { border-color: var(--brand-mid); box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+.case-logo-wrap { width: 50px; height: 50px; flex-shrink: 0; border-radius: 50%; border: 1.5px solid var(--line); overflow: hidden; background: #fff; display: flex; align-items: center; justify-content: center; }
+.case-logo-wrap img { width: 38px; height: 38px; object-fit: contain; }
+.case-logo-wrap.placeholder { background: linear-gradient(135deg, var(--brand), #7c6ff7); border: none; font-size: 13px; font-weight: 800; color: #fff; letter-spacing: -0.03em; }
+.case-info { flex: 1; min-width: 0; }
+.case-tag { display: inline-block; margin-bottom: 4px; font-size: 11px; font-weight: 800; padding: 2px 8px; border-radius: 999px; }
+.case-name { display: block; font-size: 14px; font-weight: 700; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.case-dept { display: block; font-size: 12px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cases-dots { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 28px; }
+.cases-dot { width: 8px; height: 8px; border-radius: 4px; background: var(--line-2); cursor: pointer; border: none; transition: background 0.25s, width 0.25s; }
+.cases-dot.is-active { background: var(--brand); width: 22px; }
+
+/* ══ §8 COACHES ══ */
+.coaches-track { display: flex; transition: transform 0.42s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+.coaches-slide { flex: 0 0 100%; min-width: 0; }
+.coaches-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.coach-card { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; cursor: default; }
+.coach-photo { width: 100%; aspect-ratio: 7/5; border-radius: var(--r-xl); overflow: hidden; background: var(--bg-3); box-shadow: var(--shadow-sm); position: relative; }
+.coach-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; filter: grayscale(0.3); transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), filter 0.3s ease; }
+.coach-card:hover .coach-photo img { transform: scale(1.06); filter: grayscale(0); }
+.coach-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.18) 0%, transparent 50%); border-radius: inherit; transition: opacity 0.3s; }
+.coach-name { font-size: 14px; font-weight: 700; color: var(--text); }
+.coach-role { font-size: 12px; color: var(--muted); line-height: 1.4; }
+.coaches-more { text-align: center; padding-top: 12px; font-size: 14px; color: var(--muted); }
+.coaches-more a { display: inline-flex; align-items: center; gap: 6px; color: var(--brand); font-weight: 700; border: 1.5px solid var(--brand-mid); padding: 8px 20px; border-radius: 999px; background: var(--brand-soft); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
+.coaches-more a:hover { background: var(--brand); border-color: var(--brand); color: #fff; transform: translateY(-1px); }
+
+/* ══ §9 REVIEWS ══ */
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.review-card { background: #fff; border: 1.5px solid var(--line); border-radius: var(--r-xl); padding: 32px 28px; box-shadow: var(--shadow-xs); display: flex; flex-direction: column; gap: 16px; transition: transform 0.22s ease, box-shadow 0.22s ease; }
+.review-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.review-card--featured { border-color: var(--brand); }
+.rc-stars { color: #f59e0b; font-size: 14px; letter-spacing: 2px; }
+.rc-quote { font-size: 14.5px; color: var(--text-2); line-height: 1.82; flex: 1; margin: 0; }
+.rc-meta { display: flex; align-items: center; gap: 12px; padding-top: 4px; border-top: 1px solid var(--line); }
+.rc-avatar { width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--brand), #a78bfa); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; color: #fff; }
+.rc-name { font-size: 13px; font-weight: 700; color: var(--text); display: block; }
+.rc-desc { font-size: 12px; color: var(--muted); display: block; }
+
+/* ══ §10 CTA BAND ══ */
+.cta-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+.cta-badge { display: inline-flex; align-items: center; gap: 6px; min-height: 28px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.12); font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 24px; }
+.sec--brand h2 { font-size: clamp(28px, 4vw, 52px); font-weight: 900; letter-spacing: -0.05em; line-height: 1.16; color: #fff; margin-bottom: 18px; }
+.sec--brand p { color: rgba(255,255,255,0.72); font-size: 16px; line-height: 1.8; margin-bottom: 40px; }
+.btn-white { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 52px; padding: 0 30px; border-radius: 14px; background: #fff; color: var(--brand); font-weight: 700; font-size: 15px; box-shadow: 0 8px 24px rgba(0,0,0,0.16); transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s; }
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,0.2); }
+.btn-ghost-white { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 52px; padding: 0 26px; border-radius: 14px; border: 1.5px solid rgba(255,255,255,0.35); color: rgba(255,255,255,0.88); font-weight: 600; font-size: 15px; transition: border-color 0.2s, background 0.2s; }
+.btn-ghost-white:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); }
+.cta-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+.cta-trust { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+.cta-trust span { font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 600; }
+
+/* ══ FOOTER ══ */
+.site-footer { background: #0f1117; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 40px 32px 48px; }
+.footer-top { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 28px; }
+.footer-logo { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 10px; }
+.footer-desc, .footer-brand-desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.8; margin-bottom: 18px; }
+.footer-sns { display: flex; gap: 8px; }
+.footer-sns-btn { width: 30px; height: 30px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.12); background: transparent; color: rgba(255,255,255,0.45); cursor: pointer; font-size: 11px; font-weight: 700; transition: background 0.18s, color 0.18s; }
+.footer-sns-btn:hover { background: rgba(74,104,255,0.2); color: var(--brand-2); }
+.footer-nav-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.footer-nav-group h4 { font-size: 11px; font-weight: 800; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
+.footer-nav-group a { display: block; font-size: 13px; color: rgba(255,255,255,0.3); margin-bottom: 9px; transition: color 0.18s; }
+.footer-nav-group a:hover { color: rgba(255,255,255,0.75); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-legal { font-size: 11px; color: rgba(255,255,255,0.18); line-height: 1.8; }
+.footer-policy, .footer-policy-links { display: flex; gap: 14px; }
+.footer-policy a, .footer-policy-links a { font-size: 11px; color: rgba(255,255,255,0.25); transition: color 0.18s; }
+.footer-policy a:hover, .footer-policy-links a:hover { color: var(--brand-2); }
+
+/* ══ FLOATING CTA ══ */
+.mobile-floating-cta { display: none !important; position: fixed; z-index: 900; }
+.mobile-floating-cta.is-floating-active { display: inline-flex !important; align-items: center; gap: 10px; right: 20px; bottom: 24px; min-height: 56px; padding: 10px 18px 10px 12px; border-radius: 14px; background: #fff; color: var(--text); box-shadow: 0 8px 32px rgba(0,0,0,0.16); border: 1px solid var(--line); pointer-events: auto; }
+.mobile-floating-cta img { width: 28px; height: 28px; border-radius: 8px; object-fit: contain; flex-shrink: 0; }
+.mobile-floating-cta strong { display: block; font-size: 13px; font-weight: 800; color: var(--text); }
+.mobile-floating-cta span { display: block; font-size: 11px; color: var(--muted); }
+
+/* ══ RESPONSIVE ══ */
+@media (max-width: 1100px) { .cases-nav--prev { left: -16px; } .cases-nav--next { right: -16px; } }
+@media (max-width: 1024px) { .coaches-grid { grid-template-columns: repeat(4, 1fr); } .service-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 900px) { .guide-grid { grid-template-columns: repeat(2, 1fr); } .why-grid { grid-template-columns: repeat(2, 1fr); } .reviews-grid { grid-template-columns: repeat(2, 1fr); } .coaches-grid { grid-template-columns: repeat(3, 1fr); } .cases-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 760px) {
+  .wrap, .inner { padding: 0 16px; }
+  .hero-main { padding: 56px 0 44px; }
+  .hero-main h1 { font-size: clamp(26px, 7.5vw, 40px); }
+  .hero-sub { font-size: 14.5px; }
+  .hero-sub br { display: none; }
+  .hero-actions { gap: 10px; }
+  .btn-primary, .btn-outline { min-height: 44px; padding: 0 22px; font-size: 14px; }
+  .trust-bar__inner { flex-wrap: wrap; }
+  .trust-item { flex: 0 0 50%; padding: 16px 8px; }
+  .trust-item + .trust-item::before { display: none; }
+  .sec { padding: 56px 0; }
+  .sec-head { margin-bottom: 36px; }
+  .sec-head h2 { font-size: clamp(22px, 6vw, 32px); }
+  .service-grid, .guide-grid, .why-grid, .reviews-grid { grid-template-columns: 1fr; gap: 10px; }
+  .cases-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .case-card { padding: 12px; gap: 10px; }
+  .case-logo-wrap { width: 40px; height: 40px; }
+  .case-logo-wrap img { width: 30px; height: 30px; }
+  .case-name { font-size: 12px; }
+  .case-dept { font-size: 11px; }
+  .cases-nav { display: none; }
+  .cases-tabs { width: 100%; justify-content: center; }
+  .how-steps { flex-direction: column; align-items: center; gap: 24px; }
+  .how-connector { display: none; }
+  .how-step { padding: 0; width: 100%; }
+  .coaches-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .footer-top { grid-template-columns: 1fr; gap: 24px; }
+  .footer-nav-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .em svg { bottom: -5px; height: 12px; }
+  .mobile-floating-cta.is-floating-active { right: 12px; left: 12px; bottom: 16px; border-radius: 16px; background: var(--brand) !important; border: none !important; box-shadow: 0 12px 32px rgba(74,104,255,0.38) !important; }
+  .mobile-floating-cta strong { color: #fff; }
+  .mobile-floating-cta span { color: rgba(255,255,255,0.75); }
+}
+@media (max-width: 480px) {
+  .hero-main h1 { font-size: 25px; letter-spacing: -0.04em; }
+  .coaches-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .footer-nav-grid { grid-template-columns: 1fr; }
+}
 </style>
 <!-- /PAGE_CSS -->
 
 <!-- MOBILE_CTA -->
+<a class="mobile-floating-cta" href="#cta" aria-label="무료 상담 신청">
+  <img src="./assets/biglinker-logo.png" alt="빅링커">
+  <div>
+    <strong>무료 상담 신청</strong>
+    <span>빅링커 1:1 코칭 시작하기</span>
+  </div>
+</a>
 <!-- /MOBILE_CTA -->
 
 <!-- MAIN -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-kicker">대학원&amp;논문 · BigLinker</div>
-      <h1>대학원 합격부터<br><em>논문 완성</em>까지</h1>
-      <p>페이퍼·면접·포트폴리오·논문까지, 대학원 진학의 모든 과정을 빅링커 전문 코치가 함께합니다.</p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="#cta">무료 상담 신청</a>
-        <a class="btn-secondary" href="#">서비스 소개</a>
-      </div>
+<main>
 
+  <!-- ══ §1 HERO ══ -->
+  <section class="hero-main">
+    <div class="hero-blob hero-blob--1" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob--2" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="hero-kicker load-1">
+        <span></span>
+        대학원·논문·면접·포트폴리오 코칭 전문 · BigLinker Graduate
+      </div>
+      <h1 class="load-2">연구와 학업의 모든 단계를<br><em>전략으로 완성합니다<svg viewBox="0 0 280 16" fill="none" preserveAspectRatio="none"><path d="M3 12 C56 4, 140 15, 224 9 C246 5, 276 12, 277 10" stroke="rgba(127,146,255,0.75)" stroke-width="2.8" stroke-linecap="round" fill="none"/><path d="M6 15 C59 9, 143 16, 227 12 C248 9, 276 14, 277 12" stroke="rgba(74,104,255,0.38)" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg></em></h1>
+      <p class="hero-sub load-3">
+        학업계획서·면접·포트폴리오·논문까지.<br>
+        4가지 전문 코칭으로 대학원 합격과 연구 완성을 설계합니다.
+      </p>
+      <div class="hero-actions load-4">
+        <a class="btn-primary" href="#cta">무료 상담 신청하기 →</a>
+        <a class="btn-outline" href="#services">서비스 살펴보기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ §2 TRUST BAR ══ -->
+  <div class="trust-bar">
+    <div class="wrap">
+      <div class="trust-bar__inner">
+        <div class="trust-item">
+          <strong data-count="1200">0+</strong>
+          <span>누적 코칭 완료</span>
+        </div>
+        <div class="trust-item">
+          <strong>SKY·카이스트</strong>
+          <span>상위 대학원 합격</span>
+        </div>
+        <div class="trust-item">
+          <strong data-count="96">0%</strong>
+          <span>코칭 만족도</span>
+        </div>
+        <div class="trust-item">
+          <strong>4가지</strong>
+          <span>전문 코칭 서비스</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ §3 SERVICES ══ -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-eyebrow">SERVICES</p>
+        <h2>4가지 <span class="em">전문 코칭 서비스<svg viewBox="0 0 180 14" fill="none" preserveAspectRatio="none"><path d="M2 10 C36 3, 90 13, 144 7 C160 4, 177 10, 178 8" stroke="rgba(74,104,255,0.6)" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M4 13 C38 8, 93 14, 147 10 C162 7, 177 12, 178 10" stroke="rgba(127,146,255,0.3)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></span></h2>
+        <p>각 분야 전문 코치가 1:1로 합격과 완성을 함께 설계합니다.</p>
+      </div>
       <div class="service-grid">
-        <a class="service-card" href="./paper-coaching.html">
-          <div class="sc-tag">PAPER</div>
-          <h3>페이퍼리드코칭</h3>
-          <p>학업계획서·연구계획서·자기소개서를 전략적으로 작성하여 합격을 이끄는 코칭입니다.</p>
-          <span class="sc-link">자세히 보기 →</span>
+        <a class="service-card reveal reveal-d1" href="./paper-coaching.html">
+          <div class="sc-top">
+            <div class="sc-icon">📝</div>
+            <span class="sc-tag">페이퍼코칭</span>
+          </div>
+          <strong>학업계획서·연구계획서 코칭</strong>
+          <p>지원자만의 연구 스토리를 합격의 언어로 설계합니다. 구조·논리·키워드를 전략적으로 재구성합니다.</p>
+          <div class="sc-footer"><span class="sc-arrow">→</span></div>
         </a>
-        <a class="service-card" href="./interview-coaching.html">
-          <div class="sc-tag">INTERVIEW</div>
-          <h3>면접리드코칭</h3>
-          <p>대학원 면접의 핵심 질문 분석부터 실전 모의면접까지 체계적으로 준비합니다.</p>
-          <span class="sc-link">자세히 보기 →</span>
+        <a class="service-card reveal reveal-d2" href="./interview-coaching.html">
+          <div class="sc-top">
+            <div class="sc-icon">🎤</div>
+            <span class="sc-tag">면접코칭</span>
+          </div>
+          <strong>대학원 면접 1:1 코칭</strong>
+          <p>연구계획서 기반 예상 질문과 답변 구조를 설계합니다. 구술·발표·PT 면접 전 유형을 커버합니다.</p>
+          <div class="sc-footer"><span class="sc-arrow">→</span></div>
         </a>
-        <a class="service-card" href="./portfolio-coaching.html">
-          <div class="sc-tag">PORTFOLIO</div>
-          <h3>포트폴리오리드코칭</h3>
-          <p>연구 실적과 역량을 효과적으로 보여주는 포트폴리오 구성 전략을 코칭합니다.</p>
-          <span class="sc-link">자세히 보기 →</span>
+        <a class="service-card reveal reveal-d3" href="./portfolio-coaching.html">
+          <div class="sc-top">
+            <div class="sc-icon">🗂️</div>
+            <span class="sc-tag">포트폴리오코칭</span>
+          </div>
+          <strong>연구 포트폴리오 코칭</strong>
+          <p>연구 실적과 역량을 효과적으로 보여주는 포트폴리오 구성 전략을 1:1로 코칭합니다.</p>
+          <div class="sc-footer"><span class="sc-arrow">→</span></div>
         </a>
-        <a class="service-card" href="./thesis-coaching.html">
-          <div class="sc-tag">THESIS</div>
-          <h3>논문리드코칭</h3>
-          <p>주제 선정부터 심사 통과까지, 논문의 전 과정을 전문 코치와 함께 완성합니다.</p>
-          <span class="sc-link">자세히 보기 →</span>
+        <a class="service-card reveal reveal-d4" href="./thesis-coaching.html">
+          <div class="sc-top">
+            <div class="sc-icon">📚</div>
+            <span class="sc-tag">논문코칭</span>
+          </div>
+          <strong>논문 작성 전문 코칭</strong>
+          <p>주제 선정부터 연구 방법론, 심사 통과 전략까지. 졸업논문·학술논문·보고서 전 과정을 지원합니다.</p>
+          <div class="sc-footer"><span class="sc-arrow">→</span></div>
         </a>
       </div>
     </div>
   </section>
+
+  <!-- ══ §4 GUIDE ══ -->
+  <section class="sec sec--alt" id="guide">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-eyebrow">SERVICE GUIDE</p>
+        <h2><span class="em">어떤 서비스<svg viewBox="0 0 140 14" fill="none" preserveAspectRatio="none"><path d="M2 10 C28 3, 70 13, 112 7 C126 4, 138 10, 139 8" stroke="rgba(74,104,255,0.6)" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M4 13 C30 8, 73 14, 115 10 C128 7, 138 12, 139 10" stroke="rgba(127,146,255,0.3)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></span>가 맞나요?</h2>
+        <p>상황에 맞는 코칭 조합을 찾아보세요.</p>
+      </div>
+      <div class="guide-grid">
+        <div class="guide-card reveal reveal-d1">
+          <div class="gc-who">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            대학원 진학 준비생
+          </div>
+          <div class="gc-combo">
+            <a href="./paper-coaching.html">페이퍼코칭</a>
+            <span>+</span>
+            <a href="./interview-coaching.html">면접코칭</a>
+          </div>
+          <p>학업계획서·연구계획서 작성부터 대학원 면접 대비까지 한 흐름으로 연결합니다.</p>
+          <a class="gc-link" href="./paper-coaching.html">페이퍼 코칭 자세히 보기 →</a>
+        </div>
+        <div class="guide-card guide-card--featured reveal reveal-d2">
+          <div class="gc-who">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            논문 작성 중인 대학원생
+          </div>
+          <div class="gc-combo">
+            <a href="./thesis-coaching.html">논문코칭</a>
+            <span>+</span>
+            <a href="./portfolio-coaching.html">포트폴리오코칭</a>
+          </div>
+          <p>논문 주제 선정·방법론 설계부터 연구 포트폴리오 구성까지 체계적으로 완성합니다.</p>
+          <a class="gc-link" href="./thesis-coaching.html">논문 코칭 자세히 보기 →</a>
+        </div>
+        <div class="guide-card reveal reveal-d3">
+          <div class="gc-who">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.3"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            전 과정 통합 지원 필요
+          </div>
+          <div class="gc-combo">
+            <a href="./paper-coaching.html">페이퍼코칭</a>
+            <span>+</span>
+            <a href="./interview-coaching.html">면접코칭</a>
+            <span>+</span>
+            <a href="./thesis-coaching.html">논문코칭</a>
+          </div>
+          <p>지원서 작성·면접·논문을 하나의 전략 흐름으로 연결해 합격과 완성을 동시에 이룹니다.</p>
+          <a class="gc-link" href="./paper-coaching.html">통합 코칭 살펴보기 →</a>
+        </div>
+      </div>
+      <p class="guide-footer">
+        잘 모르겠다면? <a href="#cta">무료 상담으로 코치에게 직접 물어보세요 →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ §5 WHY ══ -->
+  <section class="sec" id="why">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-eyebrow">WHY BIGLINKER</p>
+        <h2>빅링커 Graduate가 <span class="em">다른 3가지 이유<svg viewBox="0 0 200 14" fill="none" preserveAspectRatio="none"><path d="M2 10 C40 3, 100 13, 160 7 C178 4, 198 10, 199 8" stroke="rgba(74,104,255,0.6)" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M4 13 C42 8, 103 14, 163 10 C180 7, 198 12, 199 10" stroke="rgba(127,146,255,0.3)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></span></h2>
+        <p>단순한 첨삭이 아닙니다. 합격과 완성에 필요한 것만 정확히, 전략적으로.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal reveal-d1">
+          <p class="wc-num">01</p>
+          <div class="wc-icon">
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="14" width="5" height="8" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="9.5" y="9" width="5" height="13" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="17" y="3" width="5" height="19" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+          </div>
+          <strong>데이터 기반 합격 전략</strong>
+          <p>지원 대학원의 합격 기준·연구 방향을 분석해 실제 합격 가능성을 계산합니다. 감이 아닌 데이터로 전략을 세웁니다.</p>
+          <ul>
+            <li>합격 가능 대학원 진단</li>
+            <li>전형별 유불리 분석</li>
+            <li>지도교수 매칭 전략</li>
+          </ul>
+        </div>
+        <div class="why-card why-card--featured reveal reveal-d2">
+          <p class="wc-num">02</p>
+          <div class="wc-icon">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6"/><path d="M8 12l3 3 5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <strong>4개 서비스 원스톱</strong>
+          <p>페이퍼·면접·포트폴리오·논문까지 하나의 팀에서 일관된 방향으로 연결합니다. 중복 없이 효율적으로.</p>
+          <ul>
+            <li>서비스 간 전략 연계</li>
+            <li>전담 코치 일관성 유지</li>
+            <li>진행 상황 통합 관리</li>
+          </ul>
+        </div>
+        <div class="why-card reveal reveal-d3">
+          <p class="wc-num">03</p>
+          <div class="wc-icon">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="8" cy="8" r="4.5" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="8" r="4.5" stroke="currentColor" stroke-width="1.6"/><path d="M1 21c0-3.87 3.13-7 7-7s7 3.13 7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M16 14c2.21 0 4 1.79 4 4v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          </div>
+          <strong>완전한 1:1 맞춤</strong>
+          <p>그룹 수업·패키지 없이 해당 학생의 연구 주제와 상황만 봅니다. 매 회차 맞춤 피드백 리포트를 제공합니다.</p>
+          <ul>
+            <li>전담 코치 1:1 전담 진행</li>
+            <li>회차별 맞춤 피드백 리포트</li>
+            <li>일정·방식 유연 조율</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ §6 HOW ══ -->
+  <section class="sec sec--alt" id="how">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-eyebrow">HOW TO START</p>
+        <h2>시작하는 방법, 딱 3단계</h2>
+        <p>복잡한 절차 없이 신청 즉시 코칭이 연결됩니다.</p>
+      </div>
+      <div class="how-steps reveal">
+        <div class="how-step">
+          <div class="how-step__circle">
+            <span class="how-step__num">1</span>
+            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M7 12h10M7 7.5h10M7 16.5h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <strong>무료 상담 신청</strong>
+          <p>온라인 폼 또는 카카오 채널로 신청. 목표 대학원·연구 분야·고민만 간단히 입력하면 됩니다.</p>
+        </div>
+        <div class="how-connector" aria-hidden="true">→</div>
+        <div class="how-step">
+          <div class="how-step__circle">
+            <span class="how-step__num">2</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 4.69 5 8c0 1.56.65 2.97 1.7 4.01L6 16l4.1-1.35C10.68 14.87 11.33 15 12 15c3.87 0 7-2.69 7-6s-3.13-7-7-7z" stroke="currentColor" stroke-width="1.7"/></svg>
+          </div>
+          <strong>1:1 진단 상담 (30분, 무료)</strong>
+          <p>전담 코치가 현황을 분석하고 가장 적합한 서비스와 코칭 방향을 직접 제안합니다.</p>
+        </div>
+        <div class="how-connector" aria-hidden="true">→</div>
+        <div class="how-step">
+          <div class="how-step__circle">
+            <span class="how-step__num">3</span>
+            <svg viewBox="0 0 24 24" fill="none"><path d="M6 12l4 4 8-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.7"/></svg>
+          </div>
+          <strong>맞춤 코칭 시작</strong>
+          <p>설계된 플랜대로 즉시 시작합니다. 당일 배정도 가능하며 회차마다 리포트를 받습니다.</p>
+        </div>
+      </div>
+      <p class="how-note">
+        첫 상담 무료 &nbsp;·&nbsp; 평일 09:00–22:00, 주말 10:00–18:00 &nbsp;·&nbsp; 온라인(화상·채팅) + 대면 가능 &nbsp;·&nbsp;
+        <a href="#cta">지금 신청하기 →</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ §7 CASES ══ -->
+  <section class="sec" id="cases">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-eyebrow">COACHING CASES</p>
+        <h2>빅링커 <span class="em">리드코칭 사례<svg viewBox="0 0 160 14" fill="none" preserveAspectRatio="none"><path d="M2 10 C32 3, 80 13, 128 7 C143 4, 158 10, 159 8" stroke="rgba(74,104,255,0.6)" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M4 13 C34 8, 83 14, 131 10 C145 7, 158 12, 159 10" stroke="rgba(127,146,255,0.3)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></span></h2>
+        <p>실제 합격자들이 선택한 대학원·기업 목록입니다</p>
+      </div>
+      <div class="cases-tabs reveal">
+        <button class="cases-tab is-active" data-cases="grad">대학원 합격</button>
+        <button class="cases-tab" data-cases="job">기업 취업</button>
+      </div>
+      <div class="cases-carousel-wrap reveal">
+        <button class="cases-nav cases-nav--prev" id="casesPrev" aria-label="이전">‹</button>
+        <div class="cases-overflow">
+          <div class="cases-track" id="casesTrack"></div>
+        </div>
+        <button class="cases-nav cases-nav--next" id="casesNext" aria-label="다음">›</button>
+      </div>
+      <div class="cases-dots" id="casesDots"></div>
+    </div>
+  </section>
+
+  <!-- ══ §8 COACHES ══ -->
+  <section class="sec sec--alt" id="coaches">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-eyebrow">OUR COACHES</p>
+        <h2>검증된 전문 코칭팀</h2>
+        <p>각 분야 전문가들이 1:1로 함께합니다.</p>
+      </div>
+      <div class="coaches-carousel-wrap reveal" style="position:relative;">
+        <button class="cases-nav cases-nav--prev" id="coachPrev" aria-label="이전">‹</button>
+        <div class="cases-overflow">
+          <div class="coaches-track" id="coachTrack"></div>
+        </div>
+        <button class="cases-nav cases-nav--next" id="coachNext" aria-label="다음">›</button>
+      </div>
+      <div class="cases-dots" id="coachDots"></div>
+      <div class="coaches-more">
+        <a href="https://gobiglinker.com/%EC%BB%A8%EC%84%A4%ED%84%B4%ED%8A%B8-%EB%B0%8F-%ED%98%91%EB%A0%A5%EC%82%AC" target="_blank" rel="noopener">
+          전체 코칭팀 보기 →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ §9 REVIEWS ══ -->
+  <section class="sec" id="reviews">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="sec-eyebrow">REVIEW</p>
+        <h2>실제 코칭 후기</h2>
+        <p>학업계획서·면접·포트폴리오·논문 모든 서비스의 경험담입니다.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card reveal reveal-d1">
+          <div class="rc-stars">★★★★★</div>
+          <p class="rc-quote">학업계획서 방향이 계속 잡히지 않았는데, 코치님이 연구 스토리 구조를 잡아주시니 자연스럽게 글이 나왔습니다. 서울대 대학원 합격 후기를 꼭 전하고 싶었어요.</p>
+          <div class="rc-meta">
+            <span class="rc-avatar">이</span>
+            <div>
+              <strong class="rc-name">이○○ 학생</strong>
+              <span class="rc-desc">서울대 대학원 합격 · 페이퍼코칭</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card review-card--featured reveal reveal-d2">
+          <div class="rc-stars">★★★★★</div>
+          <p class="rc-quote">논문 주제 선정에서 반 년을 헤맸는데 첫 상담 후 일주일 만에 확정했습니다. 심사도 무난히 통과했고, 지도 교수님도 놀라워하셨어요.</p>
+          <div class="rc-meta">
+            <span class="rc-avatar">박</span>
+            <div>
+              <strong class="rc-name">박○○ 학생</strong>
+              <span class="rc-desc">석사 논문 심사 통과 · 논문코칭</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card reveal reveal-d3">
+          <div class="rc-stars">★★★★★</div>
+          <p class="rc-quote">면접 준비를 두 달 했는데 혼자는 한계가 있었어요. 코치님이 연구계획서 기반으로 예상 질문을 뽑아주셔서 실제 면접에서 당황하지 않고 답할 수 있었습니다.</p>
+          <div class="rc-meta">
+            <span class="rc-avatar">김</span>
+            <div>
+              <strong class="rc-name">김○○ 학생</strong>
+              <span class="rc-desc">연세대 대학원 합격 · 면접코칭</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ §10 CTA ══ -->
+  <section class="sec sec--brand" id="cta">
+    <div class="wrap">
+      <div class="cta-inner">
+        <div class="cta-badge reveal">
+          <span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.6);display:inline-block;"></span>
+          무료 초기 상담 · 당일 배정 가능
+        </div>
+        <h2 class="reveal">지금 바로<br><span class="em">합격 전략<svg viewBox="0 0 120 14" fill="none" preserveAspectRatio="none"><path d="M2 10 C24 3, 60 13, 96 7 C107 4, 118 10, 119 8" stroke="rgba(255,255,255,0.55)" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M4 13 C26 8, 63 14, 99 10 C109 7, 118 12, 119 10" stroke="rgba(255,255,255,0.25)" stroke-width="1.3" stroke-linecap="round" fill="none"/></svg></span>을 시작하세요</h2>
+        <p class="reveal">4가지 전문 코칭으로 대학원 진학의 모든 단계를 함께합니다.<br>첫 상담은 무료이며 30분 안에 최적의 방향을 제안해 드립니다.</p>
+        <div class="cta-actions reveal">
+          <a class="btn-white" href="#">무료 상담 신청하기 →</a>
+          <a class="btn-ghost-white" href="#">카카오 채널 문의</a>
+        </div>
+        <div class="cta-trust reveal">
+          <span>✓ 첫 상담 무료</span>
+          <span>✓ 1:1 전담 코치</span>
+          <span>✓ 1,200+ 코칭 완료</span>
+          <span>✓ 당일 배정 가능</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
 <!-- /MAIN -->
+
+<!-- PAGE_SCRIPTS -->
+<script>
+(function () {
+  /* ── Cases Carousel ── */
+  var GF = 'https://www.google.com/s2/favicons?sz=64&domain=';
+  var gradData = [
+    {tag:'일반대학원',name:'서울대학교 대학원',dept:'경영학과 합격',src:GF+'snu.ac.kr'},
+    {tag:'일반대학원',name:'연세대학교 대학원',dept:'경제학과 합격',src:GF+'yonsei.ac.kr'},
+    {tag:'일반대학원',name:'고려대학교 대학원',dept:'컴퓨터학과 합격',src:GF+'korea.ac.kr'},
+    {tag:'특수대학원',name:'카이스트 대학원',dept:'AI·소프트웨어 합격',src:GF+'kaist.ac.kr'},
+    {tag:'일반대학원',name:'성균관대학교 대학원',dept:'의학과 합격',src:GF+'skku.edu'},
+    {tag:'일반대학원',name:'한양대학교 대학원',dept:'공학계열 합격',src:GF+'hanyang.ac.kr'},
+    {tag:'일반대학원',name:'이화여자대학교 대학원',dept:'교육학과 합격',src:GF+'ewha.ac.kr'},
+    {tag:'특수대학원',name:'포항공과대학교 대학원',dept:'화학공학 합격',src:GF+'postech.ac.kr'},
+    {tag:'일반대학원',name:'서울시립대학교 대학원',dept:'도시공학과 합격',src:GF+'uos.ac.kr'},
+    {tag:'일반대학원',name:'중앙대학교 대학원',dept:'사회복지학 합격',src:GF+'cau.ac.kr'},
+    {tag:'일반대학원',name:'경희대학교 대학원',dept:'한의학과 합격',src:GF+'khu.ac.kr'},
+    {tag:'특수대학원',name:'서강대학교 대학원',dept:'경제학과 합격',src:GF+'sogang.ac.kr'},
+    {tag:'일반대학원',name:'숙명여자대학교 대학원',dept:'심리치료학 합격',src:GF+'sookmyung.ac.kr'},
+    {tag:'일반대학원',name:'부산대학교 대학원',dept:'기계공학과 합격',src:GF+'pusan.ac.kr'},
+    {tag:'일반대학원',name:'전남대학교 대학원',dept:'의학과 합격',src:GF+'jnu.ac.kr'},
+    {tag:'특수대학원',name:'아주대학교 대학원',dept:'소프트웨어학과 합격',src:GF+'ajou.ac.kr'},
+    {tag:'일반대학원',name:'동국대학교 대학원',dept:'불교학과 합격',src:GF+'dongguk.edu'},
+    {tag:'일반대학원',name:'건국대학교 대학원',dept:'동물생명과학 합격',src:GF+'konkuk.ac.kr'},
+    {tag:'일반대학원',name:'세종대학교 대학원',dept:'항공시스템 합격',src:GF+'sejong.ac.kr'},
+    {tag:'특수대학원',name:'홍익대학교 대학원',dept:'산업디자인 합격',src:GF+'hongik.ac.kr'},
+    {tag:'일반대학원',name:'인하대학교 대학원',dept:'항공공학과 합격',src:GF+'inha.ac.kr'},
+    {tag:'일반대학원',name:'단국대학교 대학원',dept:'법학과 합격',src:GF+'dankook.ac.kr'},
+    {tag:'일반대학원',name:'충남대학교 대학원',dept:'농업생명과학 합격',src:GF+'cnu.ac.kr'},
+    {tag:'일반대학원',name:'강원대학교 대학원',dept:'산림학과 합격',src:GF+'kangwon.ac.kr'},
+  ];
+  var jobData = [
+    {tag:'신입 공채',name:'삼성전자',dept:'소프트웨어 개발직',initial:'삼',src:GF+'samsung.com'},
+    {tag:'수시 채용',name:'LG전자',dept:'마케팅 직군',initial:'LG',src:GF+'lg.com'},
+    {tag:'신입 공채',name:'현대자동차',dept:'연구개발 직군',initial:'현',src:GF+'hyundai.com'},
+    {tag:'수시 채용',name:'SK하이닉스',dept:'반도체 공정',initial:'SK',src:GF+'skhynix.com'},
+    {tag:'인턴→정규',name:'카카오',dept:'소프트웨어 개발',initial:'K',src:GF+'kakao.com'},
+    {tag:'수시 채용',name:'네이버',dept:'UX 디자인',initial:'N',src:GF+'naver.com'},
+    {tag:'신입 공채',name:'쿠팡',dept:'물류 기획',initial:'C',src:GF+'coupang.com'},
+    {tag:'인턴→정규',name:'토스',dept:'핀테크 서비스',initial:'T',src:GF+'toss.im'},
+    {tag:'신입 공채',name:'넥슨',dept:'게임 개발',initial:'NX',src:GF+'nexon.com'},
+    {tag:'신입 공채',name:'신한은행',dept:'디지털 금융',initial:'신',src:GF+'shinhan.com'},
+    {tag:'경력 채용',name:'KB국민은행',dept:'데이터 분석',initial:'KB',src:GF+'kbstar.com'},
+    {tag:'신입 공채',name:'포스코',dept:'생산기술 직군',initial:'P',src:GF+'posco.com'},
+  ];
+  var TAG_STYLE = {
+    '일반대학원':'background:#eef0ff;color:#4a68ff',
+    '특수대학원':'background:#f5f3ff;color:#7c3aed',
+    '신입 공채':'background:#eef0ff;color:#4a68ff',
+    '수시 채용':'background:#ecfdf5;color:#059669',
+    '인턴→정규':'background:#fff3e0;color:#d97706',
+    '경력 채용':'background:#fdf2f8;color:#c026d3',
+  };
+  var DATA = { grad: gradData, job: jobData };
+  var PER_PAGE = 12;
+  var currentTab = 'grad';
+  var currentPage = 0;
+  var track = document.getElementById('casesTrack');
+  var dotsEl = document.getElementById('casesDots');
+  var prevBtn = document.getElementById('casesPrev');
+  var nextBtn = document.getElementById('casesNext');
+  if (!track) return;
+  function tagStyle(tag) { return TAG_STYLE[tag] || 'background:#eef0ff;color:#4a68ff'; }
+  function render() {
+    var data = DATA[currentTab];
+    var totalPages = Math.ceil(data.length / PER_PAGE);
+    var html = '';
+    for (var p = 0; p < totalPages; p++) {
+      var slice = data.slice(p * PER_PAGE, (p + 1) * PER_PAGE);
+      html += '<div class="cases-slide"><div class="cases-grid">';
+      slice.forEach(function (card) {
+        var init = card.initial || card.name[0];
+        var logoHtml = card.src
+          ? '<div class="case-logo-wrap"><img src="' + card.src + '" alt="' + card.name + '" onerror="var p=this.parentElement;p.classList.add(\'placeholder\');p.textContent=\'' + init + '\';this.remove()"></div>'
+          : '<div class="case-logo-wrap placeholder">' + init + '</div>';
+        html += '<div class="case-card">' + logoHtml + '<div class="case-info">'
+          + '<span class="case-tag" style="' + tagStyle(card.tag) + '">' + card.tag + '</span>'
+          + '<strong class="case-name">' + card.name + '</strong>'
+          + '<span class="case-dept">' + card.dept + '</span>'
+          + '</div></div>';
+      });
+      html += '</div></div>';
+    }
+    track.innerHTML = html;
+    track.style.transform = 'translateX(0)';
+    var dotsHtml = '';
+    for (var i = 0; i < totalPages; i++) {
+      dotsHtml += '<button class="cases-dot' + (i === 0 ? ' is-active' : '') + '" data-page="' + i + '" aria-label="슬라이드 ' + (i + 1) + '"></button>';
+    }
+    dotsEl.innerHTML = dotsHtml;
+    dotsEl.querySelectorAll('.cases-dot').forEach(function (d) {
+      d.addEventListener('click', function () { goTo(+this.dataset.page); casesStartAuto(); });
+    });
+    currentPage = 0;
+  }
+  function goTo(page) {
+    var data = DATA[currentTab];
+    var totalPages = Math.ceil(data.length / PER_PAGE);
+    currentPage = ((page % totalPages) + totalPages) % totalPages;
+    track.style.transform = 'translateX(-' + currentPage * 100 + '%)';
+    dotsEl.querySelectorAll('.cases-dot').forEach(function (d, i) {
+      d.classList.toggle('is-active', i === currentPage);
+    });
+  }
+  var casesTimer;
+  function casesStartAuto() {
+    clearInterval(casesTimer);
+    casesTimer = setInterval(function () {
+      var totalPages = Math.ceil(DATA[currentTab].length / PER_PAGE);
+      goTo(currentPage + 1);
+    }, 4000);
+  }
+  prevBtn.addEventListener('click', function () { goTo(currentPage - 1); casesStartAuto(); });
+  nextBtn.addEventListener('click', function () { goTo(currentPage + 1); casesStartAuto(); });
+  document.querySelectorAll('.cases-tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.cases-tab').forEach(function (t) { t.classList.remove('is-active'); });
+      tab.classList.add('is-active');
+      currentTab = tab.dataset.cases;
+      render();
+      casesStartAuto();
+    });
+  });
+  var touchX = 0;
+  var overflow = track.parentElement;
+  overflow.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+  overflow.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 48) { dx < 0 ? goTo(currentPage + 1) : goTo(currentPage - 1); casesStartAuto(); }
+  }, { passive: true });
+  render();
+  casesStartAuto();
+})();
+
+(function () {
+  /* ── Coaches Slider ── */
+  var COACHES = [
+    {name:'김귀연',role:'유아교육·아동발달',img:'https://lh3.googleusercontent.com/Nx7NadjgZWYazPCV_hi8rsHwUzEtZbxGJuaUPE6flE23e8TwUc__uY59TzqtdhfhO-b1Krqn30FasALf-Vi_DSe302fuND_dti_SDy7REoJtMZ5d1dCO-A=w700-h500-n'},
+    {name:'김용순',role:'국제정치·북한연구',img:'https://lh3.googleusercontent.com/9kAI86TFMU-nYZ_JUsTEpotO6wtD8voFXJbsJ5FjCr6AWqdyJrzLtjaBJOm4mwzMt-WAJkBpM_w3D3Zfrg0FGPwM0Jdr0lFwOxuVwgPz9zHzfgg7WoFylKE=w700-h500-n'},
+    {name:'김재환',role:'조직문화·리더십',img:'https://lh3.googleusercontent.com/MjuUZ0sJudzIrCXMDeM7CkhIqwpDtBuhyxcp9C1sUcCVoeAZefo_NyiI1PuACxJJVWX2ZYvhp3EoFPrcHqtn50s5WFcr6QvZrv8LJc5NMZPqiG7DKUfBsw=w700-h500-n'},
+    {name:'김태영',role:'진로상담·조직코칭',img:'https://lh3.googleusercontent.com/eyNFVsbjudttG1bOZhO6hg84cYm09yr-Ta6d6o7uI4bQQGPok-tjJLfz1DSTC6KEJkwQnpK8OgBO3Px1fw4wrWqFqppaGDLhRQL_FBaVtrNlHwrZwR2A0A=w700-h500-n'},
+    {name:'김희상',role:'IT·블록체인',img:'https://lh3.googleusercontent.com/GaiuTvRoih4z_QUccZTOcDKhj4WljcmMHfr08ky55S56dOIx0bu8cSjfm2lP64UAkEA6MOYjxnuRjCF_U7F6-WHemqCbxD1EBq2Ya9ewsx3LVbKiW2dc=w700-h500-n'},
+    {name:'안세영',role:'비즈니스전략·지속가능경영',img:'https://lh3.googleusercontent.com/RG77Xn73SmiPpPpt8PdaH6SYPfVo7MxnFH0xcxy-qqfQHSo1JBLATt6W1iLUIYp03jNgCvQCDDcMJgUYuC717Oe6EVsvTzBsoO-fghAu1tYxJMj9YXgXlxo=w700-h500-n'},
+    {name:'안희수',role:'강점코칭·예술인문학',img:'https://lh3.googleusercontent.com/FEamjVx_oOA9cKf1svADR9m0iK4tuTdF6JkxixcqDhEkmDFNuplZFF9L9TVRvD1EaViwUAokc3Q3QCoHdzFUG8uPt_hrXiGyWlAu5oo3YPIpnzQSjQDHjQ=w700-h500-n'},
+    {name:'전예슬',role:'수학·MBA·디자인·사회과학',img:'https://lh3.googleusercontent.com/g3H9tiXoyD12Nb5alfBhRUEC97ATy5DvcsSUJmNTfqzbXk26jEkflhoHiLqqjBLVUNeZHtRcGcTmWQGy_pn9vaGR5PoamXUfmdzFpQR5h7BsJpgSELVwHw=w700-h500-n'},
+    {name:'LEAH',role:'교육학·대학원 코칭',img:'https://lh3.googleusercontent.com/IVJ4agiA_qkOJ4cfkMSQudw8i_3HGe77cgBAym4sxtlaIALD6w6wIB_liyOp8s7Nj9vocMkyVO4cqAcTI7chfcAYaEj47nYfJbFUmoMlEyqAyRZxCVl_Fg=w700-h500-n'},
+    {name:'유장현',role:'조직개발·리더십컨설팅',img:'https://lh3.googleusercontent.com/0XzLqDswe1J-UxsAVo6UC7wc1kYZOg0rOF0nQ9XDRPB9j_Uctdm6Io5ybe8uepv3Mmm_CJHoWlHUxT9VM8pv7BpO3JwlPTlb9fSlTDGbsifFi2PvQ=w700-h500-n'},
+  ];
+  var PER = 10;
+  var cPage = 0;
+  var cTrack = document.getElementById('coachTrack');
+  var cDots = document.getElementById('coachDots');
+  var cPrev = document.getElementById('coachPrev');
+  var cNext = document.getElementById('coachNext');
+  if (!cTrack) return;
+  var totalPages = Math.ceil(COACHES.length / PER);
+  function coachRender() {
+    var html = '';
+    for (var p = 0; p < totalPages; p++) {
+      var slice = COACHES.slice(p * PER, (p + 1) * PER);
+      html += '<div class="coaches-slide"><div class="coaches-grid">';
+      slice.forEach(function (c) {
+        html += '<div class="coach-card">'
+          + '<div class="coach-photo"><img src="' + c.img + '" alt="' + c.name + ' 코치" loading="lazy"></div>'
+          + '<p class="coach-name">' + c.name + '</p>'
+          + '<p class="coach-role">' + c.role + '</p>'
+          + '</div>';
+      });
+      html += '</div></div>';
+    }
+    cTrack.innerHTML = html;
+    cTrack.style.transform = 'translateX(0)';
+    var dotsHtml = '';
+    for (var i = 0; i < totalPages; i++) {
+      dotsHtml += '<button class="cases-dot' + (i === 0 ? ' is-active' : '') + '" data-page="' + i + '" aria-label="코치 ' + (i + 1) + '페이지"></button>';
+    }
+    cDots.innerHTML = dotsHtml;
+    cDots.querySelectorAll('.cases-dot').forEach(function (d) {
+      d.addEventListener('click', function () { coachGoTo(+this.dataset.page); coachStartAuto(); });
+    });
+  }
+  function coachGoTo(page) {
+    cPage = ((page % totalPages) + totalPages) % totalPages;
+    cTrack.style.transform = 'translateX(-' + cPage * 100 + '%)';
+    cDots.querySelectorAll('.cases-dot').forEach(function (d, i) {
+      d.classList.toggle('is-active', i === cPage);
+    });
+  }
+  var coachTimer;
+  function coachStartAuto() {
+    clearInterval(coachTimer);
+    coachTimer = setInterval(function () { coachGoTo(cPage + 1); }, 4000);
+  }
+  cPrev.addEventListener('click', function () { coachGoTo(cPage - 1); coachStartAuto(); });
+  cNext.addEventListener('click', function () { coachGoTo(cPage + 1); coachStartAuto(); });
+  coachRender();
+  coachStartAuto();
+})();
+
+(function () {
+  /* ── Scroll reveal (.reveal → .visible) ── */
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+})();
+
+(function () {
+  /* ── Trust bar count-up ── */
+  function countUp(el, target, suffix, duration) {
+    var start = performance.now();
+    function update(now) {
+      var p = Math.min((now - start) / duration, 1);
+      var ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target).toLocaleString() + suffix;
+      if (p < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var el = e.target;
+      var val = parseInt(el.dataset.count, 10);
+      var suffix = el.textContent.replace(/[0-9,]/g, '');
+      countUp(el, val, suffix, 1600);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(function (el) { obs.observe(el); });
+})();
+
+(function () {
+  /* ── Header scroll shadow ── */
+  var shell = document.getElementById('topShell');
+  if (!shell) return;
+  window.addEventListener('scroll', function () {
+    shell.classList.toggle('is-scrolled', window.scrollY > 10);
+  }, { passive: true });
+})();
+</script>
+<!-- /PAGE_SCRIPTS -->
