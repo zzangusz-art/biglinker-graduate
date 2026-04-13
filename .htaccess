@@ -1,0 +1,16 @@
+Options -Indexes
+RewriteEngine On
+RewriteBase /
+
+# Clean URL: /page-name → /page-name.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^.]+)$ $1.html [L,QSA]
+
+# graduate.gobiglinker.com 라우팅 맵
+# / → index.html
+# /paper-coaching       → paper-coaching.html
+# /interview-coaching   → interview-coaching.html
+# /portfolio-coaching   → portfolio-coaching.html
+# /thesis-coaching      → thesis-coaching.html

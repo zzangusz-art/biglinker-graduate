@@ -1,0 +1,11 @@
+  <script>
+    const topShell = document.getElementById('topShell');
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > 220 && y > lastY) topShell.classList.add('is-collapsed');
+      else topShell.classList.remove('is-collapsed');
+      lastY = y;
+    }, { passive: true });
+  </script>
+  <script src="./script.js"></script>
