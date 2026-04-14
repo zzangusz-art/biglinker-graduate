@@ -48,6 +48,19 @@ def build_category_tabs(active_tab):
         tabs.append(f'          <a class="category-tab{active}" href="./{slug}.html">{label}</a>')
     return '\n'.join(tabs)
 
+
+def resolve_partials(content, partials_dir):
+    """<!-- PARTIAL: filename.html --> 를 partial 내용으로 치환"""
+    import re as _re
+    def replacer(m):
+        fname = m.group(1).strip()
+        path = partials_dir + fname
+        if os.path.exists(path):
+            with open(path, encoding="utf-8") as f:
+                return f.read()
+        return ""
+    return _re.sub(r"<!-- PARTIAL:\s*(.+?)\s*-->", replacer, content)
+
 def build_page(fname):
     page_path = PAGES + f"{fname}.page.html"
     if not os.path.exists(page_path):
@@ -67,6 +80,7 @@ def build_page(fname):
     page_css     = re.sub(r'\s*</style>\s*$', '', page_css)
     mobile_cta   = extract_section(page, 'MOBILE_CTA')
     main_block   = extract_section(page, 'MAIN')
+    main_block   = resolve_partials(main_block, PARTIALS)
     page_scripts = extract_section(page, 'PAGE_SCRIPTS')
 
     # Partials

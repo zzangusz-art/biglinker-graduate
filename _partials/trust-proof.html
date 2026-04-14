@@ -1,0 +1,269 @@
+<!-- TRUST-PROOF PARTIAL ─────────────────────────────────────────────────────
+     자격증 · 이력 + 카카오 합격 후기 (동적 애니메이션)
+     cert  : assets/certificate/ (20장)
+     kakao : assets/kakao/       (49장)
+─────────────────────────────────────────────────────────────────────────── -->
+<style>
+/* ── TRUST SECTION ── */
+.trust-section{padding:90px 0;background:#fff}
+.trust-intro{text-align:center;max-width:560px;margin:0 auto 52px}
+.trust-intro h2{font-size:clamp(22px,2.8vw,36px);font-weight:700;color:var(--header-text,#17191f);margin-bottom:12px;letter-spacing:-0.04em}
+.trust-intro p{font-size:15px;color:var(--header-muted,#6e7687);line-height:1.8}
+.trust-label{font-size:12px;font-weight:800;color:var(--brand,#4a68ff);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+
+/* ── CERT TICKER ── */
+.cert-ticker-wrap{overflow:hidden;position:relative;padding:4px 0}
+.cert-ticker-wrap::before,.cert-ticker-wrap::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:1;pointer-events:none}
+.cert-ticker-wrap::before{left:0;background:linear-gradient(to right,#fff 60%,transparent)}
+.cert-ticker-wrap::after{right:0;background:linear-gradient(to left,#fff 60%,transparent)}
+.cert-ticker{display:flex;gap:16px;width:max-content;animation:cert-tick 50s linear infinite}
+.cert-ticker:hover{animation-play-state:paused}
+.cert-ticker img{width:200px;height:140px;border-radius:14px;object-fit:cover;border:1px solid #e7ebf3;box-shadow:0 4px 16px rgba(0,0,0,.07);flex-shrink:0;transition:transform .25s}
+.cert-ticker img:hover{transform:scale(1.04)}
+@keyframes cert-tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── KAKAO FLIP GRID ── */
+.kakao-flip-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:44px}
+.kakao-flip-card{aspect-ratio:9/16;perspective:800px;cursor:pointer}
+.kakao-flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;border-radius:12px;
+  transition:transform .65s cubic-bezier(.4,.2,.2,1)}
+.kakao-flip-card.is-flipped .kakao-flip-inner{transform:rotateY(180deg)}
+.kakao-flip-front,.kakao-flip-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;overflow:hidden}
+.kakao-flip-front{background:linear-gradient(135deg,rgba(74,104,255,.1),rgba(127,146,255,.06));
+  border:1.5px solid rgba(74,104,255,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.kakao-flip-front .kff-icon{font-size:22px;opacity:.7}
+.kakao-flip-front .kff-text{font-size:9px;font-weight:700;color:rgba(74,104,255,.55);text-align:center;padding:0 8px;line-height:1.45}
+.kakao-flip-back{transform:rotateY(180deg)}
+.kakao-flip-back img{width:100%;height:100%;object-fit:cover}
+
+/* ── SCATTER (꽃가루처럼 흩날리며 사라짐) ── */
+@keyframes tp-scatter{
+  0%  {opacity:1;transform:translateY(0) translateX(0) rotate(0deg) scale(1)}
+  100%{opacity:0;transform:translateY(var(--sy,-80px)) translateX(var(--sx,0px)) rotate(var(--sr,15deg)) scale(.55)}
+}
+.kakao-flip-card.is-scattering .kakao-flip-inner{
+  animation:tp-scatter .55s ease-out forwards;
+}
+/* ── FALL-IN (위에서 떨어지며 등장) ── */
+@keyframes tp-fallin{
+  0%  {opacity:0;transform:translateY(-50px) scale(.82)}
+  60% {opacity:1}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+.kakao-flip-card.is-falling .kakao-flip-inner{
+  animation:tp-fallin .45s ease-out forwards;
+  animation-delay:var(--fd,0ms);
+  opacity:0;
+}
+
+@media(max-width:900px){.kakao-flip-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:600px){
+  .kakao-flip-grid{grid-template-columns:repeat(3,1fr)}
+  .cert-ticker img{width:150px;height:105px}
+}
+</style>
+
+<section class="trust-section" id="trust">
+  <div class="wrap">
+    <div class="trust-intro">
+      <div class="section-eyebrow" style="color:var(--brand,#4a68ff);justify-content:center;margin-bottom:12px;">Trust &amp; Proof</div>
+      <h2>코치의 자격과 실력,<br>합격자가 증명합니다</h2>
+      <p>빅링커 코치진의 공인 자격증과 수강생이 직접 보내온 합격 후기를 확인하세요.</p>
+    </div>
+
+    <!-- 자격증 · 이력 ticker -->
+    <div class="trust-label">자격증 · 이력</div>
+    <div class="cert-ticker-wrap">
+      <div class="cert-ticker" id="certTicker">
+        <!-- SET A -->
+        <img src="./assets/certificate/KakaoTalk_20260413_193056294_08.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_01.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_02.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_03.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_04.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_05.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_06.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_07.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_08.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_09.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_02.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_03.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_10.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_12.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_15.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_19.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_26.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_29.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193346683.webp" alt="자격증" loading="lazy">
+        <!-- SET B (duplicate for seamless loop) -->
+        <img src="./assets/certificate/KakaoTalk_20260413_193056294_08.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_01.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_02.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_03.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_04.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_05.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_06.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_07.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_08.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_09.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_02.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_03.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_10.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_12.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_15.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_19.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_26.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_29.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193346683.webp" alt="자격증" loading="lazy">
+      </div>
+    </div>
+
+    <!-- 카카오 합격 후기 flip grid -->
+    <div class="trust-label" style="margin-top:48px;">수강생 카카오톡 합격 후기</div>
+    <div class="kakao-flip-grid" id="kakaoFlipGrid">
+      <!-- 카드 12개는 JS로 렌더링 -->
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const KAKAO = [
+    "KakaoTalk_20260413_193056294.webp","KakaoTalk_20260413_193056294_01.webp",
+    "KakaoTalk_20260413_193056294_02.webp","KakaoTalk_20260413_193056294_03.webp",
+    "KakaoTalk_20260413_193056294_04.webp","KakaoTalk_20260413_193056294_05.webp",
+    "KakaoTalk_20260413_193056294_06.webp","KakaoTalk_20260413_193056294_07.webp",
+    "KakaoTalk_20260413_193104956.webp","KakaoTalk_20260413_193203932.webp",
+    "KakaoTalk_20260413_193233280.webp","KakaoTalk_20260413_193233280_01.webp",
+    "KakaoTalk_20260413_193233280_02.webp","KakaoTalk_20260413_193243331.webp",
+    "KakaoTalk_20260413_193243331_01.webp","KakaoTalk_20260413_193243331_02.webp",
+    "KakaoTalk_20260413_193243331_03.webp","KakaoTalk_20260413_193243331_04.webp",
+    "KakaoTalk_20260413_193243331_05.webp","KakaoTalk_20260413_193243331_06.webp",
+    "KakaoTalk_20260413_193243331_07.webp","KakaoTalk_20260413_193243331_08.webp",
+    "KakaoTalk_20260413_193243331_09.webp","KakaoTalk_20260413_193243331_10.webp",
+    "KakaoTalk_20260413_193243331_11.webp","KakaoTalk_20260413_193243331_12.webp",
+    "KakaoTalk_20260413_193243331_13.webp","KakaoTalk_20260413_193243331_14.webp",
+    "KakaoTalk_20260413_193340481_01.webp","KakaoTalk_20260413_193340481_04.webp",
+    "KakaoTalk_20260413_193340481_05.webp","KakaoTalk_20260413_193340481_06.webp",
+    "KakaoTalk_20260413_193340481_07.webp","KakaoTalk_20260413_193340481_08.webp",
+    "KakaoTalk_20260413_193340481_09.webp","KakaoTalk_20260413_193340481_11.webp",
+    "KakaoTalk_20260413_193340481_13.webp","KakaoTalk_20260413_193340481_14.webp",
+    "KakaoTalk_20260413_193340481_16.webp","KakaoTalk_20260413_193340481_17.webp",
+    "KakaoTalk_20260413_193340481_18.webp","KakaoTalk_20260413_193340481_20.webp",
+    "KakaoTalk_20260413_193340481_21.webp","KakaoTalk_20260413_193340481_22.webp",
+    "KakaoTalk_20260413_193340481_23.webp","KakaoTalk_20260413_193340481_24.webp",
+    "KakaoTalk_20260413_193340481_25.webp","KakaoTalk_20260413_193340481_27.webp",
+    "KakaoTalk_20260413_193340481_28.webp"
+  ];
+  let shuffled = KAKAO.slice().sort(()=>Math.random()-.5);
+  let idx = 0;
+
+  function nextImg(){
+    const src = './assets/kakao/' + shuffled[idx % shuffled.length];
+    idx++;
+    if(idx >= shuffled.length){ shuffled.sort(()=>Math.random()-.5); idx=0; }
+    return src;
+  }
+
+  function buildCard(){
+    const card = document.createElement('div');
+    card.className = 'kakao-flip-card';
+    card.innerHTML =
+      '<div class="kakao-flip-inner">' +
+        '<div class="kakao-flip-front"><span class="kff-icon">📱</span><span class="kff-text">합격 후기<br>확인하기</span></div>' +
+        '<div class="kakao-flip-back"><img src="" alt="합격 후기" loading="lazy"></div>' +
+      '</div>';
+    return card;
+  }
+
+  function init(){
+    const grid = document.getElementById('kakaoFlipGrid');
+    if(!grid) return;
+    const cols = window.innerWidth < 600 ? 3 : window.innerWidth < 900 ? 4 : 6;
+    const ROWS = 2;
+    const TOTAL = cols * ROWS;
+
+    // Build cards
+    for(let i=0;i<TOTAL;i++){
+      const card = buildCard();
+      card.querySelector('.kakao-flip-back img').src = nextImg();
+      grid.appendChild(card);
+    }
+
+    let phase = 'flipping';
+    let flipQueue = [];
+    let flipTimer = null;
+
+    function resetQueue(){
+      flipQueue = Array.from(grid.querySelectorAll('.kakao-flip-card'));
+      flipQueue.sort(()=>Math.random()-.5);
+    }
+    resetQueue();
+
+    function flipNextCard(){
+      if(phase !== 'flipping') return;
+      const unflipped = flipQueue.filter(c=>!c.classList.contains('is-flipped'));
+      if(unflipped.length === 0){
+        phase = 'scattering';
+        clearTimeout(flipTimer);
+        setTimeout(doScatter, 900);
+        return;
+      }
+      const card = unflipped[0];
+      card.classList.add('is-flipped');
+      flipTimer = setTimeout(flipNextCard, 320 + Math.random()*180);
+    }
+
+    function doScatter(){
+      const cards = grid.querySelectorAll('.kakao-flip-card');
+      cards.forEach(card=>{
+        const sx = (Math.random()-.5)*160;
+        const sy = -(60+Math.random()*100);
+        const sr = (Math.random()-.5)*40;
+        card.style.setProperty('--sx', sx+'px');
+        card.style.setProperty('--sy', sy+'px');
+        card.style.setProperty('--sr', sr+'deg');
+        card.classList.remove('is-flipped');
+        card.classList.add('is-scattering');
+      });
+      setTimeout(doReset, 650);
+    }
+
+    function doReset(){
+      const cards = grid.querySelectorAll('.kakao-flip-card');
+      cards.forEach((card,i)=>{
+        card.classList.remove('is-scattering');
+        // assign new image to back before fall-in
+        card.querySelector('.kakao-flip-back img').src = nextImg();
+        card.style.setProperty('--fd', (i*55)+'ms');
+        card.classList.add('is-falling');
+        setTimeout(()=>card.classList.remove('is-falling'), i*55+500);
+      });
+      const totalDelay = (cards.length-1)*55 + 500 + 400;
+      setTimeout(()=>{
+        phase = 'flipping';
+        resetQueue();
+        flipTimer = setTimeout(flipNextCard, 300);
+      }, totalDelay);
+    }
+
+    // Start first cycle
+    flipTimer = setTimeout(flipNextCard, 800);
+
+    // Manual flip on click
+    grid.addEventListener('click', e=>{
+      const card = e.target.closest('.kakao-flip-card');
+      if(!card || card.classList.contains('is-scattering') || card.classList.contains('is-falling')) return;
+      card.classList.toggle('is-flipped');
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
