@@ -1,80 +1,604 @@
 <!-- META
-TITLE: BigLinker — 페이퍼리드코칭
-HEADER_PROMO: 2026 합격전략 가이드 오픈
+TITLE: 대학원 학업·연구계획서 전문 코칭 — 빅링커 페이퍼리드코칭
+HEADER_PROMO: 2026 대학원 합격전략 가이드 오픈
 ACTIVE_TAB: paper-coaching
 -->
 
 <!-- PAGE_CSS -->
 <style>
-
     :root {
-      --header-line: #e5e8ef; --header-line-strong: #d7dbe5; --header-text: #17191f; --header-muted: #6e7687;
-      --text: #f6f7fb; --muted: rgba(255,255,255,0.66);
+      --header-bg: #f6f7fb; --header-surface: #ffffff; --header-line: #e5e8ef;
+      --header-line-strong: #d7dbe5; --header-text: #17191f; --header-muted: #6e7687;
+      --bg: #0b0e13; --bg-soft: #121722; --bg-dark: #090c11; --panel: #f5f6fb;
+      --text: #f6f7fb; --muted: rgba(255,255,255,0.66); --muted-dark: #5d6473;
       --brand: #4a68ff; --brand-2: #7f92ff; --brand-soft: #eef0ff;
-      --max: 1320px; --radius-lg: 22px; --radius-md: 18px;
+      --max: 1320px; --radius-xl: 28px; --radius-lg: 22px; --radius-md: 18px;
+      --radius-sm: 12px; --radius-xs: 8px;
+      --shadow: 0 24px 60px rgba(0,0,0,0.28); --shadow-card: 0 4px 20px rgba(36,46,78,0.09);
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: "Noto Sans KR", "Pretendard", sans-serif; background: radial-gradient(circle at 50% 0%, rgba(66,104,255,0.12), transparent 18%), linear-gradient(180deg, #090b0f 0%, #0b0e13 32%, #0d1015 100%); color: var(--text); }
+    body { font-family: "Noto Sans KR", "Pretendard", sans-serif;
+      background: radial-gradient(circle at 50% 0%, rgba(66,104,255,0.12), transparent 18%),
+        linear-gradient(180deg, #090b0f 0%, #0b0e13 32%, #0d1015 100%);
+      color: var(--text); }
     a { color: inherit; text-decoration: none; }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
     .inner { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
-    .top-shell { position: sticky; top: 0; z-index: 120; background: rgba(255,255,255,0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--header-line); }
-    .sticky-category-shell { position: sticky; top: 0; z-index: 110; background: rgba(247,248,252,0.98); border-top: 1px solid #edf0f6; border-bottom: 1px solid var(--header-line); backdrop-filter: blur(12px); }
-    .family-bar { background: #fff; }
-    .family-outer { display: flex; justify-content: center; padding: 10px 0; }
-    .family-wrap { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 46px; padding: 4px; border: 1px solid var(--header-line-strong); border-radius: 16px; background: #fff; box-shadow: 0 4px 16px rgba(32,43,73,0.08); overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
-    .family-wrap::-webkit-scrollbar, .category-tabs::-webkit-scrollbar { display: none; }
-    .family-link { flex: 0 0 auto; padding: 8px 12px; border-radius: 10px; font-size: 13px; font-weight: 700; color: var(--header-muted); }
-    .family-link.is-active { background: var(--brand-soft); color: var(--brand); }
-    .main-header { background: #fff; }
-    .main-header-wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; min-height: 78px; }
-    .header-promo { justify-self: start; align-self: stretch; display: flex; align-items: center; padding: 0 16px; border-radius: 0 0 14px 14px; border: 1px solid #dfe3ff; border-top: 0; background: linear-gradient(180deg, #eef2ff 0%, #f6f8ff 100%); color: var(--brand); font-size: 13px; font-weight: 800; white-space: nowrap; }
-    .brand { display: flex; flex-direction: column; align-items: center; justify-self: center; text-align: center; gap: 6px; }
-    .brand-mark { width: 132px; height: 44px; object-fit: contain; }
-    .brand-copy span { display: block; color: var(--header-muted); font-size: 12px; }
-    .header-actions { display: flex; align-items: center; justify-self: end; }
-    .cta-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--brand); background: var(--brand); color: #fff; font-weight: 700; font-size: 13px; }
-    .category-row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 58px; gap: 12px; }
-    .category-balance { justify-self: start; width: 120px; }
-    .category-tabs { display: flex; align-items: center; justify-content: center; gap: 2px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
-    .category-tab { flex: 0 0 auto; position: relative; padding: 0 16px; min-height: 48px; display: inline-flex; align-items: center; font-size: 14px; font-weight: 700; color: var(--header-muted); }
-    .category-tab.is-active { color: var(--brand); }
-    .category-tab.is-active::after { content: ""; position: absolute; left: 16px; right: 16px; bottom: 0; height: 3px; background: var(--brand); border-radius: 999px; }
-    .category-utility { display: flex; align-items: center; justify-self: end; gap: 6px; width: 240px; }
-    .utility-link { display: inline-flex; align-items: center; min-height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid #e4e7ef; background: #f8f9fc; color: #6f7786; font-size: 12px; font-weight: 700; cursor: pointer; }
-    .utility-link:hover { background: var(--brand-soft); color: var(--brand); }
-    .hero { padding: 100px 0 80px; text-align: center; }
+
+    .section-eyebrow { display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.36); margin-bottom: 18px; }
+    .section-eyebrow::before { content: ""; width: 28px; height: 2px; background: currentColor; flex-shrink: 0; }
+    .section-eyebrow.center { justify-content: center; }
+    .section-eyebrow.center::before { display: none; }
+    .section-light .section-eyebrow, .section-panel .section-eyebrow { color: var(--brand); }
+    .section-light { background: #fff; padding: 100px 0; }
+    .section-panel { background: var(--panel); padding: 100px 0; }
+    .section-dark { padding: 110px 0; }
+    .sec-h2 { font-size: clamp(22px,2.8vw,36px); font-weight: 700; letter-spacing: -0.045em; line-height: 1.3; }
+
+    .hero { padding: 90px 0 70px; text-align: center; }
     .hero-kicker { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(127,146,255,0.3); background: rgba(74,104,255,0.1); font-size: 12px; font-weight: 700; color: var(--brand-2); margin-bottom: 28px; }
-    .hero h1 { max-width: 780px; margin: 0 auto 20px; font-size: clamp(30px,4.6vw,60px); line-height: 1.14; letter-spacing: -0.05em; font-weight: 700; }
+    .hero h1 { max-width: 800px; margin: 0 auto 20px; font-size: clamp(30px,4.6vw,62px); line-height: 1.12; letter-spacing: -0.05em; font-weight: 700; }
     .hero h1 em { color: var(--brand-2); font-style: normal; }
     .hero p { max-width: 560px; margin: 0 auto 36px; color: var(--muted); font-size: 15px; line-height: 1.8; }
-    .hero-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .hero-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
     .btn-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 28px; border-radius: 13px; font-size: 15px; font-weight: 700; background: var(--brand); color: #fff; box-shadow: 0 10px 28px rgba(74,104,255,0.28); transition: transform 0.2s; }
     .btn-primary:hover { transform: translateY(-2px); }
     .btn-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 24px; border-radius: 13px; font-size: 15px; font-weight: 700; border: 1.5px solid rgba(255,255,255,0.22); color: var(--text); background: rgba(255,255,255,0.06); transition: transform 0.2s; }
-    .btn-secondary:hover { transform: translateY(-2px); }
+    .hero-stats { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; }
+    .hero-stat { text-align: center; }
+    .hero-stat .s-num { font-size: 34px; font-weight: 900; color: var(--brand-2); letter-spacing: -0.04em; line-height: 1; }
+    .hero-stat .s-label { font-size: 12px; color: var(--muted); margin-top: 5px; }
+
+    .pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .pain-card { padding: 28px 22px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.04); }
+    .pain-icon { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .pain-card h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .pain-card p { font-size: 13px; color: var(--muted); line-height: 1.7; margin: 0; }
+    .pain-quote { margin-top: 12px; padding: 10px 14px; border-radius: 8px; background: rgba(255,255,255,0.04); border-left: 2px solid var(--brand-2); font-size: 12px; color: rgba(255,255,255,0.5); font-style: italic; line-height: 1.6; }
+
+    .type-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .type-card { padding: 28px 24px; border-radius: var(--radius-md); border: 1px solid #e7ebf3; background: #fff; box-shadow: var(--shadow-card); }
+    .type-tag { display: inline-flex; align-items: center; min-height: 24px; padding: 0 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); font-size: 11px; font-weight: 800; margin-bottom: 12px; }
+    .type-card h3 { font-size: 15px; font-weight: 700; color: var(--header-text); margin-bottom: 8px; }
+    .type-card p { font-size: 13px; color: var(--header-muted); line-height: 1.7; margin: 0 0 14px; }
+    .type-tips { list-style: none; display: grid; gap: 5px; }
+    .type-tips li { font-size: 12px; color: var(--brand); font-weight: 700; display: flex; align-items: flex-start; gap: 6px; }
+    .type-tips li::before { content: "✓"; flex-shrink: 0; }
+
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .why-card { padding: 30px 26px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.04); }
+    .why-card .w-icon { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .why-card h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .why-card p { font-size: 13px; color: var(--muted); line-height: 1.7; margin: 0; }
+    .why-card .w-point { display: flex; align-items: flex-start; gap: 8px; margin-top: 10px; font-size: 12.5px; color: var(--brand-2); font-weight: 600; }
+
+    .domain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .domain-card { padding: 24px 22px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.04); }
+    .domain-card .d-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .domain-card .d-icon { width: 36px; height: 36px; border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .domain-card h3 { font-size: 14px; font-weight: 700; color: var(--text); }
+    .domain-card p { font-size: 13px; color: var(--muted); line-height: 1.7; margin: 10px 0 0; }
+    .domain-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .domain-tag { display: inline-flex; align-items: center; min-height: 24px; padding: 0 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); font-size: 11.5px; color: var(--muted); }
+
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+    .process-grid::before { content: ""; position: absolute; top: 40px; left: 12.5%; right: 12.5%; height: 2px; background: rgba(74,104,255,0.25); z-index: 0; }
+    .process-item { position: relative; z-index: 1; text-align: center; padding: 0 10px; }
+    .proc-circle { width: 80px; height: 80px; border-radius: 999px; background: var(--bg-soft); border: 2px solid rgba(74,104,255,0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; margin: 0 auto 18px; }
+    .proc-circle.active { background: var(--brand); border-color: var(--brand); }
+    .proc-step { font-size: 10px; font-weight: 800; letter-spacing: 0.06em; color: var(--brand-2); }
+    .proc-circle.active .proc-step { color: rgba(255,255,255,0.8); }
+    .proc-num { font-size: 20px; font-weight: 900; color: var(--text); line-height: 1; }
+    .process-item h3 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .process-item ul { list-style: none; display: grid; gap: 5px; }
+    .process-item ul li { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 5px; }
+    .process-item ul li::before { content: "·"; color: var(--brand-2); flex-shrink: 0; }
+
+    .curriculum-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .curri-card { padding: 22px 18px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.03); }
+    .curri-card.highlight { border-color: rgba(74,104,255,0.5); background: rgba(74,104,255,0.08); }
+    .curri-week { font-size: 11px; font-weight: 800; letter-spacing: 0.08em; color: var(--brand-2); margin-bottom: 8px; }
+    .curri-card h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .curri-list { list-style: none; display: grid; gap: 5px; }
+    .curri-list li { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 6px; }
+    .curri-list li::before { content: "–"; color: var(--brand-2); flex-shrink: 0; }
+
+    .compare-table { width: 100%; border-collapse: collapse; }
+    .compare-table th, .compare-table td { padding: 14px 18px; font-size: 13px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .compare-table th { font-size: 12px; font-weight: 800; letter-spacing: 0.04em; color: var(--muted); background: rgba(255,255,255,0.03); padding: 12px 18px; }
+    .compare-table td:first-child { text-align: left; color: var(--muted); }
+    .compare-table .col-us { color: var(--brand-2); font-weight: 700; }
+    .compare-table .col-them { color: rgba(255,255,255,0.3); }
+    .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .case-card { padding: 28px 22px; border-radius: var(--radius-md); border: 1px solid #e7ebf3; background: #fff; box-shadow: var(--shadow-card); }
+    .case-badge { display: inline-flex; align-items: center; min-height: 24px; padding: 0 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); font-size: 11px; font-weight: 800; margin-bottom: 14px; }
+    .case-card p { font-size: 13px; color: var(--header-muted); line-height: 1.8; margin: 0 0 14px; }
+    .c-result { font-size: 13px; font-weight: 700; color: var(--brand); padding-top: 12px; border-top: 1px solid #edf0f7; }
+
+    .review-band { padding: 100px 0 0; overflow: hidden; }
+    .review-band-head { text-align: center; margin-bottom: 48px; }
+    .review-band-head h2 { font-size: clamp(22px,2.8vw,34px); font-weight: 700; letter-spacing: -0.04em; margin-bottom: 10px; }
+    .review-band-head p { font-size: 14px; color: var(--muted); }
+    .review-marquee-wrap { display: flex; flex-direction: column; gap: 18px; padding-bottom: 100px; }
+    .review-marquee-row { display: flex; gap: 16px; width: max-content; }
+    .review-marquee-row:nth-child(odd)  { animation: rmq-ltr 38s linear infinite; }
+    .review-marquee-row:nth-child(even) { animation: rmq-rtl 42s linear infinite; }
+    @keyframes rmq-ltr { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    @keyframes rmq-rtl { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
+    .review-mini { flex-shrink: 0; width: 300px; padding: 20px 18px; border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.04); }
+    .review-mini.accent-blue { background: rgba(74,104,255,0.07); border-color: rgba(74,104,255,0.18); }
+    .review-mini.accent-purple { background: rgba(139,92,246,0.07); border-color: rgba(139,92,246,0.18); }
+    .star-row { font-size: 13px; color: #facc15; margin-bottom: 10px; letter-spacing: 1px; }
+    .review-mini p { font-size: 12.5px; color: var(--muted); line-height: 1.7; margin: 0 0 14px; }
+    .review-mini-meta { display: flex; align-items: center; gap: 10px; }
+    .review-mini-avatar { width: 32px; height: 32px; border-radius: 999px; background: var(--brand); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .review-mini-info { display: flex; flex-direction: column; gap: 2px; }
+    .review-mini-info strong { font-size: 12px; color: var(--text); }
+    .review-mini-info span { font-size: 11px; color: var(--muted); }
+
+    .faq-band { padding: 100px 0; }
+    .faq-title { font-size: clamp(20px,2.4vw,30px); font-weight: 700; letter-spacing: -0.04em; text-align: center; margin-bottom: 40px; line-height: 1.4; }
+    .faq-band details { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .faq-band summary { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; font-size: 14px; font-weight: 600; color: var(--text); cursor: pointer; list-style: none; gap: 16px; }
+    .faq-band summary::-webkit-details-marker { display: none; }
+    .faq-band details[open] summary { color: var(--brand-2); }
+    .faq-arrow { flex-shrink: 0; font-size: 16px; color: var(--muted); transition: transform 0.2s; }
+    .faq-band details[open] .faq-arrow { transform: rotate(180deg); color: var(--brand-2); }
+    .faq-band details p { padding: 0 0 20px; font-size: 13.5px; color: var(--muted); line-height: 1.8; }
+
+    .cta-band { padding: 100px 0; text-align: center; background: linear-gradient(160deg, #0f1422 0%, #111827 100%); border-top: 1px solid rgba(74,104,255,0.15); }
+    .cta-band h2 { font-size: clamp(22px,3vw,38px); font-weight: 700; letter-spacing: -0.045em; line-height: 1.3; margin-bottom: 18px; }
+    .cta-band p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 36px; }
+    .cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+    .btn-cta { display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; border-radius: 13px; font-size: 15px; font-weight: 700; background: var(--brand); color: #fff; box-shadow: 0 10px 28px rgba(74,104,255,0.28); transition: transform 0.2s; }
+    .btn-cta:hover { transform: translateY(-2px); }
+    .btn-cta-outline { display: inline-flex; align-items: center; min-height: 54px; padding: 0 28px; border-radius: 13px; font-size: 15px; font-weight: 700; border: 1.5px solid rgba(255,255,255,0.22); color: var(--text); background: transparent; transition: transform 0.2s; }
+
+    /* ── PANEL SECTION LIGHT-BG OVERRIDES ── */
+    .section-panel .sec-h2 { color: var(--header-text); }
+    .section-panel .domain-card { background: #fff; border-color: #e7ebf3; box-shadow: var(--shadow-card); }
+    .section-panel .domain-card h3 { color: var(--header-text); }
+    .section-panel .domain-card p { color: var(--header-muted) !important; }
+    .section-panel .domain-tag { border-color: #dde2ff; background: var(--brand-soft); color: var(--brand); }
+    .section-panel .curri-card { background: #fff; border-color: #e7ebf3; box-shadow: var(--shadow-card); }
+    .section-panel .curri-card.highlight { background: rgba(74,104,255,0.07); border-color: rgba(74,104,255,0.35); box-shadow: none; }
+    .section-panel .curri-week { color: var(--brand); }
+    .section-panel .curri-card h4 { color: var(--header-text); }
+    .section-panel .curri-list li { color: var(--header-muted); }
+    .section-panel .curri-list li::before { color: var(--brand); }
+
+    @media(max-width:768px) {
+      .pain-grid, .why-grid, .domain-grid, .cases-grid { grid-template-columns: 1fr; }
+      .type-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: repeat(2,1fr); gap: 24px; }
+      .process-grid::before { display: none; }
+      .curriculum-grid { grid-template-columns: repeat(2,1fr); }
+      .compare-table { font-size: 12px; }
+    }
 </style>
 <!-- /PAGE_CSS -->
 
-<!-- MOBILE_CTA -->
-
-<!-- /MOBILE_CTA -->
-
 <!-- MAIN -->
-  <main>
 
-    <section class="hero">
-        <div class="wrap">
-          <div class="hero-kicker">대학원&amp;논문 · BigLinker</div>
-          <h1>합격하는 페이퍼를<br><em>리드</em>합니다</h1>
-          <p>학업계획서·연구계획서·자기소개서를 전략적으로 작성하여 대학원 합격을 이끄는 전문 코칭입니다.</p>
-          <div class="hero-actions">
-            <a class="btn-primary" href="#">무료 상담 신청</a>
-            <a class="btn-secondary" href="./index.html">서비스 전체 보기</a>
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-kicker"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7f92ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> 페이퍼리드코칭</div>
+      <h1>대학원 합격,<br><em>페이퍼가 결정</em>합니다</h1>
+      <p>학업계획서·연구계획서·자기소개서를 합격의 언어로 설계하는<br>대학원 입시 전문 코칭 프로그램</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#cta">무료 상담 신청</a>
+        <a class="btn-secondary" href="#process">코칭 과정 보기</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="s-num">89%</div><div class="s-label">합격률</div></div>
+        <div class="hero-stat"><div class="s-num">3,000+</div><div class="s-label">합격 페이퍼 DB</div></div>
+        <div class="hero-stat"><div class="s-num">무제한</div><div class="s-label">첨삭 횟수</div></div>
+        <div class="hero-stat"><div class="s-num">4.9★</div><div class="s-label">수강생 만족도</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PAIN ══ -->
+  <section class="section-dark">
+    <div class="wrap">
+      <div class="section-eyebrow">PROBLEM</div>
+      <h2 class="sec-h2" style="margin-bottom:36px;">학업계획서 앞에서<br>이런 막막함이 있으신가요?</h2>
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon" style="background:rgba(249,115,22,0.12);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 14.5v-4m0-4h.01" stroke="#f97316" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>무엇을 써야 할지 모르겠어요</h3>
+          <p>연구 주제도 없고, 지원 동기도 막연합니다. 빈 화면 앞에서 시작조차 못하는 분들이 많습니다.</p>
+          <div class="pain-quote">"다들 어떻게 쓰는지 모르겠고, 참고할 데도 없어요."</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon" style="background:rgba(59,130,246,0.12);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3" stroke="#3b82f6" stroke-width="2"/><path d="M8 12h8M8 8h5" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>써봤는데 논리가 약하다는 말을 들었어요</h3>
+          <p>열심히 썼지만 지원 동기·연구 계획·미래 목표가 유기적으로 연결되지 않아 설득력이 부족합니다.</p>
+          <div class="pain-quote">"왜 이 대학원에 오려는지 납득이 안 된다는 피드백을 받았어요."</div>
+        </div>
+        <div class="pain-card">
+          <div class="pain-icon" style="background:rgba(168,85,247,0.12);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke="#a855f7" stroke-width="2"/><path d="M9 9a3 3 0 016 0c0 2-3 3-3 5m0 3h.01" stroke="#a855f7" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>지도교수 연구와 연결을 못 하겠어요</h3>
+          <p>지원 교수의 연구 분야를 파악했어도, 내 경험·관심과 어떻게 연결해 써야 할지 방법을 모릅니다.</p>
+          <div class="pain-quote">"교수님 논문을 읽었는데 어떻게 연결해야 할지 막막해요."</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TYPE ══ -->
+  <section class="section-panel">
+    <div class="wrap">
+      <div class="section-eyebrow">COACHING TYPE</div>
+      <h2 class="sec-h2" style="margin-bottom:10px;">어떤 페이퍼든<br>맞춤 코칭으로 완성합니다</h2>
+      <p style="color:var(--muted-dark);font-size:14px;margin-bottom:36px;">대학원 유형과 전공에 맞게 서류 전략을 다르게 설계합니다</p>
+      <div class="type-grid">
+        <div class="type-card">
+          <div class="type-tag">학업계획서</div>
+          <h3>지원 동기부터 미래 비전까지 하나의 스토리로</h3>
+          <p>지원 동기·전공 선택 이유·연구 관심사·졸업 후 계획을 논리적으로 연결합니다. 심사 교수가 "왜 이 사람인가"를 납득하는 구조를 설계합니다.</p>
+          <ul class="type-tips">
+            <li>지원 교수 연구 분석 및 연계 전략 수립</li>
+            <li>학업 이력 → 연구 관심 → 미래 목표 연결</li>
+            <li>대학원별 양식·분량에 맞춘 맞춤 작성</li>
+          </ul>
+        </div>
+        <div class="type-card">
+          <div class="type-tag">연구계획서</div>
+          <h3>연구 질문에서 방법론까지, 체계적으로 설계</h3>
+          <p>연구 주제 선정이 막막한 분부터 초안이 있지만 구조가 약한 분까지. 연구 배경·목적·방법론·기대효과를 완성도 있게 정리합니다.</p>
+          <ul class="type-tips">
+            <li>연구 주제 발굴 및 범위 설정 코칭</li>
+            <li>선행 연구 검토 및 연구 공백 정의</li>
+            <li>연구 방법론(질적/양적/혼합) 설계 지원</li>
+          </ul>
+        </div>
+        <div class="type-card">
+          <div class="type-tag">대학원 자기소개서</div>
+          <h3>경험을 연구자 역량으로 번역하는 서류</h3>
+          <p>대학 생활·직장 경험·개인 프로젝트를 대학원에서 요구하는 역량과 연결합니다. 식상한 자소서를 넘어 기억에 남는 페이퍼를 만듭니다.</p>
+          <ul class="type-tips">
+            <li>경험 소재 발굴 및 전공 연계 분석</li>
+            <li>학문적 열정·성장 과정 서술 전략</li>
+            <li>문항별 글자 수 최적화 및 문장 다듬기</li>
+          </ul>
+        </div>
+        <div class="type-card">
+          <div class="type-tag">영문 SOP / 해외 대학원</div>
+          <h3>Statement of Purpose 전략적 완성</h3>
+          <p>미국·영국·캐나다·호주 대학원 SOP·PS·Writing Sample 코칭. 국내 학업계획서와 달리 영미권 대학원이 요구하는 서사 구조와 표현 방식을 적용합니다.</p>
+          <ul class="type-tips">
+            <li>지원 학교별 SOP 요구사항 분석</li>
+            <li>영어 원고 초안 작성 및 Native 수준 교정</li>
+            <li>CV·추천서 가이드라인 제공</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ WHY ══ -->
+  <section class="section-dark">
+    <div class="wrap">
+      <div class="section-eyebrow">WHY BIGLINKER</div>
+      <h2 class="sec-h2" style="margin-bottom:36px;">빅링커 페이퍼 코칭이<br>다른 이유</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="w-icon" style="background:rgba(74,104,255,0.15);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" stroke="#7f92ff" stroke-width="2" stroke-linecap="round"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" stroke="#7f92ff" stroke-width="2"/></svg>
+          </div>
+          <h3>3,000+ 합격 페이퍼 DB</h3>
+          <p>서울대·연세대·고려대·KAIST·POSTECH 등 상위 대학원 합격자의 학업계획서·연구계획서 DB를 보유합니다. 구조와 흐름을 참고해 차별화된 페이퍼를 완성합니다.</p>
+          <div class="w-point">→ 합격자 패턴 분석 기반 맞춤 전략 수립</div>
+        </div>
+        <div class="why-card">
+          <div class="w-icon" style="background:rgba(74,104,255,0.15);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4" stroke="#7f92ff" stroke-width="2"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#7f92ff" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>교수 관점의 첨삭</h3>
+          <p>심사 교수가 어떤 기준으로 학업계획서를 평가하는지 알고 있습니다. 단순 글쓰기 교정이 아니라 교수가 납득할 수 있는 논리 구조로 재설계합니다.</p>
+          <div class="w-point">→ 심사 기준 역산 전략으로 설득력 최대화</div>
+        </div>
+        <div class="why-card">
+          <div class="w-icon" style="background:rgba(74,104,255,0.15);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#7f92ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>전공별 맞춤 코치 매칭</h3>
+          <p>인문사회·이공계·경영·예술·의료보건 등 분야별로 전공 배경을 가진 코치와 매칭됩니다. 전공 내용에 대한 이해 없이 글만 다듬는 코칭과 다릅니다.</p>
+          <div class="w-point">→ 전공 맥락을 이해하는 코치와 함께</div>
+        </div>
+        <div class="why-card">
+          <div class="w-icon" style="background:rgba(74,104,255,0.15);">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4" stroke="#7f92ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="#7f92ff" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>완성까지 무제한 첨삭</h3>
+          <p>횟수 제한 없이 최종 제출본이 완성될 때까지 첨삭을 제공합니다. 평균 5~8회 수정을 거치며, 매 회차마다 구체적인 방향 제시와 문장 단위 피드백을 드립니다.</p>
+          <div class="w-point">→ 완성 기준은 합격 가능성, 횟수가 아님</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TARGET ══ -->
+  <section class="section-dark">
+    <div class="wrap">
+      <div class="section-eyebrow">TARGET</div>
+      <h2 class="sec-h2" style="margin-bottom:36px;">이런 분께<br>페이퍼리드코칭을 권합니다</h2>
+      <div class="domain-grid">
+        <div class="domain-card">
+          <div class="d-head">
+            <div class="d-icon" style="background:rgba(74,104,255,0.15);">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z" stroke="#7f92ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 12v5c3 3 9 3 12 0v-5" stroke="#7f92ff" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>일반 대학원 진학</h3>
+          </div>
+          <p>학문적 연구를 목표로 하는 석·박사 과정 지원자. 연구 계획서와 학업계획서가 핵심이며, 지원 교수와의 연구 적합성이 합격의 관건입니다.</p>
+          <div class="domain-tags">
+            <span class="domain-tag">서울대·연세대·고려대</span>
+            <span class="domain-tag">KAIST·POSTECH</span>
+            <span class="domain-tag">전공별 전문 석박사</span>
           </div>
         </div>
-      </section>
+        <div class="domain-card">
+          <div class="d-head">
+            <div class="d-icon" style="background:rgba(74,104,255,0.15);">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#7f92ff" stroke-width="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke="#7f92ff" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3>특수 대학원 진학</h3>
+          </div>
+          <p>경영대학원(MBA)·교육대학원·행정대학원·법학전문대학원 등 실무 중심의 특수 대학원. 직무 경험과 미래 목표를 전략적으로 연결하는 것이 중요합니다.</p>
+          <div class="domain-tags">
+            <span class="domain-tag">MBA·경영대학원</span>
+            <span class="domain-tag">교육·행정·사회복지</span>
+            <span class="domain-tag">로스쿨·의학전문대학원</span>
+          </div>
+        </div>
+        <div class="domain-card">
+          <div class="d-head">
+            <div class="d-icon" style="background:rgba(74,104,255,0.15);">
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#7f92ff" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10A15.3 15.3 0 0 1 12 2z" stroke="#7f92ff" stroke-width="2"/></svg>
+            </div>
+            <h3>해외 대학원 준비</h3>
+          </div>
+          <p>미국·영국·캐나다·호주 등 해외 대학원 지원자. SOP·Personal Statement를 영미권 기준에 맞게 작성하고, 지원 전략과 학교 리스트 구성까지 함께 준비합니다.</p>
+          <div class="domain-tags">
+            <span class="domain-tag">미국·영국·캐나다</span>
+            <span class="domain-tag">SOP·PS·Writing Sample</span>
+            <span class="domain-tag">CV·추천서 가이드</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </main>
+  <!-- ══ PROCESS ══ -->
+  <section class="section-dark" id="process">
+    <div class="wrap">
+      <div class="section-eyebrow">PROCESS</div>
+      <h2 class="sec-h2" style="margin-bottom:48px;">4단계로 완성하는<br>합격 페이퍼 로드맵</h2>
+      <div class="process-grid">
+        <div class="process-item">
+          <div class="proc-circle active">
+            <span class="proc-step">STEP</span>
+            <span class="proc-num">1</span>
+          </div>
+          <h3>현황 진단</h3>
+          <ul>
+            <li>지원 대학원·교수 분석</li>
+            <li>학업 이력·경험 정리</li>
+            <li>페이퍼 전략 방향 설정</li>
+          </ul>
+        </div>
+        <div class="process-item">
+          <div class="proc-circle">
+            <span class="proc-step">STEP</span>
+            <span class="proc-num">2</span>
+          </div>
+          <h3>소재 발굴 &amp; 설계</h3>
+          <ul>
+            <li>연구 주제·지원 동기 추출</li>
+            <li>핵심 스토리라인 구성</li>
+            <li>교수 연구와 연계 전략</li>
+          </ul>
+        </div>
+        <div class="process-item">
+          <div class="proc-circle">
+            <span class="proc-step">STEP</span>
+            <span class="proc-num">3</span>
+          </div>
+          <h3>초안 완성</h3>
+          <ul>
+            <li>구조 설계 → 초고 작성</li>
+            <li>반복 첨삭 및 논리 보강</li>
+            <li>대학원별 요건 최적화</li>
+          </ul>
+        </div>
+        <div class="process-item">
+          <div class="proc-circle">
+            <span class="proc-step">STEP</span>
+            <span class="proc-num">4</span>
+          </div>
+          <h3>최종 완성</h3>
+          <ul>
+            <li>문장·표현 정제</li>
+            <li>최종 검토 및 제출 전 점검</li>
+            <li>면접 예상 질문 추출</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CURRICULUM ══ -->
+  <section class="section-panel">
+    <div class="wrap">
+      <div class="section-eyebrow">CURRICULUM</div>
+      <h2 class="sec-h2" style="margin-bottom:10px;">4주 집중 코칭 커리큘럼</h2>
+      <p style="color:var(--muted-dark);font-size:14px;margin-bottom:36px;">일정과 목표에 따라 2주 단기·6주 심화 과정으로 조정 가능합니다</p>
+      <div class="curriculum-grid">
+        <div class="curri-card">
+          <div class="curri-week">WEEK 1</div>
+          <h4>진단 &amp; 전략 수립</h4>
+          <ul class="curri-list">
+            <li>지원 교수·연구 분야 심층 분석</li>
+            <li>학업 이력·경험 인터뷰 진행</li>
+            <li>연구 주제·스토리라인 도출</li>
+            <li>대학원별 전략 차별화</li>
+          </ul>
+        </div>
+        <div class="curri-card highlight">
+          <div class="curri-week">WEEK 2</div>
+          <h4>초안 작성 &amp; 1차 첨삭</h4>
+          <ul class="curri-list">
+            <li>학업계획서·연구계획서 초안 작성</li>
+            <li>논리 구조 및 흐름 점검</li>
+            <li>교수 관점 1차 첨삭 피드백</li>
+            <li>방향 재설정 및 보완</li>
+          </ul>
+        </div>
+        <div class="curri-card highlight">
+          <div class="curri-week">WEEK 3</div>
+          <h4>반복 첨삭 &amp; 완성도 강화</h4>
+          <ul class="curri-list">
+            <li>2~4차 첨삭 및 단계별 수정</li>
+            <li>전공 맥락 심화 보완</li>
+            <li>설득력·차별성 극대화</li>
+            <li>복수 지원 대학원 버전 분기</li>
+          </ul>
+        </div>
+        <div class="curri-card">
+          <div class="curri-week">WEEK 4</div>
+          <h4>최종 완성 &amp; 면접 준비</h4>
+          <ul class="curri-list">
+            <li>최종본 문장 다듬기</li>
+            <li>제출 전 전체 검토</li>
+            <li>페이퍼 기반 면접 예상 질문 추출</li>
+            <li>자기소개서 병행 완성</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ COMPARE ══ -->
+  <section class="section-dark">
+    <div class="wrap">
+      <div class="section-eyebrow">COMPARE</div>
+      <h2 class="sec-h2" style="margin-bottom:36px;">빅링커 vs 일반 첨삭 서비스</h2>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">비교 항목</th>
+            <th>빅링커 페이퍼리드코칭</th>
+            <th>일반 첨삭 서비스</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>첨삭 방식</td><td class="col-us">구조 재설계 + 문장 첨삭</td><td class="col-them">문장 교정 중심</td></tr>
+          <tr><td>전공 이해</td><td class="col-us">전공 배경 코치 매칭</td><td class="col-them">글쓰기 전문가 위주</td></tr>
+          <tr><td>지원 교수 분석</td><td class="col-us">논문·연구 분야 직접 분석</td><td class="col-them">제공 안 함</td></tr>
+          <tr><td>합격 DB 활용</td><td class="col-us">3,000+ 합격 페이퍼 참고</td><td class="col-them">없거나 제한적</td></tr>
+          <tr><td>첨삭 횟수</td><td class="col-us">완성까지 무제한</td><td class="col-them">1~3회 제한</td></tr>
+          <tr><td>면접 연계</td><td class="col-us">페이퍼 기반 예상 질문 제공</td><td class="col-them">제공 안 함</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══ CASES ══ -->
+  <section class="section-light">
+    <div class="wrap">
+      <div class="section-eyebrow">SUCCESS CASES</div>
+      <h2 class="sec-h2" style="color:var(--header-text);margin-bottom:36px;">실제 합격자들의<br>Before &amp; After</h2>
+      <div class="cases-grid">
+        <div class="case-card">
+          <div class="case-badge">서울대학교 심리학과 대학원</div>
+          <p><strong style="color:var(--header-text);">Before.</strong> 연구 관심사는 있었지만 "왜 서울대여야 하는지"에 대한 설명이 약했고, 지도교수 연구와의 연계가 없었습니다.<br><br><strong style="color:var(--brand);">After.</strong> 지도교수의 최근 논문 3편을 분석해 연구 공백을 찾고, 본인의 학부 연구 경험과 연결하는 계획서를 완성. 수시 1차에서 최종 합격.</p>
+          <div class="c-result">→ 서울대 심리학과 석사과정 최종 합격</div>
+        </div>
+        <div class="case-card">
+          <div class="case-badge">연세대학교 경영대학원 (MBA)</div>
+          <p><strong style="color:var(--header-text);">Before.</strong> 7년 직장 경력이 있었지만 직무 경험과 MBA 지원 이유가 단절되어 있었습니다. "왜 지금 MBA인가"에 대한 답이 없었습니다.<br><br><strong style="color:var(--brand);">After.</strong> 커리어 전환 목표와 MBA 활용 계획을 구체화하고, 재직 중 성과를 수치로 재구성. 학업계획서로 면접 점수를 역전하며 최종 합격.</p>
+          <div class="c-result">→ 연세대 MBA 최종 합격</div>
+        </div>
+        <div class="case-card">
+          <div class="case-badge">UC Berkeley 대학원 (교육학)</div>
+          <p><strong style="color:var(--header-text);">Before.</strong> 영어 SOP를 혼자 쓰다가 한국식 문체와 구조가 반영되었다는 피드백을 받았습니다. 자신의 강점이 전달되지 않았습니다.<br><br><strong style="color:var(--brand);">After.</strong> 영미권 SOP 구조(Hook → Background → Why Now → Fit → Goals)로 전면 재구성. 지원 교수에게 이메일 컨택도 병행해 최종 합격.</p>
+          <div class="c-result">→ UC Berkeley 교육학 석사 합격</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ REVIEW MARQUEE ══ -->
+  <section class="review-band">
+    <div class="wrap">
+      <div class="review-band-head">
+        <div class="section-eyebrow center" style="justify-content:center;margin-bottom:12px;">REVIEW</div>
+        <h2>빅링커 페이퍼 코칭 후기</h2>
+        <p>실제 합격자들이 남긴 진짜 후기</p>
+      </div>
+    </div>
+    <div class="review-marquee-wrap">
+      <div class="review-marquee-row">
+        <div class="review-mini accent-blue"><div class="star-row">★★★★★</div><p>"연구계획서를 혼자 쓰면서 계속 막혔는데, 코치님이 제 경험에서 연구 주제를 끌어내주시더라고요. 완전히 다른 글이 됐어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">김</div><div class="review-mini-info"><strong>kim****</strong><span>서울대 사회학과 석사 합격</span></div></div></div>
+        <div class="review-mini"><div class="star-row">★★★★★</div><p>"MBA 학업계획서를 직무 경험 중심으로 재구성해주셨는데 면접에서도 이 내용이 그대로 나왔어요. 연계가 완벽했습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">이</div><div class="review-mini-info"><strong>lee****</strong><span>고려대 MBA 합격</span></div></div></div>
+        <div class="review-mini accent-purple"><div class="star-row">★★★★★</div><p>"지도교수님 논문을 읽고도 어떻게 연결해야 할지 몰랐는데, 코치님이 연구 공백 찾는 방법을 알려주셔서 계획서가 완전히 달라졌어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">박</div><div class="review-mini-info"><strong>park****</strong><span>KAIST 대학원 합격</span></div></div></div>
+        <div class="review-mini"><div class="star-row">★★★★★</div><p>"첨삭 횟수 제한 없이 완성까지 해주신다는 게 진짜였어요. 8번 고쳐서 최종본 완성했는데 처음이랑 완전히 다른 글이 됐습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">최</div><div class="review-mini-info"><strong>choi****</strong><span>연세대 대학원 합격</span></div></div></div>
+        <div class="review-mini accent-blue"><div class="star-row">★★★★★</div><p>"SOP 영어 문체 때문에 고민이 많았는데, 원어민처럼 자연스러운 표현으로 바꿔주시면서도 제 목소리가 살아있었어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">정</div><div class="review-mini-info"><strong>jung****</strong><span>UC Davis 합격</span></div></div></div>
+        <div class="review-mini"><div class="star-row">★★★★★</div><p>"교육대학원 자기소개서가 너무 평범했는데, 코치님이 현장 경험을 연구 관심으로 연결하는 법을 알려주셔서 완전히 살아났어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">한</div><div class="review-mini-info"><strong>han****</strong><span>서울교대 교육대학원 합격</span></div></div></div>
+        <div class="review-mini accent-blue" aria-hidden="true"><div class="star-row">★★★★★</div><p>"연구계획서를 혼자 쓰면서 계속 막혔는데, 코치님이 제 경험에서 연구 주제를 끌어내주시더라고요. 완전히 다른 글이 됐어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">김</div><div class="review-mini-info"><strong>kim****</strong><span>서울대 사회학과 석사 합격</span></div></div></div>
+        <div class="review-mini" aria-hidden="true"><div class="star-row">★★★★★</div><p>"MBA 학업계획서를 직무 경험 중심으로 재구성해주셨는데 면접에서도 이 내용이 그대로 나왔어요. 연계가 완벽했습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">이</div><div class="review-mini-info"><strong>lee****</strong><span>고려대 MBA 합격</span></div></div></div>
+        <div class="review-mini accent-purple" aria-hidden="true"><div class="star-row">★★★★★</div><p>"지도교수님 논문을 읽고도 어떻게 연결해야 할지 몰랐는데, 코치님이 연구 공백 찾는 방법을 알려주셔서 계획서가 완전히 달라졌어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">박</div><div class="review-mini-info"><strong>park****</strong><span>KAIST 대학원 합격</span></div></div></div>
+        <div class="review-mini" aria-hidden="true"><div class="star-row">★★★★★</div><p>"첨삭 횟수 제한 없이 완성까지 해주신다는 게 진짜였어요. 8번 고쳐서 최종본 완성했는데 처음이랑 완전히 다른 글이 됐습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">최</div><div class="review-mini-info"><strong>choi****</strong><span>연세대 대학원 합격</span></div></div></div>
+        <div class="review-mini accent-blue" aria-hidden="true"><div class="star-row">★★★★★</div><p>"SOP 영어 문체 때문에 고민이 많았는데, 원어민처럼 자연스러운 표현으로 바꿔주시면서도 제 목소리가 살아있었어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">정</div><div class="review-mini-info"><strong>jung****</strong><span>UC Davis 합격</span></div></div></div>
+        <div class="review-mini" aria-hidden="true"><div class="star-row">★★★★★</div><p>"교육대학원 자기소개서가 너무 평범했는데, 코치님이 현장 경험을 연구 관심으로 연결하는 법을 알려주셔서 완전히 살아났어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">한</div><div class="review-mini-info"><strong>han****</strong><span>서울교대 교육대학원 합격</span></div></div></div>
+      </div>
+      <div class="review-marquee-row">
+        <div class="review-mini accent-purple"><div class="star-row">★★★★★</div><p>"전공 배경이 있는 코치님과 매칭되니까 연구 내용에 대해 깊이 있는 피드백이 나오더라고요. 그냥 글쓰기 선생님이 아니었어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">오</div><div class="review-mini-info"><strong>oh****</strong><span>POSTECH 대학원 합격</span></div></div></div>
+        <div class="review-mini accent-blue"><div class="star-row">★★★★★</div><p>"해외 대학원 SOP를 처음 써보는 거라 막막했는데 구조 자체를 한국식에서 영미식으로 바꾸는 게 핵심이라는 걸 알게 됐어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">윤</div><div class="review-mini-info"><strong>yoon****</strong><span>UCL 대학원 합격</span></div></div></div>
+        <div class="review-mini"><div class="star-row">★★★★★</div><p>"법학전문대학원 지원인데 자기소개서 구조 자체를 모르고 있었어요. 코치님이 법조인 관점에서 어떤 걸 보는지 알려주셨어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">임</div><div class="review-mini-info"><strong>im****</strong><span>연세대 로스쿨 합격</span></div></div></div>
+        <div class="review-mini accent-purple"><div class="star-row">★★★★★</div><p>"연구계획서가 5번이나 완전히 바뀌었는데 매번 더 좋아지는 게 느껴졌어요. 마지막엔 정말 나답고 설득력 있는 글이 됐습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">신</div><div class="review-mini-info"><strong>shin****</strong><span>고려대 사회학과 박사 합격</span></div></div></div>
+        <div class="review-mini accent-blue"><div class="star-row">★★★★★</div><p>"직장 다니면서 MBA 준비하다 보니 시간이 없었는데, 코치님이 짧은 세션에도 핵심을 잘 잡아주셔서 2주 만에 완성했어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">강</div><div class="review-mini-info"><strong>kang****</strong><span>성균관대 SKK GSB 합격</span></div></div></div>
+        <div class="review-mini"><div class="star-row">★★★★★</div><p>"의학대학원 지원인데 임상 경험을 연구 관심으로 연결하는 방법을 코치님이 알려주셨어요. 교수님들 리뷰에서 호평을 받았습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">홍</div><div class="review-mini-info"><strong>hong****</strong><span>서울대 의과대학원 합격</span></div></div></div>
+        <div class="review-mini accent-purple" aria-hidden="true"><div class="star-row">★★★★★</div><p>"전공 배경이 있는 코치님과 매칭되니까 연구 내용에 대해 깊이 있는 피드백이 나오더라고요. 그냥 글쓰기 선생님이 아니었어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">오</div><div class="review-mini-info"><strong>oh****</strong><span>POSTECH 대학원 합격</span></div></div></div>
+        <div class="review-mini accent-blue" aria-hidden="true"><div class="star-row">★★★★★</div><p>"해외 대학원 SOP를 처음 써보는 거라 막막했는데 구조 자체를 한국식에서 영미식으로 바꾸는 게 핵심이라는 걸 알게 됐어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">윤</div><div class="review-mini-info"><strong>yoon****</strong><span>UCL 대학원 합격</span></div></div></div>
+        <div class="review-mini" aria-hidden="true"><div class="star-row">★★★★★</div><p>"법학전문대학원 지원인데 자기소개서 구조 자체를 모르고 있었어요. 코치님이 법조인 관점에서 어떤 걸 보는지 알려주셨어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">임</div><div class="review-mini-info"><strong>im****</strong><span>연세대 로스쿨 합격</span></div></div></div>
+        <div class="review-mini accent-purple" aria-hidden="true"><div class="star-row">★★★★★</div><p>"연구계획서가 5번이나 완전히 바뀌었는데 매번 더 좋아지는 게 느껴졌어요. 마지막엔 정말 나답고 설득력 있는 글이 됐습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">신</div><div class="review-mini-info"><strong>shin****</strong><span>고려대 사회학과 박사 합격</span></div></div></div>
+        <div class="review-mini accent-blue" aria-hidden="true"><div class="star-row">★★★★★</div><p>"직장 다니면서 MBA 준비하다 보니 시간이 없었는데, 코치님이 짧은 세션에도 핵심을 잘 잡아주셔서 2주 만에 완성했어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">강</div><div class="review-mini-info"><strong>kang****</strong><span>성균관대 SKK GSB 합격</span></div></div></div>
+        <div class="review-mini" aria-hidden="true"><div class="star-row">★★★★★</div><p>"의학대학원 지원인데 임상 경험을 연구 관심으로 연결하는 방법을 코치님이 알려주셨어요. 교수님들 리뷰에서 호평을 받았습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">홍</div><div class="review-mini-info"><strong>hong****</strong><span>서울대 의과대학원 합격</span></div></div></div>
+      </div>
+      <div class="review-marquee-row">
+        <div class="review-mini"><div class="star-row">★★★★★</div><p>"처음엔 '이 정도면 됐겠지'라고 생각했는데 코치님 피드백 보고 나서 얼마나 부족했는지 알게 됐어요. 진짜 합격 수준으로 올려주셨습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">류</div><div class="review-mini-info"><strong>ryu****</strong><span>이화여대 대학원 합격</span></div></div></div>
+        <div class="review-mini accent-blue"><div class="star-row">★★★★★</div><p>"연구 방법론 쪽이 약해서 걱정했는데, 코치님이 질적 연구 방법론 구성을 도와주셔서 완성도가 높아졌어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">전</div><div class="review-mini-info"><strong>jeon****</strong><span>한양대 대학원 합격</span></div></div></div>
+        <div class="review-mini accent-purple"><div class="star-row">★★★★★</div><p>"졸업하고 3년 지나 복학 후 대학원 준비인데, 공백 기간을 오히려 강점으로 풀어내는 방식을 알려주셨어요. 정말 신기했습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">배</div><div class="review-mini-info"><strong>bae****</strong><span>성균관대 대학원 합격</span></div></div></div>
+        <div class="review-mini"><div class="star-row">★★★★★</div><p>"학업계획서 쓰면서 내가 왜 이 분야를 하고 싶은지 다시 생각하게 됐어요. 코칭 자체가 자기 이해의 시간이었습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">문</div><div class="review-mini-info"><strong>moon****</strong><span>중앙대 대학원 합격</span></div></div></div>
+        <div class="review-mini accent-blue"><div class="star-row">★★★★★</div><p>"3개 대학원 동시 지원인데 각각 다른 버전으로 맞춤 작성해주셨어요. 전략적으로 다 붙을 수 있게 설계해주셨습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">나</div><div class="review-mini-info"><strong>na****</strong><span>서울대·연세대·고려대 동시 합격</span></div></div></div>
+        <div class="review-mini accent-purple"><div class="star-row">★★★★★</div><p>"영어 SOP인데 표현이 어색하다는 리뷰를 계속 받아서 왔어요. 원어민 같은 자연스러운 표현으로 다듬어주셨어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">심</div><div class="review-mini-info"><strong>sim****</strong><span>University of Toronto 합격</span></div></div></div>
+        <div class="review-mini" aria-hidden="true"><div class="star-row">★★★★★</div><p>"처음엔 '이 정도면 됐겠지'라고 생각했는데 코치님 피드백 보고 나서 얼마나 부족했는지 알게 됐어요. 진짜 합격 수준으로 올려주셨습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">류</div><div class="review-mini-info"><strong>ryu****</strong><span>이화여대 대학원 합격</span></div></div></div>
+        <div class="review-mini accent-blue" aria-hidden="true"><div class="star-row">★★★★★</div><p>"연구 방법론 쪽이 약해서 걱정했는데, 코치님이 질적 연구 방법론 구성을 도와주셔서 완성도가 높아졌어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">전</div><div class="review-mini-info"><strong>jeon****</strong><span>한양대 대학원 합격</span></div></div></div>
+        <div class="review-mini accent-purple" aria-hidden="true"><div class="star-row">★★★★★</div><p>"졸업하고 3년 지나 복학 후 대학원 준비인데, 공백 기간을 오히려 강점으로 풀어내는 방식을 알려주셨어요. 정말 신기했습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">배</div><div class="review-mini-info"><strong>bae****</strong><span>성균관대 대학원 합격</span></div></div></div>
+        <div class="review-mini" aria-hidden="true"><div class="star-row">★★★★★</div><p>"학업계획서 쓰면서 내가 왜 이 분야를 하고 싶은지 다시 생각하게 됐어요. 코칭 자체가 자기 이해의 시간이었습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">문</div><div class="review-mini-info"><strong>moon****</strong><span>중앙대 대학원 합격</span></div></div></div>
+        <div class="review-mini accent-blue" aria-hidden="true"><div class="star-row">★★★★★</div><p>"3개 대학원 동시 지원인데 각각 다른 버전으로 맞춤 작성해주셨어요. 전략적으로 다 붙을 수 있게 설계해주셨습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">나</div><div class="review-mini-info"><strong>na****</strong><span>서울대·연세대·고려대 동시 합격</span></div></div></div>
+        <div class="review-mini accent-purple" aria-hidden="true"><div class="star-row">★★★★★</div><p>"영어 SOP인데 표현이 어색하다는 리뷰를 계속 받아서 왔어요. 원어민 같은 자연스러운 표현으로 다듬어주셨어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">심</div><div class="review-mini-info"><strong>sim****</strong><span>University of Toronto 합격</span></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTIAL: trust-proof.html -->
+
+  <!-- PARTIAL: faq-paper.html -->
+
+  <!-- PARTIAL: cta-paper.html -->
+
 <!-- /MAIN -->
