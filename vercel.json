@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/blog/:path*",
+      "destination": "https://admin.gobiglinker.com/serve/graduate/:path*"
+    }
+  ]
+}
