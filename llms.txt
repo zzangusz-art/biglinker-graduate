@@ -1,15 +1,42 @@
 # BigLinker 대학원 코칭
 
-> 대학원 입시·논문·포트폴리오 전문 코칭 플랫폼
+> 대학원 입시·논문·포트폴리오·면접 전문 코칭 플랫폼 | 빅링커(BigLinker)
 
-빅링커(BigLinker) 대학원 코칭은 연구계획서·면접·포트폴리오·학위논문을 1:1 밀착 코칭으로 지원합니다.
+빅링커는 국내외 대학원 입시 준비부터 학위논문 작성까지 1:1 밀착 코칭으로 지원하는 전문 교육 기관입니다.
+연구계획서·학업계획서·포트폴리오·구술면접 전 영역에서 30명 이상의 전문 코치진이 합격을 지원합니다.
 
-## 코칭 프로그램
-- [대학원 코칭 홈](https://graduate.gobiglinker.com/)
-- [페이퍼리드코칭](https://graduate.gobiglinker.com/paper-coaching.html)
-- [면접리드코칭](https://graduate.gobiglinker.com/interview-coaching.html)
-- [포트폴리오리드코칭](https://graduate.gobiglinker.com/portfolio-coaching.html)
-- [논문리드코칭](https://graduate.gobiglinker.com/thesis-coaching.html)
+## 전문 코칭 프로그램
+
+- [페이퍼리드코칭](https://graduate.gobiglinker.com/paper-coaching.html): 연구계획서·학업계획서 초안 작성부터 최종 교정까지 1:1 코칭
+- [면접리드코칭](https://graduate.gobiglinker.com/interview-coaching.html): 대학원 기출 면접 문항 분석, 모의면접 반복 훈련, 영어 면접 대비
+- [포트폴리오리드코칭](https://graduate.gobiglinker.com/portfolio-coaching.html): 예술·디자인·건축 계열 대학원 포트폴리오 구성 전략 코칭
+- [논문리드코칭](https://graduate.gobiglinker.com/thesis-coaching.html): 주제 선정·문헌 검토·연구 방법론·결과 해석·교정 전 과정 지원
+
+## 주요 성과 및 전문성
+
+- 누적 코칭 완료: 2,800건 이상 (편입·대학원·취업 통합)
+- 코치진: 30명 이상 (각 학문 분야 전공자·현직 교수진 네트워크)
+- 지원 범위: 국내 상위권 대학원, 해외 대학원(미국·영국·캐나다 등)
+- 제공 형태: 전면 온라인 1:1 (카카오톡·Zoom 기반), 당일 배정 가능
+
+## 자주 묻는 질문 (FAQ)
+
+Q: 대학원 입시 코칭은 어떤 분들에게 필요한가요?
+A: 국내외 대학원 진학을 준비하는 학부생·직장인 모두에게 필요합니다. 연구계획서 작성, 면접 준비, 포트폴리오 구성 등 전형별 전략이 다르기 때문에 전문 코칭이 합격률을 높입니다.
+
+Q: 연구계획서는 어떻게 준비해야 하나요?
+A: 목표 대학원의 연구 분야와 지도교수 논문을 분석한 뒤, 지원자의 학문적 관심사와 연결해 설득력 있는 연구계획서를 작성합니다. 초안→피드백→반복 수정 단계를 거쳐 완성도를 높입니다.
+
+Q: 논문 코칭은 어떤 방식으로 진행되나요?
+A: 주제 선정·문헌 검토·연구 방법론 설계부터 결과 해석과 최종 교정까지 전 과정을 지원합니다. 주 1~2회 온라인 세션으로 진행 상황을 점검합니다.
+
+## 관련 채널
+
+- 블로그: https://blog.gobiglinker.com/blog/graduate
+- 편입·대입 코칭: https://transfer.gobiglinker.com
+- 취업 코칭: https://job.gobiglinker.com
+- 기업교육: https://biz.gobiglinker.com
 
 ## 운영사
-- 빅링커(BigLinker) | https://gobiglinker.com
+
+빅링커(BigLinker) | https://gobiglinker.com | 문의: biglinkerkor@gmail.com
