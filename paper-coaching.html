@@ -17,6 +17,11 @@
   <meta name="twitter:title"       content="대학원 학업·연구계획서 전문 코칭 — 빅링커 페이퍼리드코칭">
   <meta name="twitter:description"  content="대학원 입시 페이퍼리드코칭. 연구계획서·학업계획서를 교수 심사 기준에 맞게 최적화하는 1:1 코칭.">
   <meta name="twitter:image"       content="https://gobiglinker.com/assets/og-default.jpg">
+  <link rel="icon" href="https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524" type="image/x-icon">
+  <link rel="shortcut icon" href="https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524">
+  <link rel="apple-touch-icon" href="https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524">
+  <link rel="icon" type="image/x-icon" sizes="16x16" href="https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -213,6 +218,7 @@
       backdrop-filter: blur(12px);
     }
     .family-bar { background: transparent; }
+    .family-bar--mobile { display: none; }
     .family-outer { display: flex; justify-content: center; padding: 8px 0; }
     .family-wrap {
       display: flex; align-items: center; justify-content: center;
@@ -222,6 +228,13 @@
       overflow-x: auto; scrollbar-width: none; white-space: nowrap;
     }
     .family-wrap::-webkit-scrollbar { display: none; }
+    .family-inline {
+      display: flex; align-items: center; justify-content: center;
+      gap: 4px; padding: 3px;
+      border: 1px solid var(--header-line-strong); border-radius: 14px;
+      background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+      white-space: nowrap;
+    }
     .family-link {
       flex: 0 0 auto; padding: 6px 14px; border-radius: 10px;
       font-size: 12px; font-weight: 700; color: var(--header-muted);
@@ -241,7 +254,7 @@
       background: var(--brand-soft);
       color: var(--brand); font-size: 12px; font-weight: 700; white-space: nowrap;
     }
-    .brand { display: flex; flex-direction: column; align-items: center; justify-self: center; text-align: center; gap: 4px; }
+    .brand { display: flex; flex-direction: column; align-items: center; justify-self: start; text-align: center; gap: 4px; }
     .brand-mark { width: 120px; height: 40px; object-fit: contain; }
     .brand-copy span { display: block; color: var(--header-muted); font-size: 11px; line-height: 1.4; }
     .header-actions { display: flex; align-items: center; justify-self: end; gap: 8px; }
@@ -288,6 +301,8 @@
       .inner { padding: 0 16px; }
       .main-header-wrap, .category-row { grid-template-columns: 1fr; gap: 10px; }
       .header-promo, .header-actions { display: none; }
+      .family-inline { display: none; }
+      .family-bar--mobile { display: block; }
       .brand { justify-self: center; }
       .category-balance { display: none; }
       .category-tabs, .category-utility { justify-content: flex-start; }
@@ -312,18 +327,24 @@
     <header class="main-header">
       <div class="inner">
         <div class="main-header-wrap">
-          <div class="header-promo">2026 대학원 합격전략 가이드 오픈</div>
           <a class="brand" href="./index.html">
             <img class="brand-mark" src="./assets/biglinker-logo.webp" alt="빅링커 로고">
             <div class="brand-copy"><span>대학원·논문·면접·포트폴리오 코칭 전문</span></div>
           </a>
+          <div class="family-inline">
+            <a class="family-link " href="https://transfer.gobiglinker.com/">대학&amp;편입</a>
+            <a class="family-link is-active" href="https://graduate.gobiglinker.com/">대학원&amp;논문</a>
+            <a class="family-link " href="https://job.gobiglinker.com/">취업</a>
+            <a class="family-link " href="https://biz.gobiglinker.com/">기업교육</a>
+          </div>
           <div class="header-actions">
             <a class="cta-btn" href="#cta">상담 신청</a>
           </div>
         </div>
       </div>
     </header>
-    <div class="family-bar">
+    <!-- mobile-only family bar -->
+    <div class="family-bar family-bar--mobile">
       <div class="inner">
         <div class="family-outer">
           <div class="family-wrap">

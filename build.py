@@ -118,6 +118,12 @@ def build_seo_tags(title, description, slug):
     if description:
         tags.append(f'  <meta name="twitter:description"  content="{description}">')
     tags.append('  <meta name="twitter:image"       content="' + _DOMAIN + '/assets/og-default.jpg">')
+    _fav = 'https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524'
+    tags.append(f'  <link rel="icon" href="{_fav}" type="image/x-icon">')
+    tags.append(f'  <link rel="shortcut icon" href="{_fav}">')
+    tags.append(f'  <link rel="apple-touch-icon" href="{_fav}">')
+    tags.append(f'  <link rel="icon" type="image/x-icon" sizes="32x32" href="{_fav}">')
+    tags.append(f'  <link rel="icon" type="image/x-icon" sizes="16x16" href="{_fav}">')
     return "\n".join(tags)
 
 def build_jsonld(title, description, slug, main_block):

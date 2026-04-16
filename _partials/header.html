@@ -3,18 +3,24 @@
     <header class="main-header">
       <div class="inner">
         <div class="main-header-wrap">
-          <div class="header-promo">{{HEADER_PROMO}}</div>
           <a class="brand" href="./index.html">
             <img class="brand-mark" src="./assets/biglinker-logo.webp" alt="빅링커 로고">
             <div class="brand-copy"><span>{{BRAND_COPY}}</span></div>
           </a>
+          <div class="family-inline">
+            <a class="family-link {{FAMILY_ACTIVE_TRANSFER}}" href="https://transfer.gobiglinker.com/">대학&amp;편입</a>
+            <a class="family-link {{FAMILY_ACTIVE_GRADUATE}}" href="https://graduate.gobiglinker.com/">대학원&amp;논문</a>
+            <a class="family-link {{FAMILY_ACTIVE_JOB}}" href="https://job.gobiglinker.com/">취업</a>
+            <a class="family-link {{FAMILY_ACTIVE_BIZ}}" href="https://biz.gobiglinker.com/">기업교육</a>
+          </div>
           <div class="header-actions">
             <a class="cta-btn" href="#cta">상담 신청</a>
           </div>
         </div>
       </div>
     </header>
-    <div class="family-bar">
+    <!-- mobile-only family bar -->
+    <div class="family-bar family-bar--mobile">
       <div class="inner">
         <div class="family-outer">
           <div class="family-wrap">
