@@ -144,10 +144,18 @@ def build_jsonld(title, description, slug, main_block):
         "name": "빅링커",
         "alternateName": "BigLinker",
         "url": _DOMAIN,
-        "description": "기업교육·편입·대학원·취업 전문 교육 코칭 기관",
-        "knowsAbout": ["기업교육","AI 활용 교육","리더십 교육","편입 컨설팅","대학원 입시","취업 코칭"],
+        "logo": {"@type": "ImageObject", "url": _DOMAIN + "/assets/og-default.jpg"},
+        "description": "편입·대입·대학원·취업·기업교육 전문 코칭 기관. 2,800건 이상의 1:1 코칭 완료, 30명 이상의 전문 코치진 보유.",
+        "knowsAbout": ["기업교육","AI 활용 교육","리더십 교육","편입 컨설팅","대학원 입시","취업 코칭","자기소개서 코칭","면접 코칭"],
+        "numberOfEmployees": {"@type": "QuantitativeValue", "value": 30},
         "areaServed": "KR",
-        "inLanguage": "ko"
+        "inLanguage": "ko",
+        "sameAs": [
+            "https://transfer.gobiglinker.com",
+            "https://graduate.gobiglinker.com",
+            "https://job.gobiglinker.com",
+            "https://biz.gobiglinker.com"
+        ]
     }
     schemas.append(org)
 
