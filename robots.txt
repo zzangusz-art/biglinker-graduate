@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
 
+Disallow: /_pages/
+Disallow: /_partials/
+Disallow: /sources-dev/
+Disallow: /api/
+
 Sitemap: https://graduate.gobiglinker.com/sitemap.xml
