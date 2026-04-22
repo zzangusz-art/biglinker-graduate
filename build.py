@@ -141,14 +141,14 @@ def build_seo_tags(title, description, slug):
     if description:
         tags.append(f'  <meta property="og:description" content="{description}">')
     tags.append(f'  <meta property="og:url"         content="{url}">')
-    tags.append('  <meta property="og:image"       content="' + _DOMAIN + '/assets/og-default.jpg">')
+    tags.append('  <meta property="og:image"       content="https://graduate.gobiglinker.com/assets/og-image.png">')
     tags.append(f'  <meta property="og:locale"      content="ko_KR">')
     tags.append(f'  <meta property="og:site_name"   content="빅링커">')
     tags.append('  <meta name="twitter:card"        content="summary_large_image">')
     tags.append(f'  <meta name="twitter:title"       content="{title}">')
     if description:
         tags.append(f'  <meta name="twitter:description"  content="{description}">')
-    tags.append('  <meta name="twitter:image"       content="' + _DOMAIN + '/assets/og-default.jpg">')
+    tags.append('  <meta name="twitter:image"       content="https://graduate.gobiglinker.com/assets/og-image.png">')
     _fav = 'https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524'
     tags.append(f'  <link rel="icon" href="{_fav}" type="image/x-icon">')
     tags.append(f'  <link rel="shortcut icon" href="{_fav}">')
@@ -168,7 +168,7 @@ def build_jsonld(title, description, slug, main_block):
         "name": "빅링커",
         "alternateName": "BigLinker",
         "url": _DOMAIN,
-        "logo": {"@type": "ImageObject", "url": _DOMAIN + "/assets/og-default.jpg"},
+        "logo": {"@type": "ImageObject", "url": "https://graduate.gobiglinker.com/assets/og-image.png"},
         "description": "편입·대입·대학원·취업·기업교육 전문 코칭 기관. 2,800건 이상의 1:1 코칭 완료, 30명 이상의 전문 코치진 보유.",
         "knowsAbout": ["기업교육","AI 활용 교육","리더십 교육","편입 컨설팅","대학원 입시","취업 코칭","자기소개서 코칭","면접 코칭"],
         "numberOfEmployees": {"@type": "QuantitativeValue", "value": 30},
