@@ -102,7 +102,7 @@
       .header-promo, .header-actions { display: none; }
       .family-inline { display: none; }
       .family-bar--mobile { display: block; }
-      .brand { justify-self: center; }
+      .brand { justify-self: center; align-items: center; text-align: center; }
       .category-balance { display: none; }
       .category-tabs, .category-utility { justify-content: flex-start; }
       .sticky-category-shell .category-utility { display: none !important; }
