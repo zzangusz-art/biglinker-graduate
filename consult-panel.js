@@ -21,11 +21,15 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.93a16 16 0 0 0 6.06 6.06l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>\
         02-2039-8584\
       </a>\
-      <a class="cp__qbtn cp__qbtn--kakao" href="https://pf.kakao.com/_wzmxdn/chat" target="_blank" rel="noopener noreferrer">\
+      <a class="cp__qbtn cp__qbtn--kakao" id="cp-kakao-quick" href="https://pf.kakao.com/_wzmxdn/chat" rel="noopener noreferrer">\
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.72 2 11.25c0 2.84 1.6 5.34 4.05 6.88l-.73 2.72a.5.5 0 0 0 .72.57l3.22-1.86c.55.08 1.12.13 1.74.13 5.52 0 10-3.72 10-8.25S17.52 3 12 3z"/></svg>\
         카카오톡 상담\
       </a>\
     </div>\
+    <button class="cp__qbtn cp__qbtn--channel" id="cp-channeltalk" type="button">\
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>\
+      채널톡 1:1 상담\
+    </button>\
     <div class="cp__sep">또는 신청서 작성</div>\
     <form class="cp__form" id="cp-form" novalidate>\
       <div class="cp__field">\
@@ -56,7 +60,7 @@
       <div class="cp__done-ico">&#10003;</div>\
       <strong>신청이 완료됐어요!</strong>\
       <p>빠른 시간 내에 연락드리겠습니다.</p>\
-      <a class="cp__qbtn cp__qbtn--kakao" href="https://pf.kakao.com/_wzmxdn/chat" target="_blank" rel="noopener noreferrer" style="margin-top:4px;">\
+      <a class="cp__qbtn cp__qbtn--kakao" id="cp-kakao-done" href="https://pf.kakao.com/_wzmxdn/chat" rel="noopener noreferrer" style="margin-top:4px;">\
         카카오톡으로 먼저 연락하기\
       </a>\
     </div>\
@@ -71,15 +75,16 @@
   document.body.classList.add('has-consult-panel');
 
   // ── Element refs ─────────────────────────────────────────────────────────
-  var panel     = document.getElementById('cp');
-  var tab       = document.getElementById('cp-tab');
-  var closeBtn  = document.getElementById('cp-close');
-  var overlay   = document.getElementById('cp-overlay');
-  var form      = document.getElementById('cp-form');
-  var doneEl    = document.getElementById('cp-done');
-  var errEl     = document.getElementById('cp-err');
-  var submitBtn = document.getElementById('cp-submit');
-  var hintToast = document.getElementById('cp-hint-toast');
+  var panel       = document.getElementById('cp');
+  var tab         = document.getElementById('cp-tab');
+  var closeBtn    = document.getElementById('cp-close');
+  var overlay     = document.getElementById('cp-overlay');
+  var form        = document.getElementById('cp-form');
+  var doneEl      = document.getElementById('cp-done');
+  var errEl       = document.getElementById('cp-err');
+  var submitBtn   = document.getElementById('cp-submit');
+  var hintToast   = document.getElementById('cp-hint-toast');
+  var channelBtn  = document.getElementById('cp-channeltalk');
 
   var isOpen    = false;
   var hintTimer = null;
@@ -126,6 +131,24 @@
   // ── Helpers ───────────────────────────────────────────────────────────────
   function isMobile() { return window.innerWidth <= 760; }
 
+  // 스크롤 차단: 패널 내부 스크롤은 허용, 그 외 touchmove는 막아 부모 페이지 스크롤 방지
+  function preventScroll(e) {
+    if (panel.contains(e.target)) return; // 패널 내부 스크롤은 허용
+    e.preventDefault();
+  }
+
+  function lockScroll() {
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('touchmove', preventScroll, { passive: false });
+  }
+
+  function unlockScroll() {
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    document.removeEventListener('touchmove', preventScroll);
+  }
+
   function openPanel() {
     isOpen = true;
     panel.classList.add('cp--open');
@@ -133,7 +156,7 @@
     document.body.classList.add('cp-is-open');
     if (isMobile()) {
       overlay.classList.add('cp-ov--show');
-      document.body.style.overflow = 'hidden';
+      lockScroll();
     }
   }
 
@@ -142,7 +165,7 @@
     panel.classList.remove('cp--open');
     overlay.classList.remove('cp-ov--show');
     document.body.classList.remove('cp-is-open');
-    document.body.style.overflow = '';
+    unlockScroll();
     if (!isMobile()) {
       tab.classList.remove('cp-tab--hidden');
     }
@@ -163,7 +186,7 @@
     }
   }
 
-  // ── PC: 기본 열림 ─────────────────────────────────────────────────────────
+  // ── PC: 기본 열림 (embed 모드 제외) ──────────────────────────────────────
   if (!isMobile()) {
     openPanel();
   }
@@ -173,9 +196,11 @@
 
   // ── 닫기 버튼 ─────────────────────────────────────────────────────────────
   closeBtn.addEventListener('click', function () { closePanel(); });
+  closeBtn.addEventListener('touchend', function (e) { e.preventDefault(); closePanel(); });
 
   // ── 오버레이 탭 (모바일) ──────────────────────────────────────────────────
   overlay.addEventListener('click', function () { closePanel(); });
+  overlay.addEventListener('touchend', function (e) { e.preventDefault(); closePanel(); });
 
   // ── 전체 상담/문의 버튼 인터셉트 ─────────────────────────────────────────
   // capture 단계에서 클릭 가로채기: 패널 내부 클릭은 통과시킴
@@ -255,6 +280,20 @@
       form.style.display = 'none';
       doneEl.style.display = 'flex';
     });
+  });
+
+  // ── 카카오톡 팝업 ─────────────────────────────────────────────────────────────
+  function openKakaoPopup(e) {
+    e.preventDefault();
+    window.open('https://pf.kakao.com/_wzmxdn/chat', 'kakao',
+      'width=480,height=680,scrollbars=yes,resizable=yes');
+  }
+  document.getElementById('cp-kakao-quick').addEventListener('click', openKakaoPopup);
+  document.getElementById('cp-kakao-done').addEventListener('click', openKakaoPopup);
+
+  // ── 채널톡 버튼 ──────────────────────────────────────────────────────────────
+  channelBtn.addEventListener('click', function () {
+    if (window.ChannelIO) { ChannelIO('showMessenger'); }
   });
 
   // ── 화면 회전/리사이즈 대응 ────────────────────────────────────────────────

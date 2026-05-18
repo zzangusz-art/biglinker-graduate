@@ -795,7 +795,8 @@
     .cp__bd::-webkit-scrollbar-thumb { background: #e5e8ef; border-radius: 4px; }
 
     /* 빠른 연결 버튼 */
-    .cp__quick { display: flex; gap: 8px; margin-bottom: 16px; }
+    .cp__quick { display: flex; gap: 8px; margin-bottom: 8px; }
+    .cp__qbtn--channel { background: #6B5CE7; color: #fff; width: 100%; margin-bottom: 16px; cursor: pointer; }
     .cp__qbtn {
       flex: 1;
       display: inline-flex; align-items: center; justify-content: center; gap: 6px;
