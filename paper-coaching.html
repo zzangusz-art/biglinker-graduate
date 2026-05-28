@@ -133,11 +133,17 @@
     .compare-table .col-them { color: rgba(255,255,255,0.3); }
     .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
 
-    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .case-card { padding: 28px 22px; border-radius: var(--radius-md); border: 1px solid #e7ebf3; background: #fff; box-shadow: var(--shadow-card); }
+    .cases-carousel { overflow: hidden; }
+    .cases-track { display: flex; gap: 20px; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+    .case-card { flex-shrink: 0; padding: 28px 22px; border-radius: var(--radius-md); border: 1px solid #e7ebf3; background: #fff; box-shadow: var(--shadow-card); }
+    .case-logo { width: 52px; height: 52px; border-radius: 14px; border: 1px solid #e7ebf3; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 16px; padding: 6px; flex-shrink: 0; }
+    .case-logo img { width: 100%; height: 100%; object-fit: contain; }
     .case-badge { display: inline-flex; align-items: center; min-height: 24px; padding: 0 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); font-size: 11px; font-weight: 800; margin-bottom: 14px; }
     .case-card p { font-size: 13px; color: var(--header-muted); line-height: 1.8; margin: 0 0 14px; }
     .c-result { font-size: 13px; font-weight: 700; color: var(--brand); padding-top: 12px; border-top: 1px solid #edf0f7; }
+    .cases-nav { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
+    .cases-dot { width: 8px; height: 8px; border-radius: 999px; background: #dde2ef; cursor: pointer; transition: background 0.25s, width 0.25s; border: none; padding: 0; flex-shrink: 0; }
+    .cases-dot.active { background: var(--brand); width: 24px; }
 
     .review-band { padding: 100px 0 0; overflow: hidden; }
     .review-band-head { text-align: center; margin-bottom: 48px; }
@@ -192,7 +198,7 @@
     .section-panel .curri-list li::before { color: var(--brand); }
 
     @media(max-width:768px) {
-      .pain-grid, .why-grid, .domain-grid, .cases-grid { grid-template-columns: 1fr; }
+      .pain-grid, .why-grid, .domain-grid { grid-template-columns: 1fr; }
       .type-grid { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: repeat(2,1fr); gap: 24px; }
       .process-grid::before { display: none; }
@@ -711,26 +717,69 @@
   <section class="section-light">
     <div class="wrap">
       <div class="section-eyebrow">SUCCESS CASES</div>
-      <h2 class="sec-h2" style="color:var(--header-text);margin-bottom:36px;">실제 합격자들의<br>Before &amp; After</h2>
-      <div class="cases-grid">
-        <div class="case-card">
-          <div class="case-badge">서울대학교 심리학과 대학원</div>
-          <p><strong style="color:var(--header-text);">Before.</strong> 연구 관심사는 있었지만 "왜 서울대여야 하는지"에 대한 설명이 약했고, 지도교수 연구와의 연계가 없었습니다.<br><br><strong style="color:var(--brand);">After.</strong> 지도교수의 최근 논문 3편을 분석해 연구 공백을 찾고, 본인의 학부 연구 경험과 연결하는 계획서를 완성.</p>
-          <div class="c-result">→ 서울대 심리학과 석사과정 최종 합격</div>
-        </div>
-        <div class="case-card">
-          <div class="case-badge">연세대학교 경영대학원 (MBA)</div>
-          <p><strong style="color:var(--header-text);">Before.</strong> 7년 직장 경력이 있었지만 직무 경험과 MBA 지원 이유가 단절되어 있었습니다. "왜 지금 MBA인가"에 대한 답이 없었습니다.<br><br><strong style="color:var(--brand);">After.</strong> 커리어 전환 목표와 MBA 활용 계획을 구체화하고, 재직 중 성과를 수치로 재구성. 학업계획서로 면접 점수를 역전하며 최종 합격.</p>
-          <div class="c-result">→ 연세대 MBA 최종 합격</div>
-        </div>
-        <div class="case-card">
-          <div class="case-badge">UC Berkeley 대학원 (교육학)</div>
-          <p><strong style="color:var(--header-text);">Before.</strong> 영어 SOP를 혼자 쓰다가 한국식 문체와 구조가 반영되었다는 피드백을 받았습니다. 자신의 강점이 전달되지 않았습니다.<br><br><strong style="color:var(--brand);">After.</strong> 영미권 SOP 구조(Hook → Background → Why Now → Fit → Goals)로 전면 재구성. 지원 교수에게 이메일 컨택도 병행해 최종 합격.</p>
-          <div class="c-result">→ UC Berkeley 교육학 석사 합격</div>
+      <h2 class="sec-h2" style="color:var(--header-text);margin-bottom:36px;">페이퍼리드코칭으로<br>합격한 수강생 사례</h2>
+      <div class="cases-carousel" id="casesCarousel">
+        <div class="cases-track" id="casesTrack">
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=snu.ac.kr" alt="서울대학교"></div>
+            <div class="case-badge">서울대학교 석사</div>
+            <p>연구 관심사는 있었지만 지도교수 연구와의 연계가 부족했던 수강생. 코치와 함께 지도교수의 최근 논문을 분석하고 연구 공백을 발굴해 학부 연구 경험과 연결하는 계획서를 완성해 합격했습니다.</p>
+            <div class="c-result">결과: 서울대학교 석사과정 최종 합격</div>
+          </div>
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=yonsei.ac.kr" alt="연세대학교"></div>
+            <div class="case-badge">연세대학교 MBA</div>
+            <p>7년 직장 경력이 있었지만 MBA 지원 이유가 추상적이었던 수강생. 커리어 전환 목표와 MBA 활용 계획을 구체화하고 재직 중 성과를 수치로 재구성해 학업계획서로 최종 합격을 이뤄냈습니다.</p>
+            <div class="c-result">결과: 연세대학교 경영전문대학원 MBA 합격</div>
+          </div>
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=korea.ac.kr" alt="고려대학교"></div>
+            <div class="case-badge">고려대학교 석사</div>
+            <p>10년 교직 경험이 있었지만 연구자 관점의 계획서 작성이 낯설었던 수강생. 현장 경험을 연구 문제로 전환하는 방법을 훈련하고 이론 기반을 갖춘 연구 방향을 설계해 합격했습니다.</p>
+            <div class="c-result">결과: 고려대학교 석사과정 합격</div>
+          </div>
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=ewha.ac.kr" alt="이화여자대학교"></div>
+            <div class="case-badge">이화여자대학교 석사</div>
+            <p>현장 경력은 풍부했지만 학문적 연구 관심사 서술이 막막했던 수강생. 실무 경험에서 연구 주제를 발굴하고 구체적인 연구 방법론까지 제시하는 계획서를 함께 완성해 최종 합격했습니다.</p>
+            <div class="c-result">결과: 이화여자대학교 석사 합격</div>
+          </div>
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=kaist.ac.kr" alt="KAIST"></div>
+            <div class="case-badge">KAIST 석사</div>
+            <p>프로젝트 경험은 있었지만 연구 계획서에서 연구 문제 설정이 약했던 수강생. 연구 동기와 방법론을 체계적으로 정리하고 지도교수 연구 그룹과의 접점을 부각하는 계획서를 완성해 합격했습니다.</p>
+            <div class="c-result">결과: KAIST 석사과정 합격</div>
+          </div>
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=hanyang.ac.kr" alt="한양대학교"></div>
+            <div class="case-badge">한양대학교 석사</div>
+            <p>졸업 작품 주제를 석사 연구로 연결하고 싶었지만 학문적 연구 문제로 전환하는 방법을 몰랐던 수강생. 연구의 사회적 의의와 방법론을 명확히 정리한 계획서로 담당 교수의 긍정적 평가를 받아 합격했습니다.</p>
+            <div class="c-result">결과: 한양대학교 석사 합격</div>
+          </div>
         </div>
       </div>
+      <div class="cases-nav" id="casesDots"></div>
     </div>
   </section>
+  <script>
+  (function(){
+    var track=document.getElementById('casesTrack'); var dotsWrap=document.getElementById('casesDots');
+    if(!track||!dotsWrap) return;
+    var cards=Array.from(track.children); var current=0; var timer=null; var GAP=20; var AUTO=4500;
+    function perView(){ return window.innerWidth<768?1:3; }
+    function maxIdx(){ return Math.max(0,cards.length-perView()); }
+    function cardW(){ var pv=perView(); return (track.parentElement.offsetWidth-GAP*(pv-1))/pv; }
+    function setWidths(){ var cw=cardW(); cards.forEach(function(c){ c.style.flexBasis=cw+'px'; c.style.minWidth=cw+'px'; }); }
+    function goTo(idx){ current=Math.min(Math.max(idx,0),maxIdx()); track.style.transform='translateX(-'+(current*(cardW()+GAP))+'px)'; renderDots(); }
+    function renderDots(){ dotsWrap.innerHTML=''; for(var i=0;i<=maxIdx();i++){ (function(i){ var btn=document.createElement('button'); btn.className='cases-dot'+(i===current?' active':''); btn.setAttribute('aria-label',(i+1)+'번 슬라이드'); btn.addEventListener('click',function(){ clearInterval(timer); goTo(i); startAuto(); }); dotsWrap.appendChild(btn); })(i); } }
+    function next(){ goTo(current>=maxIdx()?0:current+1); }
+    function startAuto(){ timer=setInterval(next,AUTO); }
+    track.addEventListener('mouseenter',function(){ clearInterval(timer); });
+    track.addEventListener('mouseleave',startAuto);
+    window.addEventListener('resize',function(){ setWidths(); goTo(Math.min(current,maxIdx())); renderDots(); });
+    setWidths(); renderDots(); startAuto();
+  })();
+  </script>
 
   <!-- ══ REVIEW MARQUEE ══ -->
   <section class="review-band">
