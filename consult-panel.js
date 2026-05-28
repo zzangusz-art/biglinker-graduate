@@ -3,10 +3,55 @@
 
   // ── CUSTOMIZE ────────────────────────────────────────────────────────────
   var NOTIFY_URL = '/api/notify'; // Vercel 서버리스 함수 (env: SLACK_WEBHOOK)
-  var PAGE_TITLE = document.title || location.pathname;
+  var PAGE_TITLE  = document.title || location.pathname;
+  var PAGE_DOMAIN = location.hostname;
   // ─────────────────────────────────────────────────────────────────────────
 
   var PANEL_HTML = '\
+<style>\
+/* ── 전체 레이아웃 ── */\
+.cp__bd{padding:16px 16px 20px;}\
+.cp__form{display:flex;flex-direction:column;gap:13px;}\
+.cp__field{display:flex;flex-direction:column;gap:5px;}\
+.cp__lbl{font-size:11px;font-weight:700;color:#9aa3b5;letter-spacing:.01em;}\
+.cp__lbl em{color:#4a68ff;font-style:normal;}\
+/* ── 칩 기본 ── */\
+.cp__chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:2px;}\
+.cp__chip{display:inline-flex;align-items:center;justify-content:center;padding:6px 12px;border-radius:999px;\
+border:1.5px solid #dde2ff;background:#f8f9fc;color:#6e7687;\
+font-size:12px;font-weight:700;cursor:pointer;line-height:1.2;text-align:center;\
+transition:background .15s,border-color .15s,color .15s;font-family:inherit;}\
+.cp__chip.is-on{background:#eef0ff;border-color:#4a68ff;color:#4a68ff;}\
+.cp__chip:hover:not(.is-on){border-color:#b8c0ff;color:#4a68ff;}\
+/* ── 날짜·시간 피커 ── */\
+.cp__dt-row{display:none;}\
+.cp__dt-seg{display:flex;margin-top:2px;}\
+.cp__dt-sub{font-size:10.5px;font-weight:700;color:#b0b8cc;margin:9px 0 4px;letter-spacing:.03em;text-transform:uppercase;}\
+.cp__dt-picker{margin-top:6px;padding:12px 12px 10px;background:#f8f9fc;border-radius:10px;border:1.5px solid #dde2ff;}\
+.cp__dt-confirm{margin-top:12px;width:100%;padding:8px;background:#4a68ff;color:#fff;border:none;border-radius:8px;font-size:12px;font-weight:800;cursor:pointer;font-family:inherit;letter-spacing:.02em;transition:background .15s;}\
+.cp__dt-confirm:hover{background:#3a58ef;}\
+.cp__dt-summary{display:none;font-size:11.5px;color:#4a68ff;font-weight:700;margin-top:6px;padding:7px 12px;background:#eef0ff;border:1.5px solid #c7d0ff;border-radius:8px;word-break:keep-all;line-height:1.4;cursor:pointer;align-items:center;gap:6px;}\
+.cp__dt-summary:hover{background:#e4e8ff;}\
+.cp__dt-summary::after{content:"✎";margin-left:auto;opacity:.5;font-size:11px;padding-left:6px;}\
+/* ── 요일 칩 ── */\
+#cp-days{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;gap:4px;}\
+#cp-days::-webkit-scrollbar{display:none;}\
+#cp-days .cp__chip{flex-shrink:0;padding:5px 9px;font-size:11.5px;}\
+/* ── 시간 칩 ── */\
+#cp-hours .cp__chip{padding:5px 0;font-size:11px;justify-content:center;border-radius:7px;}\
+/* ── 분야 칩: 3+2 균등 레이아웃 ── */\
+#cp-chips{flex-wrap:wrap;gap:5px;margin-top:2px;}\
+#cp-chips .cp__chip{flex:1 1 28%;justify-content:center;padding:7px 4px;font-size:11.5px;word-break:keep-all;border-radius:10px;}\
+/* ── 세그먼트 ── */\
+.cp__seg{display:flex;width:100%;border-radius:9px;border:1.5px solid #dde2ff;overflow:hidden;background:#f8f9fc;}\
+.cp__seg-btn{flex:1;padding:8px 0;border:none;background:transparent;font-size:13px;font-weight:700;color:#8892a8;cursor:pointer;font-family:inherit;transition:background .18s,color .18s;}\
+.cp__seg-btn+.cp__seg-btn{border-left:1.5px solid #dde2ff;}\
+.cp__seg-btn.is-on{background:#4a68ff;color:#fff;}\
+#cp-dt-picker.is-float{display:block;position:fixed;width:268px;background:#fff;border-radius:16px;border:1.5px solid #e5e8ef;box-shadow:0 12px 52px rgba(0,0,0,0.16),0 2px 12px rgba(0,0,0,0.07);padding:18px;z-index:10001;animation:cp-float-in .22s cubic-bezier(0.16,1,0.3,1) both;}\
+@keyframes cp-float-in{from{opacity:0;transform:translateX(14px);}to{opacity:1;transform:translateX(0);}}\
+#cp-dt-picker.is-float::after{content:"";position:absolute;right:-8px;top:50%;transform:translateY(-50%);width:0;height:0;border:8px solid transparent;border-left-color:#e5e8ef;border-right:none;}\
+#cp-dt-picker.is-float::before{content:"";position:absolute;right:-6px;top:50%;transform:translateY(-50%);width:0;height:0;border:7px solid transparent;border-left-color:#fff;border-right:none;z-index:1;}\
+</style>\
 <div class="cp" id="cp" role="dialog" aria-modal="true" aria-label="상담 신청">\
   <div class="cp__hd">\
     <span class="cp__hd-dot"></span>\
@@ -37,12 +82,49 @@
         <input class="cp__inp" id="cp-name" name="name" type="text" placeholder="홍길동" autocomplete="name" />\
       </div>\
       <div class="cp__field">\
-        <label class="cp__lbl" for="cp-email">이메일</label>\
-        <input class="cp__inp" id="cp-email" name="email" type="email" placeholder="example@email.com" autocomplete="email" />\
+        <label class="cp__lbl" for="cp-phone">연락처 <em>*</em></label>\
+        <input class="cp__inp" id="cp-phone" name="phone" type="tel" placeholder="010-0000-0000" autocomplete="tel" />\
       </div>\
       <div class="cp__field">\
-        <label class="cp__lbl" for="cp-phone">휴대폰 번호 <em>*</em></label>\
-        <input class="cp__inp" id="cp-phone" name="phone" type="tel" placeholder="010-0000-0000" autocomplete="tel" />\
+        <label class="cp__lbl">상담 희망일 및 연락 가능 시간</label>\
+        <div class="cp__seg cp__dt-seg" id="cp-dt-seg">\
+          <button type="button" class="cp__seg-btn is-on" data-dt="any">상관없음</button>\
+          <button type="button" class="cp__seg-btn" data-dt="pick">직접 선택</button>\
+        </div>\
+        <div class="cp__dt-summary" id="cp-dt-summary"></div>\
+        <div class="cp__dt-row">\
+          <span class="cp__dt-val" id="cp-dt-val">상관없음</span>\
+          <button type="button" class="cp__dt-btn" id="cp-dt-pick">직접 선택할게요</button>\
+        </div>\
+        <div class="cp__dt-picker" id="cp-dt-picker" style="display:none">\
+          <div class="cp__dt-sub">요일</div>\
+          <div class="cp__chips" id="cp-days">\
+            <button type="button" class="cp__chip" data-value="월">월</button>\
+            <button type="button" class="cp__chip" data-value="화">화</button>\
+            <button type="button" class="cp__chip" data-value="수">수</button>\
+            <button type="button" class="cp__chip" data-value="목">목</button>\
+            <button type="button" class="cp__chip" data-value="금">금</button>\
+            <button type="button" class="cp__chip" data-value="토">토</button>\
+            <button type="button" class="cp__chip" data-value="일">일</button>\
+          </div>\
+          <div class="cp__dt-sub">시간대 <span style="font-size:10px;font-weight:400;color:#c0c8d8">(평일 9–22시)</span></div>\
+          <div class="cp__seg" id="cp-ampm">\
+            <button type="button" class="cp__seg-btn" data-ampm="am">오전</button>\
+            <button type="button" class="cp__seg-btn" data-ampm="pm">오후</button>\
+          </div>\
+          <div class="cp__chips" id="cp-hours" style="display:none;margin-top:6px;flex-wrap:wrap;gap:4px;"></div>\
+          <button type="button" class="cp__dt-confirm" id="cp-dt-confirm">확인</button>\
+        </div>\
+      </div>\
+      <div class="cp__field">\
+        <label class="cp__lbl">상담 희망 분야</label>\
+        <div class="cp__chips" id="cp-chips">\
+          <button type="button" class="cp__chip" data-value="대학">대학</button>\
+          <button type="button" class="cp__chip" data-value="편입">편입</button>\
+          <button type="button" class="cp__chip" data-value="대학원&amp;논문">대학원&amp;논문</button>\
+          <button type="button" class="cp__chip" data-value="취업">취업</button>\
+          <button type="button" class="cp__chip" data-value="기업교육">기업교육</button>\
+        </div>\
       </div>\
       <div class="cp__field">\
         <label class="cp__lbl" for="cp-msg">문의사항</label>\
@@ -50,7 +132,7 @@
       </div>\
       <label class="cp__consent">\
         <input id="cp-agree" name="agree" type="checkbox" checked />\
-        <span><strong>개인정보 수집 및 이용 동의 (필수)</strong>수집 항목: 이름, 연락처, 이메일 · 목적: 상담 안내</span>\
+        <span><strong>개인정보 수집 및 이용 동의 (필수)</strong>수집 항목: 이름, 연락처 · 목적: 상담 안내</span>\
       </label>\
       <div id="cp-err" style="display:none;font-size:11px;color:#e05252;padding:2px 0 0;"></div>\
       <button class="cp__sub" id="cp-submit" type="submit">상담 신청하기</button>\
@@ -85,17 +167,168 @@
   var submitBtn   = document.getElementById('cp-submit');
   var hintToast   = document.getElementById('cp-hint-toast');
   var channelBtn  = document.getElementById('cp-channeltalk');
+  var chipsEl     = document.getElementById('cp-chips');
 
   var isOpen    = false;
   var hintTimer = null;
+  var daysEl    = document.getElementById('cp-days');
+  var ampmEl    = document.getElementById('cp-ampm');
+  var hoursEl   = document.getElementById('cp-hours');
+  var dtPickBtn = document.getElementById('cp-dt-pick');
+  var dtPicker  = document.getElementById('cp-dt-picker');
+  var dtValEl   = document.getElementById('cp-dt-val');
+  var dtConfBtn          = document.getElementById('cp-dt-confirm');
+  var dtSegEl            = document.getElementById('cp-dt-seg');
+  var dtSummaryEl        = document.getElementById('cp-dt-summary');
+  var dtPickerOrigParent = dtPicker.parentElement;
+
+  var AM_HOURS = ['9시','10시','11시'];
+  var PM_HOURS = ['12시','13시','14시','15시','16시','17시','18시','19시','20시','21시','22시'];
+  var selectedAmPm = null;
+
+  // ── Chips 선택 토글 ───────────────────────────────────────────────────────
+  function toggleChip(container) {
+    container.addEventListener('click', function (e) {
+      var chip = e.target.closest('.cp__chip');
+      if (!chip) return;
+      chip.classList.toggle('is-on');
+    });
+  }
+  toggleChip(chipsEl);
+  toggleChip(daysEl);
+
+  // AM/PM 선택 → 1시간 단위 슬롯 표시
+  toggleChip(hoursEl);
+
+  function renderHours(ampm) {
+    var hours = ampm === 'am' ? AM_HOURS : PM_HOURS;
+    var cols  = ampm === 'am' ? AM_HOURS.length : 6;
+    hoursEl.innerHTML = hours.map(function (h) {
+      return '<button type="button" class="cp__chip" data-value="' + h + '">' + h + '</button>';
+    }).join('');
+    hoursEl.style.display = 'grid';
+    hoursEl.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+  }
+
+  ampmEl.addEventListener('click', function (e) {
+    var chip = e.target.closest('.cp__seg-btn');
+    if (!chip || !chip.dataset.ampm) return;
+    var ampm = chip.dataset.ampm;
+    if (selectedAmPm === ampm) return;
+    ampmEl.querySelectorAll('.cp__seg-btn').forEach(function (c) { c.classList.remove('is-on'); });
+    chip.classList.add('is-on');
+    selectedAmPm = ampm;
+    renderHours(ampm);
+  });
+
+
+  // ── 날짜/시간 픽커 ────────────────────────────────────────────────────────
+  dtConfBtn.addEventListener('click', function () {
+    var summary = getDatetime();
+    if (summary !== '(미선택)') {
+      dtSummaryEl.textContent = summary;
+      dtSummaryEl.style.display = 'flex';
+    }
+    if (isMobile()) {
+      dtPicker.style.display = 'none';
+    } else {
+      hideFloatPicker();
+    }
+  });
+
+  // ── 날짜 세그먼트 / 플로팅 피커 ─────────────────────────────────────────
+  function resetDatetime() {
+    daysEl.querySelectorAll('.cp__chip.is-on').forEach(function (c) { c.classList.remove('is-on'); });
+    ampmEl.querySelectorAll('.cp__seg-btn').forEach(function (c) { c.classList.remove('is-on'); });
+    selectedAmPm = null;
+    hoursEl.innerHTML = '';
+    hoursEl.style.display = 'none';
+    dtSummaryEl.style.display = 'none';
+    dtSummaryEl.textContent = '';
+  }
+
+  function showFloatPicker() {
+    if (dtPicker.classList.contains('is-float')) return;
+    document.body.appendChild(dtPicker);
+    var rect = dtSegEl.getBoundingClientRect();
+    var pickerW = 268;
+    var gap = 12;
+    var left = rect.left - pickerW - gap;
+    var top = rect.top;
+    top = Math.max(8, Math.min(top, window.innerHeight - 420));
+    if (left < 8) left = rect.right + gap;
+    dtPicker.style.left = left + 'px';
+    dtPicker.style.top = top + 'px';
+    dtPicker.style.display = '';
+    dtPicker.classList.add('is-float');
+  }
+
+  function hideFloatPicker() {
+    dtPicker.classList.remove('is-float');
+    dtPickerOrigParent.appendChild(dtPicker);
+    dtPicker.style.display = 'none';
+  }
+
+  dtSegEl.addEventListener('click', function (e) {
+    var btn = e.target.closest('.cp__seg-btn');
+    if (!btn || !btn.dataset.dt) return;
+    dtSegEl.querySelectorAll('.cp__seg-btn').forEach(function (b) { b.classList.remove('is-on'); });
+    btn.classList.add('is-on');
+    if (btn.dataset.dt === 'pick') {
+      if (isMobile()) {
+        dtPicker.style.display = dtPicker.style.display === 'none' ? 'block' : 'none';
+      } else {
+        showFloatPicker();
+      }
+    } else {
+      if (isMobile()) {
+        dtPicker.style.display = 'none';
+      } else {
+        if (dtPicker.classList.contains('is-float')) hideFloatPicker();
+      }
+      resetDatetime();
+    }
+  });
+
+  dtSummaryEl.addEventListener('click', function () {
+    if (isMobile()) {
+      dtPicker.style.display = 'block';
+    } else {
+      showFloatPicker();
+    }
+  });
+
+  // PC: 플로팅 외부 클릭 시 닫기
+  document.addEventListener('click', function (e) {
+    if (isMobile()) return;
+    if (!dtPicker.classList.contains('is-float')) return;
+    if (dtPicker.contains(e.target) || dtSegEl.contains(e.target)) return;
+    hideFloatPicker();
+  }, true);
+
+  function getSelectedFields() {
+    var selected = [];
+    chipsEl.querySelectorAll('.cp__chip.is-on').forEach(function (c) {
+      selected.push(c.dataset.value);
+    });
+    return selected.join(', ') || '(미선택)';
+  }
+
+  function getDatetime() {
+    var days = [], times = [];
+    daysEl.querySelectorAll('.cp__chip.is-on').forEach(function (c) { days.push(c.dataset.value); });
+    hoursEl.querySelectorAll('.cp__chip.is-on').forEach(function (c) { times.push(c.dataset.value); });
+    var parts = [];
+    if (days.length) parts.push(days.join('·'));
+    if (selectedAmPm) {
+      var ampmLabel = selectedAmPm === 'am' ? '오전' : '오후';
+      if (times.length) parts.push(ampmLabel + ' ' + times.join(', '));
+      else parts.push(ampmLabel);
+    }
+    return parts.join(' / ') || '(미선택)';
+  }
 
   // ── isConsultTarget ───────────────────────────────────────────────────────
-  // 상담/문의 관련 버튼인지 판별. 순위:
-  //  1) 항상 상담인 클래스 (.cta-btn, .urgency-band__cta, .mobile-floating-cta)
-  //  2) 명시적 상담 앵커 (#cta, #consult, #cta-title, #contact)
-  //  3) mailto: 링크 (이메일 상담)
-  //  4) href="#" 이면서 텍스트에 상담|문의|신청 포함
-  // 섹션 이동 앵커(#process, #roadmap, #program 등)는 제외
   function isConsultTarget(el) {
     if (!el || !el.tagName) { return false; }
 
@@ -103,26 +336,21 @@
     var href = (el.getAttribute && el.getAttribute('href')) || '';
     var text = (el.textContent || '').trim();
 
-    // 1) 클래스로 판별 (태그 무관)
     if (cls) {
       if (cls.contains('cta-btn'))             { return true; }
       if (cls.contains('urgency-band__cta'))   { return true; }
       if (cls.contains('mobile-floating-cta')) { return true; }
     }
 
-    // 앵커 태그에만 적용
     if (el.tagName !== 'A') { return false; }
 
-    // 2) 명시적 상담 앵커
     var consultAnchors = ['#cta', '#consult', '#cta-title', '#contact'];
     for (var i = 0; i < consultAnchors.length; i++) {
       if (href === consultAnchors[i]) { return true; }
     }
 
-    // 3) mailto
     if (href.indexOf('mailto:') === 0) { return true; }
 
-    // 4) href="#" + 상담/문의/신청 키워드
     if (href === '#' && /상담|문의|신청/.test(text)) { return true; }
 
     return false;
@@ -131,9 +359,8 @@
   // ── Helpers ───────────────────────────────────────────────────────────────
   function isMobile() { return window.innerWidth <= 760; }
 
-  // 스크롤 차단: 패널 내부 스크롤은 허용, 그 외 touchmove는 막아 부모 페이지 스크롤 방지
   function preventScroll(e) {
-    if (panel.contains(e.target)) return; // 패널 내부 스크롤은 허용
+    if (panel.contains(e.target)) return;
     e.preventDefault();
   }
 
@@ -166,12 +393,12 @@
     overlay.classList.remove('cp-ov--show');
     document.body.classList.remove('cp-is-open');
     unlockScroll();
+    if (dtPicker.classList.contains('is-float')) hideFloatPicker();
     if (!isMobile()) {
       tab.classList.remove('cp-tab--hidden');
     }
   }
 
-  // 이미 열려있을 때: 힌트 토스트 + 패널 첫 입력 포커스
   function showAlreadyOpenHint() {
     clearTimeout(hintTimer);
     hintToast.classList.add('is-visible');
@@ -186,26 +413,24 @@
     }
   }
 
-  // ── PC: 기본 열림 (embed 모드 제외) ──────────────────────────────────────
+  // ── PC: 기본 열림 ─────────────────────────────────────────────────────────
   if (!isMobile()) {
     openPanel();
   }
 
-  // ── 탭 버튼 (PC 닫힘 → 재열기) ───────────────────────────────────────────
+  // ── 탭 버튼 ───────────────────────────────────────────────────────────────
   tab.addEventListener('click', function () { openPanel(); });
 
   // ── 닫기 버튼 ─────────────────────────────────────────────────────────────
   closeBtn.addEventListener('click', function () { closePanel(); });
   closeBtn.addEventListener('touchend', function (e) { e.preventDefault(); closePanel(); });
 
-  // ── 오버레이 탭 (모바일) ──────────────────────────────────────────────────
+  // ── 오버레이 (모바일) ─────────────────────────────────────────────────────
   overlay.addEventListener('click', function () { closePanel(); });
   overlay.addEventListener('touchend', function (e) { e.preventDefault(); closePanel(); });
 
-  // ── 전체 상담/문의 버튼 인터셉트 ─────────────────────────────────────────
-  // capture 단계에서 클릭 가로채기: 패널 내부 클릭은 통과시킴
+  // ── 상담 버튼 인터셉트 ────────────────────────────────────────────────────
   document.addEventListener('click', function (e) {
-    // 패널 내부 클릭은 건드리지 않음
     if (panel.contains(e.target)) { return; }
     if (tab === e.target || tab.contains(e.target)) { return; }
 
@@ -225,7 +450,7 @@
     }
   }, true);
 
-  // ── 전화번호 자동 하이픈 ───────────────────────────────────────────────────
+  // ── 전화번호 자동 하이픈 ──────────────────────────────────────────────────
   var phoneInput = document.getElementById('cp-phone');
   phoneInput.addEventListener('input', function () {
     var d = this.value.replace(/[^0-9]/g, '');
@@ -239,14 +464,16 @@
     e.preventDefault();
     errEl.style.display = 'none';
 
-    var name    = document.getElementById('cp-name').value.trim();
-    var email   = document.getElementById('cp-email').value.trim();
-    var phone   = document.getElementById('cp-phone').value.trim();
-    var message = document.getElementById('cp-msg').value.trim();
-    var agreed  = document.getElementById('cp-agree').checked;
+    var name     = document.getElementById('cp-name').value.trim();
+    var phone    = document.getElementById('cp-phone').value.trim();
+    var dtRaw = getDatetime();
+    var datetime = dtRaw === '(미선택)' ? '상관없음' : dtRaw;
+    var fields   = getSelectedFields();
+    var message  = document.getElementById('cp-msg').value.trim();
+    var agreed   = document.getElementById('cp-agree').checked;
 
     if (!name)   { errEl.textContent = '이름을 입력해주세요.'; errEl.style.display = 'block'; return; }
-    if (!phone)  { errEl.textContent = '휴대폰 번호를 입력해주세요.'; errEl.style.display = 'block'; return; }
+    if (!phone)  { errEl.textContent = '연락처를 입력해주세요.'; errEl.style.display = 'block'; return; }
     if (!agreed) { errEl.textContent = '개인정보 수집 동의가 필요합니다.'; errEl.style.display = 'block'; return; }
 
     submitBtn.disabled = true;
@@ -260,10 +487,12 @@
           text: {
             type: 'mrkdwn',
             text: '*[BigLinker 상담 신청]*' +
+                  '\n*도메인:* ' + PAGE_DOMAIN +
                   '\n*페이지:* ' + PAGE_TITLE +
                   '\n*이름:* ' + name +
-                  '\n*이메일:* ' + (email || '(미입력)') +
-                  '\n*휴대폰:* ' + phone +
+                  '\n*연락처:* ' + phone +
+                  '\n*상담 희망일시:* ' + datetime +
+                  '\n*희망 분야:* ' + fields +
                   '\n*문의사항:* ' + (message || '(없음)')
           }
         }
@@ -282,7 +511,7 @@
     });
   });
 
-  // ── 카카오톡 팝업 ─────────────────────────────────────────────────────────────
+  // ── 카카오톡 팝업 ─────────────────────────────────────────────────────────
   function openKakaoPopup(e) {
     e.preventDefault();
     window.open('https://pf.kakao.com/_wzmxdn/chat', 'kakao',
@@ -291,12 +520,12 @@
   document.getElementById('cp-kakao-quick').addEventListener('click', openKakaoPopup);
   document.getElementById('cp-kakao-done').addEventListener('click', openKakaoPopup);
 
-  // ── 채널톡 버튼 ──────────────────────────────────────────────────────────────
+  // ── 채널톡 버튼 ───────────────────────────────────────────────────────────
   channelBtn.addEventListener('click', function () {
     if (window.ChannelIO) { ChannelIO('showMessenger'); }
   });
 
-  // ── 화면 회전/리사이즈 대응 ────────────────────────────────────────────────
+  // ── 화면 회전/리사이즈 대응 ───────────────────────────────────────────────
   window.addEventListener('resize', function () {
     if (!isMobile()) {
       overlay.classList.remove('cp-ov--show');
