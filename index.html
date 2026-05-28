@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -1010,9 +1010,17 @@ h1, h2, h3, p, span, li { word-break: keep-all; overflow-wrap: break-word; }
       <span class="sp-toast__dot"></span>
       <span class="sp-toast__text">현재 <strong id="sp-visitor-count">23</strong>명이 보고 계십니다</span>
     </div>
+    <div id="sp-success" class="sp-toast sp-toast--success is-hidden" role="status" aria-live="polite">
+      <span class="sp-toast__avatar"></span>
+      <div class="sp-toast__body">
+        <span class="sp-toast__name"></span>
+        <span class="sp-toast__action"></span>
+        <span class="sp-toast__time"></span>
+      </div>
+    </div>
   </div>
 
-  <script>
+﻿  <script>
     const topShell = document.getElementById('topShell');
     let lastY = 0;
     window.addEventListener('scroll', () => {
@@ -1024,6 +1032,16 @@ h1, h2, h3, p, span, li { word-break: keep-all; overflow-wrap: break-word; }
   </script>
   <script src="./script.js"></script>
   <script src="./consult-panel.js"></script>
+<script>
+(function(){
+  var w=window;if(w.ChannelIO){return;}
+  var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;
+  var s=document.createElement('script');s.type='text/javascript';s.async=true;
+  s.src='https://cdn.channel.io/plugin/ch-plugin-web.js';
+  document.head.appendChild(s);
+})();
+ChannelIO('boot',{pluginKey:'42d31a03-0427-4b30-93bc-9f3ea7fb66bb',hideChannelButtonOnBoot:true});
+</script>
 
 <script>
 (function () {
@@ -1268,15 +1286,5 @@ h1, h2, h3, p, span, li { word-break: keep-all; overflow-wrap: break-word; }
 })();
 </script>
 
-<script>
-(function(){
-  var w=window;if(w.ChannelIO){return;}
-  var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;
-  var s=document.createElement('script');s.type='text/javascript';s.async=true;
-  s.src='https://cdn.channel.io/plugin/ch-plugin-web.js';
-  document.head.appendChild(s);
-})();
-ChannelIO('boot',{pluginKey:'42d31a03-0427-4b30-93bc-9f3ea7fb66bb',hideChannelButtonOnBoot:true});
-</script>
 </body>
 </html>

@@ -12,14 +12,14 @@ class SocialProofToasts {
     this.VISITOR_BASE = 18;
 
     this.SUCCESS_POOL = [
-      { name: '김○○ 학생', action: '고려대 대학원 합격', time: '방금 전' },
-      { name: '이○○ 학생', action: '연세대 석사 입학', time: '5분 전' },
-      { name: '박○○ 학생', action: '서울대 대학원 논문 통과', time: '12분 전' },
-      { name: '최○○ 학생', action: '카이스트 대학원 합격', time: '20분 전' },
-      { name: '정○○ 학생', action: '성균관대 대학원 면접 합격', time: '28분 전' },
-      { name: '강○○ 학생', action: '한양대 대학원 연구계획서 통과', time: '35분 전' },
-      { name: '윤○○ 학생', action: '포트폴리오 심사 최종 합격', time: '47분 전' },
-      { name: '장○○ 학생', action: '국내 SCI 논문 게재 승인', time: '1시간 전' },
+      { name: '김○○ 학생', action: '페이퍼 코칭 신청', time: '방금 전' },
+      { name: '이○○ 학생', action: '대학원 면접 코칭 신청', time: '6분 전' },
+      { name: '박○○ 학생', action: '논문 코칭 신청', time: '13분 전' },
+      { name: '최○○ 학생', action: '포트폴리오 코칭 신청', time: '22분 전' },
+      { name: '정○○ 학생', action: '학업계획서 코칭 신청', time: '31분 전' },
+      { name: '강○○ 학생', action: '연구계획서 코칭 신청', time: '41분 전' },
+      { name: '윤○○ 학생', action: '대학원 입시 상담 신청', time: '54분 전' },
+      { name: '조○○ 학생', action: '대면 상담 신청', time: '1시간 전' },
     ];
 
     this._shuffle(this.SUCCESS_POOL);

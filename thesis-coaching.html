@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -113,7 +113,7 @@
     .proc-num { font-size: 20px; font-weight: 900; color: var(--text); line-height: 1; }
     .process-item h3 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
     .process-item ul { list-style: none; display: grid; gap: 5px; }
-    .process-item ul li { font-size: 12px; color: var(--muted); ; align-items: flex-start; gap: 5px; }
+    .process-item ul li { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 5px; }
     .process-item ul li::before { content: "·"; color: var(--brand-2); flex-shrink: 0; }
 
     .curriculum-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
@@ -133,17 +133,11 @@
     .compare-table .col-them { color: rgba(255,255,255,0.3); }
     .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
 
-    .cases-carousel { overflow: hidden; }
-    .cases-track { display: flex; gap: 20px; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
-    .case-card { flex-shrink: 0; padding: 28px 22px; border-radius: var(--radius-md); border: 1px solid #e7ebf3; background: #fff; box-shadow: var(--shadow-card); }
-    .case-logo { width: 52px; height: 52px; border-radius: 14px; border: 1px solid #e7ebf3; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 16px; padding: 6px; flex-shrink: 0; }
-    .case-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .case-card { padding: 28px 22px; border-radius: var(--radius-md); border: 1px solid #e7ebf3; background: #fff; box-shadow: var(--shadow-card); }
     .case-badge { display: inline-flex; align-items: center; min-height: 24px; padding: 0 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); font-size: 11px; font-weight: 800; margin-bottom: 14px; }
     .case-card p { font-size: 13px; color: var(--header-muted); line-height: 1.8; margin: 0 0 14px; }
     .c-result { font-size: 13px; font-weight: 700; color: var(--brand); padding-top: 12px; border-top: 1px solid #edf0f7; }
-    .cases-nav { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
-    .cases-dot { width: 8px; height: 8px; border-radius: 999px; background: #dde2ef; cursor: pointer; transition: background 0.25s, width 0.25s; border: none; padding: 0; flex-shrink: 0; }
-    .cases-dot.active { background: var(--brand); width: 24px; }
 
     .review-band { padding: 100px 0 0; overflow: hidden; }
     .review-band-head { text-align: center; margin-bottom: 48px; }
@@ -180,7 +174,7 @@
     .section-panel .curri-list li::before { color: var(--brand); }
 
     @media(max-width:768px) {
-      .pain-grid, .why-grid, .domain-grid { grid-template-columns: 1fr; }
+      .pain-grid, .why-grid, .domain-grid, .cases-grid { grid-template-columns: 1fr; }
       .type-grid { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: repeat(2,1fr); gap: 24px; }
       .process-grid::before { display: none; }
@@ -387,14 +381,15 @@
     <div class="wrap">
       <div class="hero-kicker"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7f92ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> 논문리드코칭</div>
       <h1>논문,<br><em>완성까지 함께</em>합니다</h1>
-      <p>주제 선정부터 연구모형, 연구방법 등의 연구계획서, 선행 연구 찾는 방법,<br> 논리 구조, 심사 대비까지,<br>논문의 전 과정을 빅링커 전문 코치와 체계적으로 완성합니다</p>
+      <p>주제 선정부터 초안 작성·첨삭·심사 대비까지,<br>논문의 전 과정을 빅링커 전문 코치와 체계적으로 완성합니다</p>
       <div class="hero-actions">
         <a class="btn-primary" href="#cta">무료 상담 신청</a>
         <a class="btn-secondary" href="#process">코칭 과정 보기</a>
       </div>
       <div class="hero-stats">
-        <div class="hero-stat"><div class="s-num">100%</div><div class="s-label">심사 통과율</div></div>
+        <div class="hero-stat"><div class="s-num">96%</div><div class="s-label">심사 통과율</div></div>
         <div class="hero-stat"><div class="s-num">전 분야</div><div class="s-label">전공 코치 매칭</div></div>
+        <div class="hero-stat"><div class="s-num">무제한</div><div class="s-label">첨삭 횟수</div></div>
         <div class="hero-stat"><div class="s-num">4.9★</div><div class="s-label">수강생 만족도</div></div>
       </div>
     </div>
@@ -464,7 +459,7 @@
         <div class="type-card">
           <div class="type-tag">영문 학술 논문</div>
           <h3>국제 저널 제출을 위한 영문 논문 코칭</h3>
-          <p>SCI, SSCI, A&HCI,  Scopus 등재 학술지 투고를 위한 영문 논문 코칭. 논문 구조·Abstract·서론 작성부터 투고 저널 선정·리뷰어 답변까지 지원합니다.</p>
+          <p>SSCI·SCI·KCI 등재 학술지 투고를 위한 영문 논문 코칭. 논문 구조·Abstract·서론 작성부터 투고 저널 선정·리뷰어 답변까지 지원합니다.</p>
           <ul class="type-tips">
             <li>저널별 투고 기준 분석 및 전략 수립</li>
             <li>영문 논문 원고 첨삭 및 교정</li>
@@ -511,9 +506,9 @@
           <div class="w-icon" style="background:rgba(74,104,255,0.15);">
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4" stroke="#7f92ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="#7f92ff" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <h3>논문 구조 설계 & 첨삭 피드백</h3>
-          <p>서론부터 결론까지 논문 구조를 코치와 함께 단계별로 설계하고, 각 챕터 완성 후 구체적인 피드백을 받습니다. 논리 흐름·근거 강화·표현 개선까지 체계적으로 진행합니다.</p>
-          <div class="w-point">→ 챕터별 피드백으로 완성도 높은 논문 완성</div>
+          <h3>완성까지 무제한 첨삭</h3>
+          <p>횟수 제한 없이 논문이 완성될 때까지 첨삭을 제공합니다. 지도 교수 피드백 반영, 심사 후 수정 요구 대응까지 끝까지 함께합니다. 완성 기준은 제출 가능 수준, 횟수가 아닙니다.</p>
+          <div class="w-point">→ 지도 교수 피드백 반영 지원까지 포함</div>
         </div>
         <div class="why-card">
           <div class="w-icon" style="background:rgba(74,104,255,0.15);">
@@ -706,7 +701,7 @@
           <tbody>
             <tr>
               <td>전공별 박사급 코치 매칭</td>
-              <td class="col-us">관련 분야 전문가 전담</td>
+              <td class="col-us">해당 전공 코치 전담</td>
               <td class="col-them">범용 첨삭</td>
               <td class="col-them">불가</td>
             </tr>
@@ -734,6 +729,12 @@
               <td class="col-them">없음</td>
               <td class="col-them">불가</td>
             </tr>
+            <tr>
+              <td>무제한 첨삭 횟수</td>
+              <td class="col-us">완성까지 무제한</td>
+              <td class="col-them">1~3회 제한</td>
+              <td class="col-them">불가</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -745,96 +746,25 @@
     <div class="wrap">
       <div class="section-eyebrow">SUCCESS CASES</div>
       <h2 class="sec-h2" style="color:var(--header-text);margin-bottom:36px;">논문리드코칭으로<br>논문을 완성한 수강생 사례</h2>
-      <div class="cases-carousel" id="casesCarousel">
-        <div class="cases-track" id="casesTrack">
-          <div class="case-card">
-            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=snu.ac.kr" alt="서울대학교"></div>
-            <div class="case-badge">서울대학교 석사</div>
-            <p>질적 연구 방법론을 처음 쓰는 수강생으로 인터뷰 프로토콜 설계부터 코딩·분석까지 막막했습니다. 코치와 함께 연구 방법론 전 과정을 체계적으로 진행하여 심사를 통과했습니다.</p>
-            <div class="c-result">결과: 서울대학교 석사 학위 심사 통과</div>
-          </div>
-          <div class="case-card">
-            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=yonsei.ac.kr" alt="연세대학교"></div>
-            <div class="case-badge">연세대학교 박사</div>
-            <p>박사 논문 프로포절에서 연구 독창성이 부족하다는 교수 피드백을 받고 막막했던 수강생. 코치와 함께 연구 공백을 재발굴하고 독창성을 강화해 프로포절 통과를 이뤄냈습니다.</p>
-            <div class="c-result">결과: 연세대학교 박사 논문 프로포절 통과</div>
-          </div>
-          <div class="case-card">
-            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=korea.ac.kr" alt="고려대학교"></div>
-            <div class="case-badge">고려대학교 석사</div>
-            <p>임상 데이터를 보유하고 있었지만 통계 분석 방법론 선정과 결과 해석이 어려웠던 수강생. 전문 코치와 함께 분석 설계부터 결과 작성까지 단계별로 진행해 최종 심사를 통과했습니다.</p>
-            <div class="c-result">결과: 고려대학교 석사 심사 통과</div>
-          </div>
-          <div class="case-card">
-            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=hanyang.ac.kr" alt="한양대학교"></div>
-            <div class="case-badge">한양대학교 박사</div>
-            <p>실험 결과는 나왔지만 논문 구성과 영문 작성이 어려웠던 수강생. 코치와 함께 논문 구조 설계, 결과 해석, 영문 표현까지 집중적으로 완성해 저널 게재에 성공했습니다.</p>
-            <div class="c-result">결과: 한양대학교 박사 논문 심사 통과</div>
-          </div>
-          <div class="case-card">
-            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=ewha.ac.kr" alt="이화여자대학교"></div>
-            <div class="case-badge">이화여자대학교 석사</div>
-            <p>현장 연구를 학술 논문으로 전환하는 과정에서 이론적 틀 구성이 막막했던 수강생. 코치와 함께 연구 프레임워크를 재정립하고 체계적인 논문 구조를 완성해 심사를 통과했습니다.</p>
-            <div class="c-result">결과: 이화여자대학교 석사 논문 심사 통과</div>
-          </div>
-          <div class="case-card">
-            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=skku.edu" alt="성균관대학교"></div>
-            <div class="case-badge">성균관대학교 석사</div>
-            <p>논문 작성 경험이 없었던 수강생. 연구 방법론 설계부터 데이터 수집·분석·결론 작성까지 전 과정을 코치와 함께 진행해 최종 심사를 통과했습니다.</p>
-            <div class="c-result">결과: 성균관대학교 석사 논문 심사 통과</div>
-          </div>
+      <div class="cases-grid">
+        <div class="case-card">
+          <div class="case-badge">서울대 사회학과 석사</div>
+          <p>질적 연구 방법론을 처음 쓰는 수강생으로 인터뷰 프로토콜 설계부터 코딩·분석까지 막막했습니다. 사회학 박사 코치와 함께 연구 방법론 전 과정을 체계적으로 진행하여 심사를 통과했습니다.</p>
+          <div class="c-result">결과: 서울대 사회학과 석사 학위 심사 통과</div>
+        </div>
+        <div class="case-card">
+          <div class="case-badge">SSCI 저널 투고</div>
+          <p>국내 대학원생으로 첫 영문 논문 투고를 시도했던 수강생. 저널 선정부터 영문 원고 작성·리뷰어 피드백 대응까지 전 과정을 지원해 SSCI 등재 저널에 최종 게재됐습니다.</p>
+          <div class="c-result">결과: SSCI 등재 저널 논문 최종 게재 승인</div>
+        </div>
+        <div class="case-card">
+          <div class="case-badge">연세대 경영학과 박사</div>
+          <p>박사 논문 프로포절 단계에서 연구 독창성이 부족하다는 지도 교수 피드백을 받고 막막했던 수강생. 경영학 박사 코치와 함께 연구 공백을 재발굴하고 독창성을 강화해 프로포절 통과를 이뤄냈습니다.</p>
+          <div class="c-result">결과: 박사 논문 프로포절 심사 통과</div>
         </div>
       </div>
-      <div class="cases-nav" id="casesDots"></div>
     </div>
   </section>
-  <script>
-  (function(){
-    var track = document.getElementById('casesTrack');
-    var dotsWrap = document.getElementById('casesDots');
-    if(!track || !dotsWrap) return;
-    var cards = Array.from(track.children);
-    var current = 0;
-    var timer = null;
-    var GAP = 20;
-    var AUTO = 4500;
-    function perView(){ return window.innerWidth < 768 ? 1 : 3; }
-    function maxIdx(){ return Math.max(0, cards.length - perView()); }
-    function cardW(){
-      var pv = perView();
-      return (track.parentElement.offsetWidth - GAP * (pv - 1)) / pv;
-    }
-    function setWidths(){
-      var cw = cardW();
-      cards.forEach(function(c){ c.style.flexBasis = cw + 'px'; c.style.minWidth = cw + 'px'; });
-    }
-    function goTo(idx){
-      current = Math.min(Math.max(idx, 0), maxIdx());
-      track.style.transform = 'translateX(-' + (current * (cardW() + GAP)) + 'px)';
-      renderDots();
-    }
-    function renderDots(){
-      dotsWrap.innerHTML = '';
-      for(var i = 0; i <= maxIdx(); i++){
-        (function(i){
-          var btn = document.createElement('button');
-          btn.className = 'cases-dot' + (i === current ? ' active' : '');
-          btn.setAttribute('aria-label', (i+1) + '번 슬라이드');
-          btn.addEventListener('click', function(){ clearInterval(timer); goTo(i); startAuto(); });
-          dotsWrap.appendChild(btn);
-        })(i);
-      }
-    }
-    function next(){ goTo(current >= maxIdx() ? 0 : current + 1); }
-    function startAuto(){ timer = setInterval(next, AUTO); }
-    track.addEventListener('mouseenter', function(){ clearInterval(timer); });
-    track.addEventListener('mouseleave', startAuto);
-    window.addEventListener('resize', function(){ setWidths(); goTo(Math.min(current, maxIdx())); renderDots(); });
-    setWidths();
-    renderDots();
-    startAuto();
-  })();
-  </script>
 
   <!-- ══ REVIEWS ══ -->
   <section class="review-band">
@@ -868,7 +798,7 @@
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
-          <p>"코치님이 논문 구조부터 잡아줬어요. 막막했던 서론이 정리되고 나니 나머지 챕터도 술술 써졌습니다."</p>
+          <p>"무제한 첨삭이 진짜였어요. 7번 수정하면서 논문이 완전히 달라졌어요. 심사 통과했습니다."</p>
           <div class="review-mini-meta"><div class="review-mini-avatar">정</div><div class="review-mini-info"><strong>정O원</strong><span>KAIST 기계공학 석사</span></div></div>
         </div>
         <div class="review-mini accent-blue">
@@ -899,7 +829,7 @@
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
-          <p>"코치님이 논문 구조부터 잡아줬어요. 막막했던 서론이 정리되고 나니 나머지 챕터도 술술 써졌습니다."</p>
+          <p>"무제한 첨삭이 진짜였어요. 7번 수정하면서 논문이 완전히 달라졌어요. 심사 통과했습니다."</p>
           <div class="review-mini-meta"><div class="review-mini-avatar">정</div><div class="review-mini-info"><strong>정O원</strong><span>KAIST 기계공학 석사</span></div></div>
         </div>
         <div class="review-mini accent-blue">
@@ -1319,12 +1249,16 @@
         <p>주제 선정 단계부터 심사 대비까지 논문의 어느 단계에서든 시작할 수 있습니다. 주제가 없는 단계, 초안이 막힌 단계, 지도 교수 피드백 반영이 어려운 단계, 심사 발표를 앞둔 단계 모두 맞춤 코칭이 가능합니다. 상담에서 현재 단계를 공유해 주시면 최적의 코칭 계획을 수립합니다.</p>
       </details>
       <details>
+        <summary><span>Q. 첨삭 횟수에 제한이 있나요?</span><span class="faq-arrow">▾</span></summary>
+        <p>횟수 제한 없이 논문이 완성될 때까지 첨삭을 제공합니다. 지도 교수 피드백 반영, 심사 후 수정 요구 대응까지 끝까지 함께합니다. 완성 기준은 제출 가능 수준이며, 횟수는 기준이 되지 않습니다.</p>
+      </details>
+      <details>
         <summary><span>Q. 통계 분석이나 질적 연구 방법도 도움을 받을 수 있나요?</span><span class="faq-arrow">▾</span></summary>
         <p>네, 가능합니다. SPSS·R·AMOS 등 통계 분석 프로그램 활용 지원, 질적 연구 코딩·인터뷰 프로토콜 설계 등 연구 방법론 전반을 지원합니다. 해당 분야 전공 코치가 직접 지도합니다.</p>
       </details>
       <details>
         <summary><span>Q. 영문 논문 투고도 코칭받을 수 있나요?</span><span class="faq-arrow">▾</span></summary>
-        <p>네, SCI, SSCI, A&HCI,  Scopus 등재 저널 투고를 위한 영문 논문 코칭을 제공합니다. 저널 선정 전략, 영문 원고 첨삭·교정, 리뷰어 피드백 대응까지 전 과정을 지원합니다.</p>
+        <p>네, SSCI·SCI·KCI 등재 저널 투고를 위한 영문 논문 코칭을 제공합니다. 저널 선정 전략, 영문 원고 첨삭·교정, 리뷰어 피드백 대응까지 전 과정을 지원합니다.</p>
       </details>
       <details>
         <summary><span>Q. 코칭은 대면으로만 진행되나요?</span><span class="faq-arrow">▾</span></summary>
@@ -1430,10 +1364,17 @@
       <span class="sp-toast__dot"></span>
       <span class="sp-toast__text">현재 <strong id="sp-visitor-count">23</strong>명이 보고 계십니다</span>
     </div>
-    <a id="sp-success" class="sp-toast sp-toast--success" href="https://gobiglinker.com/%EC%8B%A0%EC%B2%AD-%EB%B0%8F-%EA%B2%B0%EC%A0%9C/view/593309" target="_blank" rel="noopener noreferrer">대면심층상담</a>
+    <div id="sp-success" class="sp-toast sp-toast--success is-hidden" role="status" aria-live="polite">
+      <span class="sp-toast__avatar"></span>
+      <div class="sp-toast__body">
+        <span class="sp-toast__name"></span>
+        <span class="sp-toast__action"></span>
+        <span class="sp-toast__time"></span>
+      </div>
+    </div>
   </div>
 
-  <script>
+﻿  <script>
     const topShell = document.getElementById('topShell');
     let lastY = 0;
     window.addEventListener('scroll', () => {
@@ -1445,7 +1386,6 @@
   </script>
   <script src="./script.js"></script>
   <script src="./consult-panel.js"></script>
-
 <script>
 (function(){
   var w=window;if(w.ChannelIO){return;}
@@ -1456,5 +1396,6 @@
 })();
 ChannelIO('boot',{pluginKey:'42d31a03-0427-4b30-93bc-9f3ea7fb66bb',hideChannelButtonOnBoot:true});
 </script>
+
 </body>
 </html>
