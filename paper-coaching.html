@@ -113,8 +113,8 @@
     .proc-num { font-size: 20px; font-weight: 900; color: var(--text); line-height: 1; }
     .process-item h3 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 10px; }
     .process-item ul { list-style: none; display: grid; gap: 5px; }
-    .process-item ul li { font-size: 12px; color: var(--muted); display: flex; align-items: flex-start; gap: 5px; }
-    .process-item ul li::before { content: "·"; color: var(--brand-2); flex-shrink: 0; }
+    .process-item ul li { font-size: 12px; color: var(--muted); line-height: 1.6; }
+    .process-item ul li::before { content: "·"; color: var(--brand-2); }
 
     .curriculum-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
     .curri-card { padding: 22px 18px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.07); background: rgba(255,255,255,0.03); }
@@ -389,7 +389,6 @@
       <div class="hero-stats">
         <div class="hero-stat"><div class="s-num">89%</div><div class="s-label">합격률</div></div>
         <div class="hero-stat"><div class="s-num">3,000+</div><div class="s-label">합격 페이퍼 DB</div></div>
-        <div class="hero-stat"><div class="s-num">무제한</div><div class="s-label">첨삭 횟수</div></div>
         <div class="hero-stat"><div class="s-num">4.9★</div><div class="s-label">수강생 만족도</div></div>
       </div>
     </div>
@@ -439,7 +438,7 @@
         <div class="type-card">
           <div class="type-tag">학업계획서</div>
           <h3>지원 동기부터 미래 비전까지 하나의 스토리로</h3>
-          <p>지원 동기·전공 선택 이유·연구 관심사·졸업 후 계획을 논리적으로 연결합니다. 심사 교수가 "왜 이 사람인가"를 납득하는 구조를 설계합니다.</p>
+          <p>지원 동기·전공 선택 이유·연구 관심사·졸업 후 계획을 논리적으로 연결합니다.<br>심사 교수가 "왜 이 사람인가"를 납득하는 구조를 설계합니다.</p>
           <ul class="type-tips">
             <li>지원 교수 연구 분석 및 연계 전략 수립</li>
             <li>학업 이력 → 연구 관심 → 미래 목표 연결</li>
@@ -449,7 +448,7 @@
         <div class="type-card">
           <div class="type-tag">연구계획서</div>
           <h3>연구 질문에서 방법론까지, 체계적으로 설계</h3>
-          <p>연구 주제 선정이 막막한 분부터 초안이 있지만 구조가 약한 분까지. 연구 배경·목적·방법론·기대효과를 완성도 있게 정리합니다.</p>
+          <p>연구 주제 선정이 막막한 분부터 초안이 있지만 구조가 약한 분까지.<br>연구 배경·목적·방법론·기대효과를 완성도 있게 정리합니다.</p>
           <ul class="type-tips">
             <li>연구 주제 발굴 및 범위 설정 코칭</li>
             <li>선행 연구 검토 및 연구 공백 정의</li>
@@ -459,7 +458,7 @@
         <div class="type-card">
           <div class="type-tag">대학원 자기소개서</div>
           <h3>경험을 연구자 역량으로 번역하는 서류</h3>
-          <p>대학 생활·직장 경험·개인 프로젝트를 대학원에서 요구하는 역량과 연결합니다. 식상한 자소서를 넘어 기억에 남는 페이퍼를 만듭니다.</p>
+          <p>대학 생활·직장 경험·개인 프로젝트를 대학원에서 요구하는 역량과 연결합니다.<br>식상한 자소서를 넘어 기억에 남는 페이퍼를 만듭니다.</p>
           <ul class="type-tips">
             <li>경험 소재 발굴 및 전공 연계 분석</li>
             <li>학문적 열정·성장 과정 서술 전략</li>
@@ -469,7 +468,7 @@
         <div class="type-card">
           <div class="type-tag">영문 SOP / 해외 대학원</div>
           <h3>Statement of Purpose 전략적 완성</h3>
-          <p>미국·영국·캐나다·호주 대학원 SOP·PS·Writing Sample 코칭. 국내 학업계획서와 달리 영미권 대학원이 요구하는 서사 구조와 표현 방식을 적용합니다.</p>
+          <p>미국·영국·캐나다·호주 대학원 SOP·PS·Writing Sample 코칭.<br>국내 학업계획서와 달리 영미권 대학원이 요구하는 서사 구조와 표현 방식을 적용합니다.</p>
           <ul class="type-tips">
             <li>지원 학교별 SOP 요구사항 분석</li>
             <li>영어 원고 초안 작성 및 Native 수준 교정</li>
@@ -547,7 +546,7 @@
             <div class="d-icon" style="background:rgba(74,104,255,0.15);">
               <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" stroke="#7f92ff" stroke-width="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" stroke="#7f92ff" stroke-width="2" stroke-linecap="round"/></svg>
             </div>
-            <h3>특수 대학원 진학</h3>
+            <h3>특수/교육/전문대학원 진학</h3>
           </div>
           <p>경영대학원(MBA)·교육대학원·행정대학원·법학전문대학원 등 실무 중심의 특수 대학원. 직무 경험과 미래 목표를 전략적으로 연결하는 것이 중요합니다.</p>
           <div class="domain-tags">
@@ -701,7 +700,7 @@
           <tr><td>전공 이해</td><td class="col-us">전공 배경 코치 매칭</td><td class="col-them">글쓰기 전문가 위주</td></tr>
           <tr><td>지원 교수 분석</td><td class="col-us">논문·연구 분야 직접 분석</td><td class="col-them">제공 안 함</td></tr>
           <tr><td>합격 DB 활용</td><td class="col-us">3,000+ 합격 페이퍼 참고</td><td class="col-them">없거나 제한적</td></tr>
-          <tr><td>첨삭 횟수</td><td class="col-us">완성까지 무제한</td><td class="col-them">1~3회 제한</td></tr>
+
           <tr><td>면접 연계</td><td class="col-us">페이퍼 기반 예상 질문 제공</td><td class="col-them">제공 안 함</td></tr>
         </tbody>
       </table>
@@ -747,13 +746,13 @@
         <div class="review-mini accent-blue"><div class="star-row">★★★★★</div><p>"연구계획서를 혼자 쓰면서 계속 막혔는데, 코치님이 제 경험에서 연구 주제를 끌어내주시더라고요. 완전히 다른 글이 됐어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">김</div><div class="review-mini-info"><strong>kim****</strong><span>서울대 사회학과 석사 합격</span></div></div></div>
         <div class="review-mini"><div class="star-row">★★★★★</div><p>"MBA 학업계획서를 직무 경험 중심으로 재구성해주셨는데 면접에서도 이 내용이 그대로 나왔어요. 연계가 완벽했습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">이</div><div class="review-mini-info"><strong>lee****</strong><span>고려대 MBA 합격</span></div></div></div>
         <div class="review-mini accent-purple"><div class="star-row">★★★★★</div><p>"지도교수님 논문을 읽고도 어떻게 연결해야 할지 몰랐는데, 코치님이 연구 공백 찾는 방법을 알려주셔서 계획서가 완전히 달라졌어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">박</div><div class="review-mini-info"><strong>park****</strong><span>KAIST 대학원 합격</span></div></div></div>
-        <div class="review-mini"><div class="star-row">★★★★★</div><p>"첨삭 횟수 제한 없이 완성까지 해주신다는 게 진짜였어요. 8번 고쳐서 최종본 완성했는데 처음이랑 완전히 다른 글이 됐습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">최</div><div class="review-mini-info"><strong>choi****</strong><span>연세대 대학원 합격</span></div></div></div>
+        <div class="review-mini"><div class="star-row">★★★★★</div><p>"코치님이 제 경험에서 연구 주제를 직접 뽑아줬어요. 혼자 몇 달 헤맸는데 두 회차 만에 방향이 잡혔습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">최</div><div class="review-mini-info"><strong>choi****</strong><span>연세대 대학원 합격</span></div></div></div>
         <div class="review-mini accent-blue"><div class="star-row">★★★★★</div><p>"SOP 영어 문체 때문에 고민이 많았는데, 원어민처럼 자연스러운 표현으로 바꿔주시면서도 제 목소리가 살아있었어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">정</div><div class="review-mini-info"><strong>jung****</strong><span>UC Davis 합격</span></div></div></div>
         <div class="review-mini"><div class="star-row">★★★★★</div><p>"교육대학원 자기소개서가 너무 평범했는데, 코치님이 현장 경험을 연구 관심으로 연결하는 법을 알려주셔서 완전히 살아났어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">한</div><div class="review-mini-info"><strong>han****</strong><span>서울교대 교육대학원 합격</span></div></div></div>
         <div class="review-mini accent-blue" aria-hidden="true"><div class="star-row">★★★★★</div><p>"연구계획서를 혼자 쓰면서 계속 막혔는데, 코치님이 제 경험에서 연구 주제를 끌어내주시더라고요. 완전히 다른 글이 됐어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">김</div><div class="review-mini-info"><strong>kim****</strong><span>서울대 사회학과 석사 합격</span></div></div></div>
         <div class="review-mini" aria-hidden="true"><div class="star-row">★★★★★</div><p>"MBA 학업계획서를 직무 경험 중심으로 재구성해주셨는데 면접에서도 이 내용이 그대로 나왔어요. 연계가 완벽했습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">이</div><div class="review-mini-info"><strong>lee****</strong><span>고려대 MBA 합격</span></div></div></div>
         <div class="review-mini accent-purple" aria-hidden="true"><div class="star-row">★★★★★</div><p>"지도교수님 논문을 읽고도 어떻게 연결해야 할지 몰랐는데, 코치님이 연구 공백 찾는 방법을 알려주셔서 계획서가 완전히 달라졌어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">박</div><div class="review-mini-info"><strong>park****</strong><span>KAIST 대학원 합격</span></div></div></div>
-        <div class="review-mini" aria-hidden="true"><div class="star-row">★★★★★</div><p>"첨삭 횟수 제한 없이 완성까지 해주신다는 게 진짜였어요. 8번 고쳐서 최종본 완성했는데 처음이랑 완전히 다른 글이 됐습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">최</div><div class="review-mini-info"><strong>choi****</strong><span>연세대 대학원 합격</span></div></div></div>
+        <div class="review-mini" aria-hidden="true"><div class="star-row">★★★★★</div><p>"코치님이 제 경험에서 연구 주제를 직접 뽑아줬어요. 혼자 몇 달 헤맸는데 두 회차 만에 방향이 잡혔습니다."</p><div class="review-mini-meta"><div class="review-mini-avatar">최</div><div class="review-mini-info"><strong>choi****</strong><span>연세대 대학원 합격</span></div></div></div>
         <div class="review-mini accent-blue" aria-hidden="true"><div class="star-row">★★★★★</div><p>"SOP 영어 문체 때문에 고민이 많았는데, 원어민처럼 자연스러운 표현으로 바꿔주시면서도 제 목소리가 살아있었어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">정</div><div class="review-mini-info"><strong>jung****</strong><span>UC Davis 합격</span></div></div></div>
         <div class="review-mini" aria-hidden="true"><div class="star-row">★★★★★</div><p>"교육대학원 자기소개서가 너무 평범했는데, 코치님이 현장 경험을 연구 관심으로 연결하는 법을 알려주셔서 완전히 살아났어요."</p><div class="review-mini-meta"><div class="review-mini-avatar">한</div><div class="review-mini-info"><strong>han****</strong><span>서울교대 교육대학원 합격</span></div></div></div>
       </div>
