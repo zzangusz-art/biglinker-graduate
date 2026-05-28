@@ -1,13 +1,33 @@
-<!-- META
-TITLE: 대학원 포트폴리오 전문 코칭 — 빅링커 포트폴리오리드코칭
-DESCRIPTION: 예술·디자인·미디어 대학원 입시를 위한 포트폴리오리드코칭. 작품 구성·콘셉트 정리·심사 기준 맞춤 지도.
-HEADER_PROMO: 2026 대학원 합격전략 가이드 오픈
-ACTIVE_TAB: portfolio-coaching
--->
-
-<!-- PAGE_CSS -->
-<style>
-    :root {
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대학원 포트폴리오 전문 코칭 — 빅링커 포트폴리오리드코칭</title>
+  <meta name="description" content="예술·디자인·미디어 대학원 입시를 위한 포트폴리오리드코칭. 작품 구성·콘셉트 정리·심사 기준 맞춤 지도.">
+  <link rel="canonical" href="https://graduate.gobiglinker.com/portfolio-coaching.html">
+  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="대학원 포트폴리오 전문 코칭 — 빅링커 포트폴리오리드코칭">
+  <meta property="og:description" content="예술·디자인·미디어 대학원 입시를 위한 포트폴리오리드코칭. 작품 구성·콘셉트 정리·심사 기준 맞춤 지도.">
+  <meta property="og:url"         content="https://graduate.gobiglinker.com/portfolio-coaching.html">
+  <meta property="og:image"       content="https://graduate.gobiglinker.com/assets/og-image.png">
+  <meta property="og:locale"      content="ko_KR">
+  <meta property="og:site_name"   content="빅링커">
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="대학원 포트폴리오 전문 코칭 — 빅링커 포트폴리오리드코칭">
+  <meta name="twitter:description"  content="예술·디자인·미디어 대학원 입시를 위한 포트폴리오리드코칭. 작품 구성·콘셉트 정리·심사 기준 맞춤 지도.">
+  <meta name="twitter:image"       content="https://graduate.gobiglinker.com/assets/og-image.png">
+  <link rel="icon" href="https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524" type="image/x-icon">
+  <link rel="shortcut icon" href="https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524">
+  <link rel="apple-touch-icon" href="https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524">
+  <link rel="icon" type="image/x-icon" sizes="16x16" href="https://storage.googleapis.com/cr-resource/image/34612167169c183d5c4be110f99e38b1/1466898/1466898-favicon.ico?_1719911524">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+:root {
       --header-bg: #f6f7fb; --header-surface: #ffffff; --header-line: #e5e8ef;
       --header-line-strong: #d7dbe5; --header-text: #17191f; --header-muted: #6e7687;
       --bg: #0b0e13; --bg-soft: #121722; --bg-dark: #090c11; --panel: #f5f6fb;
@@ -113,11 +133,17 @@ ACTIVE_TAB: portfolio-coaching
     .compare-table .col-them { color: rgba(255,255,255,0.3); }
     .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
 
-    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .case-card { padding: 28px 22px; border-radius: var(--radius-md); border: 1px solid #e7ebf3; background: #fff; box-shadow: var(--shadow-card); }
+    .cases-carousel { overflow: hidden; }
+    .cases-track { display: flex; gap: 20px; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+    .case-card { flex-shrink: 0; padding: 28px 22px; border-radius: var(--radius-md); border: 1px solid #e7ebf3; background: #fff; box-shadow: var(--shadow-card); }
+    .case-logo { width: 52px; height: 52px; border-radius: 14px; border: 1px solid #e7ebf3; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; margin-bottom: 16px; padding: 6px; flex-shrink: 0; }
+    .case-logo img { width: 100%; height: 100%; object-fit: contain; }
     .case-badge { display: inline-flex; align-items: center; min-height: 24px; padding: 0 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); font-size: 11px; font-weight: 800; margin-bottom: 14px; }
     .case-card p { font-size: 13px; color: var(--header-muted); line-height: 1.8; margin: 0 0 14px; }
     .c-result { font-size: 13px; font-weight: 700; color: var(--brand); padding-top: 12px; border-top: 1px solid #edf0f7; }
+    .cases-nav { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
+    .cases-dot { width: 8px; height: 8px; border-radius: 999px; background: #dde2ef; cursor: pointer; transition: background 0.25s, width 0.25s; border: none; padding: 0; flex-shrink: 0; }
+    .cases-dot.active { background: var(--brand); width: 24px; }
 
     .review-band { padding: 100px 0 0; overflow: hidden; }
     .review-band-head { text-align: center; margin-bottom: 48px; }
@@ -154,7 +180,7 @@ ACTIVE_TAB: portfolio-coaching
     .section-panel .curri-list li::before { color: var(--brand); }
 
     @media(max-width:768px) {
-      .pain-grid, .why-grid, .domain-grid, .cases-grid { grid-template-columns: 1fr; }
+      .pain-grid, .why-grid, .domain-grid { grid-template-columns: 1fr; }
       .type-grid { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: repeat(2,1fr); gap: 24px; }
       .process-grid::before { display: none; }
@@ -179,12 +205,184 @@ ACTIVE_TAB: portfolio-coaching
     .btn-cta { display: inline-flex; align-items: center; min-height: 54px; padding: 0 32px; border-radius: 13px; font-size: 15px; font-weight: 700; background: var(--brand); color: #fff; box-shadow: 0 10px 28px rgba(74,104,255,0.28); transition: transform 0.2s; }
     .btn-cta:hover { transform: translateY(-2px); }
     .btn-cta-outline { display: inline-flex; align-items: center; min-height: 54px; padding: 0 28px; border-radius: 13px; font-size: 15px; font-weight: 700; border: 1.5px solid rgba(255,255,255,0.22); color: var(--text); background: transparent; transition: transform 0.2s; }
-</style>
-<!-- /PAGE_CSS -->
+    /* ══════════════════════════════════════════
+       HEADER — common (partials/header.css)
+    ══════════════════════════════════════════ */
+    .top-shell {
+      position: sticky; top: 0; z-index: 120;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--header-line);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, opacity 0.28s ease;
+    }
+    .top-shell.is-scrolled { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .top-shell.is-collapsed { transform: translateY(-100%); opacity: 0; }
+    .sticky-category-shell {
+      position: sticky; top: 0; z-index: 110;
+      background: rgba(248,249,252,0.96);
+      border-bottom: 1px solid var(--header-line);
+      backdrop-filter: blur(12px);
+    }
+    .family-bar { background: transparent; }
+    .family-bar--mobile { display: none; }
+    .family-outer { display: flex; justify-content: center; padding: 8px 0; }
+    .family-wrap {
+      display: flex; align-items: center; justify-content: center;
+      gap: 4px; min-height: 40px; padding: 3px;
+      border: 1px solid var(--header-line-strong); border-radius: 14px;
+      background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+      overflow-x: auto; scrollbar-width: none; white-space: nowrap;
+    }
+    .family-wrap::-webkit-scrollbar { display: none; }
+    .family-inline {
+      display: flex; align-items: center; justify-content: center;
+      gap: 4px; padding: 3px;
+      border: 1px solid var(--header-line-strong); border-radius: 14px;
+      background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,0.07);
+      white-space: nowrap;
+    }
+    .family-link {
+      flex: 0 0 auto; padding: 6px 14px; border-radius: 10px;
+      font-size: 12px; font-weight: 700; color: var(--header-muted);
+      transition: background 0.18s, color 0.18s;
+    }
+    .family-link.is-active { background: var(--brand-soft); color: var(--brand); }
+    .family-link:not(.is-active):hover { background: #f8f9fc; color: var(--header-text); }
+    .main-header { background: transparent; }
+    .main-header-wrap {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; gap: 16px; min-height: 70px;
+    }
+    .header-promo {
+      justify-self: start; align-self: stretch; display: flex; align-items: center;
+      padding: 0 14px; border-radius: 0 0 12px 12px;
+      border: 1px solid #dde2ff; border-top: 0;
+      background: var(--brand-soft);
+      color: var(--brand); font-size: 12px; font-weight: 700; white-space: nowrap;
+    }
+    .brand { display: flex; flex-direction: column; align-items: flex-start; justify-self: start; text-align: left; gap: 4px; }
+    .brand-mark { width: 120px; height: 40px; object-fit: contain; }
+    .brand-copy span { display: block; color: var(--header-muted); font-size: 11px; line-height: 1.4; }
+    .header-actions { display: flex; align-items: center; justify-self: end; gap: 8px; }
+    .cta-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 36px; padding: 0 16px; border-radius: 10px;
+      border: 1px solid var(--brand); background: var(--brand);
+      color: #fff; font-weight: 700; font-size: 13px;
+      transition: background 0.18s, transform 0.18s;
+    }
+    .cta-btn:hover { background: #3a58ef; transform: translateY(-1px); }
+    .category-row {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; min-height: 52px; gap: 12px;
+    }
+    .category-balance { justify-self: start; width: 120px; }
+    .category-tabs {
+      display: flex; align-items: center; justify-content: center;
+      gap: 2px; overflow-x: auto; scrollbar-width: none; white-space: nowrap;
+    }
+    .category-tabs::-webkit-scrollbar { display: none; }
+    .category-tab {
+      flex: 0 0 auto; position: relative; padding: 0 14px; min-height: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--header-muted);
+      transition: color 0.18s;
+    }
+    .category-tab:hover { color: var(--header-text); }
+    .category-tab.is-active { color: var(--brand); }
+    .category-tab.is-active::after {
+      content: ""; position: absolute; left: 14px; right: 14px; bottom: 0;
+      height: 2px; background: var(--brand); border-radius: 999px;
+    }
+    .category-utility { display: flex; align-items: center; justify-self: end; gap: 6px; width: 200px; }
+    .utility-link {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 26px; padding: 0 10px; border-radius: 999px;
+      border: 1px solid var(--header-line); background: #fff;
+      color: var(--header-muted); font-size: 11px; font-weight: 700; cursor: pointer;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
+    }
+    .utility-link:hover { background: var(--brand-soft); color: var(--brand); border-color: #dde2ff; }
+    @media (max-width: 760px) {
+      .inner { padding: 0 16px; }
+      .main-header-wrap, .category-row { grid-template-columns: 1fr; gap: 10px; }
+      .header-promo, .header-actions { display: none; }
+      .family-inline { display: none; }
+      .family-bar--mobile { display: block; }
+      .brand { justify-self: center; align-items: center; text-align: center; }
+      .category-balance { display: none; }
+      .category-tabs, .category-utility { justify-content: flex-start; }
+      .sticky-category-shell .category-utility { display: none !important; }
+    }
 
-<!-- MAIN -->
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"빅링커","alternateName":"BigLinker","url":"https://gobiglinker.com","logo":{"@type":"ImageObject","url":"https://graduate.gobiglinker.com/assets/og-image.png"},"description":"편입·대입·대학원·취업·기업교육 전문 코칭 기관. 2,800건 이상의 1:1 코칭 완료, 30명 이상의 전문 코치진 보유.","knowsAbout":["기업교육","AI 활용 교육","리더십 교육","편입 컨설팅","대학원 입시","취업 코칭","자기소개서 코칭","면접 코칭"],"numberOfEmployees":{"@type":"QuantitativeValue","value":30},"areaServed":"KR","inLanguage":"ko","sameAs":["https://transfer.gobiglinker.com","https://graduate.gobiglinker.com","https://job.gobiglinker.com","https://biz.gobiglinker.com"]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"빅링커","item":"https://gobiglinker.com/"},{"@type":"ListItem","position":2,"name":"대학원 코칭","item":"https://graduate.gobiglinker.com/"},{"@type":"ListItem","position":3,"name":"대학원 포트폴리오 전문 코칭 — 빅링커 포트폴리오리드코칭","item":"https://graduate.gobiglinker.com/portfolio-coaching.html"}]}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Service","name":"대학원 포트폴리오 전문 코칭 — 빅링커 포트폴리오리드코칭","description":"예술·디자인·미디어 대학원 입시를 위한 포트폴리오리드코칭. 작품 구성·콘셉트 정리·심사 기준 맞춤 지도.","provider":{"@type":"Organization","name":"빅링커","url":"https://gobiglinker.com"},"areaServed":"KR","inLanguage":"ko","url":"https://graduate.gobiglinker.com/portfolio-coaching.html"}
+  </script>
+</head>
+<body>
 
-  <!-- ══ HERO ══ -->
+  <!-- ══ HEADER (generated from _partials/header.html) ══ -->
+  <div class="top-shell" id="topShell">
+    <header class="main-header">
+      <div class="inner">
+        <div class="main-header-wrap">
+          <a class="brand" href="./index.html">
+            <img class="brand-mark" src="./assets/biglinker-logo.webp" alt="빅링커 로고">
+            <div class="brand-copy"><span>대학원·논문·면접·포트폴리오 코칭 전문</span></div>
+          </a>
+          <div class="family-inline">
+            <a class="family-link " href="https://transfer.gobiglinker.com/">대학&amp;편입</a>
+            <a class="family-link is-active" href="https://graduate.gobiglinker.com/">대학원&amp;논문</a>
+            <a class="family-link " href="https://job.gobiglinker.com/">취업</a>
+            <a class="family-link " href="https://biz.gobiglinker.com/">기업교육</a>
+          </div>
+          <div class="header-actions">
+            <a class="cta-btn" href="#cta">상담 신청</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- mobile-only family bar -->
+    <div class="family-bar family-bar--mobile">
+      <div class="inner">
+        <div class="family-outer">
+          <div class="family-wrap">
+            <a class="family-link " href="https://transfer.gobiglinker.com/">대학&amp;편입</a>
+            <a class="family-link is-active" href="https://graduate.gobiglinker.com/">대학원&amp;논문</a>
+            <a class="family-link " href="https://job.gobiglinker.com/">취업</a>
+            <a class="family-link " href="https://biz.gobiglinker.com/">기업교육</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sticky-category-shell">
+    <div class="inner">
+      <div class="category-row">
+        <div class="category-balance" aria-hidden="true"></div>
+        <nav class="category-tabs" aria-label="서비스 카테고리">
+          <a class="category-tab" href="./paper-coaching.html">페이퍼리드코칭</a>
+          <a class="category-tab" href="./interview-coaching.html">면접리드코칭</a>
+          <a class="category-tab is-active" href="./portfolio-coaching.html">포트폴리오리드코칭</a>
+          <a class="category-tab" href="./thesis-coaching.html">논문리드코칭</a>
+        </nav>
+        <div class="category-utility" aria-label="콘텐츠 바로가기">
+          <a class="utility-link" href="https://blog.gobiglinker.com/blog/graduate" target="_blank" rel="noopener">블로그</a>
+          <button class="utility-link" type="button">리얼 TIP</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ══ HERO ══ -->
   <section class="hero">
     <div class="wrap">
       <div class="hero-kicker"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7f92ff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg> 포트폴리오리드코칭</div>
@@ -322,9 +520,9 @@ ACTIVE_TAB: portfolio-coaching
           <div class="w-icon" style="background:rgba(74,104,255,0.15);">
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4" stroke="#7f92ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="#7f92ff" stroke-width="2" stroke-linecap="round"/></svg>
           </div>
-          <h3>완성까지 무제한 피드백</h3>
-          <p>횟수 제한 없이 최종 제출본이 완성될 때까지 피드백을 제공합니다. 콘텐츠 추가·삭제·레이아웃 수정 등 수정이 거듭될수록 완성도가 높아집니다.</p>
-          <div class="w-point">→ 완성 기준은 합격 가능성, 횟수가 아님</div>
+          <h3>완성까지 안정적인 피드백</h3>
+          <p>기본 3회차로 1~2회 무상으로 피드백을 제공합니다.<br>콘텐츠 추가·삭제·레이아웃 수정 등 수정이 거듭될수록 완성도가 높아집니다.</p>
+          <div class="w-point">→ 단계별 피드백으로 완성도를 높이는 코칭</div>
         </div>
       </div>
     </div>
@@ -444,7 +642,7 @@ ACTIVE_TAB: portfolio-coaching
   <section class="section-panel">
     <div class="wrap">
       <div class="section-eyebrow">CURRICULUM</div>
-      <h2 class="sec-h2" style="margin-bottom:10px;">4주 포트폴리오 완성 커리큘럼</h2>
+      <h2 class="sec-h2" style="margin-bottom:10px;">포트폴리오 완성 커리큘럼</h2>
       <p style="color:var(--muted-dark);font-size:14px;margin-bottom:36px;">제출 일정에 따라 2~6주 코스로 조정 가능합니다</p>
       <div class="curriculum-grid">
         <div class="curri-card">
@@ -484,7 +682,7 @@ ACTIVE_TAB: portfolio-coaching
             <li>전체 흐름·완성도 최종 점검</li>
             <li>제출 형식·파일 최적화</li>
             <li>면접 발표 연계 준비</li>
-            <li>D-1 최종 확인</li>
+
           </ul>
         </div>
       </div>
@@ -507,12 +705,7 @@ ACTIVE_TAB: portfolio-coaching
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>분야별 합격 포트폴리오 DB</td>
-              <td class="col-us">분야별 합격 DB 제공</td>
-              <td class="col-them">일부만 제공</td>
-              <td class="col-them">수집 한계</td>
-            </tr>
+
             <tr>
               <td>전공별 전문 코치 매칭</td>
               <td class="col-us">해당 전공 코치 전담</td>
@@ -531,12 +724,7 @@ ACTIVE_TAB: portfolio-coaching
               <td class="col-them">의뢰자 판단</td>
               <td class="col-them">기준 없음</td>
             </tr>
-            <tr>
-              <td>무제한 피드백 횟수</td>
-              <td class="col-us">완성까지 무제한</td>
-              <td class="col-them">1~3회 제한</td>
-              <td class="col-them">불가</td>
-            </tr>
+
             <tr>
               <td>영문 포트폴리오 지원</td>
               <td class="col-us">학교별 맞춤 대응</td>
@@ -554,25 +742,68 @@ ACTIVE_TAB: portfolio-coaching
     <div class="wrap">
       <div class="section-eyebrow">SUCCESS CASES</div>
       <h2 class="sec-h2" style="color:var(--header-text);margin-bottom:36px;">포트폴리오리드코칭으로<br>합격한 수강생 사례</h2>
-      <div class="cases-grid">
-        <div class="case-card">
-          <div class="case-badge">홍익대 디자인 대학원</div>
-          <p>작품은 많은데 무엇을 담을지 몰라 막막했던 수강생. 빅링커 디자인 전공 코치와 함께 작품 선별·배치 순서·설명 텍스트를 전략적으로 구성했습니다. 심사 교수에게 "일관된 시각 언어"를 인정받아 합격했습니다.</p>
-          <div class="c-result">결과: 홍익대 시각디자인 대학원 최종 합격</div>
-        </div>
-        <div class="case-card">
-          <div class="case-badge">연세대 경영전문대학원</div>
-          <p>10년 차 컨설턴트로서의 실무 경력을 MBA 포트폴리오로 전환해야 했던 수강생. 프로젝트 성과를 학문적 언어로 재해석하고 리더십·문제 해결 역량을 부각하는 구성으로 완성했습니다.</p>
-          <div class="c-result">결과: 연세대 경영전문대학원 MBA 합격</div>
-        </div>
-        <div class="case-card">
-          <div class="case-badge">Pratt Institute MFA</div>
-          <p>미국 예술 대학원 지원을 위해 영문 포트폴리오가 필요했던 수강생. 학교별 요구 기준을 분석하고 영문 작품 설명·아티스트 스테이트먼트까지 함께 완성해 Pratt MFA 합격을 이뤄냈습니다.</p>
-          <div class="c-result">결과: Pratt Institute MFA 프로그램 합격</div>
+      <div class="cases-carousel" id="casesCarousel">
+        <div class="cases-track" id="casesTrack">
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=hongik.ac.kr" alt="홍익대학교"></div>
+            <div class="case-badge">홍익대학교 대학원</div>
+            <p>작품은 많은데 무엇을 담을지 몰라 막막했던 수강생. 코치와 함께 작품 선별·배치 순서·설명 텍스트를 전략적으로 구성했습니다. 심사 교수에게 "일관된 시각 언어"를 인정받아 합격했습니다.</p>
+            <div class="c-result">결과: 홍익대학교 대학원 최종 합격</div>
+          </div>
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=yonsei.ac.kr" alt="연세대학교"></div>
+            <div class="case-badge">연세대학교 MBA</div>
+            <p>10년 차 컨설턴트의 실무 경력을 MBA 포트폴리오로 전환해야 했던 수강생. 프로젝트 성과를 학문적 언어로 재해석하고 리더십·문제 해결 역량을 부각하는 구성으로 최종 합격했습니다.</p>
+            <div class="c-result">결과: 연세대학교 경영전문대학원 MBA 합격</div>
+          </div>
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=snu.ac.kr" alt="서울대학교"></div>
+            <div class="case-badge">서울대학교 석사</div>
+            <p>작업집을 포트폴리오로 변환하는 방법을 몰랐던 수강생. 설계 의도와 과정을 서사적으로 구성하는 포트폴리오 전략을 코치와 함께 완성하여 심사 교수로부터 호평을 받으며 합격했습니다.</p>
+            <div class="c-result">결과: 서울대학교 석사 합격</div>
+          </div>
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=hanyang.ac.kr" alt="한양대학교"></div>
+            <div class="case-badge">한양대학교 대학원</div>
+            <p>작업 경험은 풍부했지만 포트폴리오에서 연구 역량을 보여주는 방법을 몰랐던 수강생. 각 프로젝트의 문제 정의·해결 과정을 학문적 관점으로 재구성해 합격을 이뤄냈습니다.</p>
+            <div class="c-result">결과: 한양대학교 대학원 합격</div>
+          </div>
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=ewha.ac.kr" alt="이화여자대학교"></div>
+            <div class="case-badge">이화여자대학교 대학원</div>
+            <p>업계 3년 경력이 있었지만 대학원 포트폴리오 구성 방법이 막막했던 수강생. 브랜드 기획·디자인 프로세스를 학술적으로 풀어내는 포트폴리오를 완성해 심사를 통과했습니다.</p>
+            <div class="c-result">결과: 이화여자대학교 대학원 합격</div>
+          </div>
+          <div class="case-card">
+            <div class="case-logo"><img src="https://www.google.com/s2/favicons?sz=128&domain=korea.ac.kr" alt="고려대학교"></div>
+            <div class="case-badge">고려대학교 MBA</div>
+            <p>스타트업 창업 경험을 경영대학원 포트폴리오로 재구성해야 했던 수강생. 사업 성과와 의사결정 과정을 경영학적 프레임으로 정리하는 코칭을 통해 차별화된 포트폴리오를 완성하며 합격했습니다.</p>
+            <div class="c-result">결과: 고려대학교 경영전문대학원 합격</div>
+          </div>
         </div>
       </div>
+      <div class="cases-nav" id="casesDots"></div>
     </div>
   </section>
+  <script>
+  (function(){
+    var track=document.getElementById('casesTrack'); var dotsWrap=document.getElementById('casesDots');
+    if(!track||!dotsWrap) return;
+    var cards=Array.from(track.children); var current=0; var timer=null; var GAP=20; var AUTO=4500;
+    function perView(){ return window.innerWidth<768?1:3; }
+    function maxIdx(){ return Math.max(0,cards.length-perView()); }
+    function cardW(){ var pv=perView(); return (track.parentElement.offsetWidth-GAP*(pv-1))/pv; }
+    function setWidths(){ var cw=cardW(); cards.forEach(function(c){ c.style.flexBasis=cw+'px'; c.style.minWidth=cw+'px'; }); }
+    function goTo(idx){ current=Math.min(Math.max(idx,0),maxIdx()); track.style.transform='translateX(-'+(current*(cardW()+GAP))+'px)'; renderDots(); }
+    function renderDots(){ dotsWrap.innerHTML=''; for(var i=0;i<=maxIdx();i++){ (function(i){ var btn=document.createElement('button'); btn.className='cases-dot'+(i===current?' active':''); btn.setAttribute('aria-label',(i+1)+'번 슬라이드'); btn.addEventListener('click',function(){ clearInterval(timer); goTo(i); startAuto(); }); dotsWrap.appendChild(btn); })(i); } }
+    function next(){ goTo(current>=maxIdx()?0:current+1); }
+    function startAuto(){ timer=setInterval(next,AUTO); }
+    track.addEventListener('mouseenter',function(){ clearInterval(timer); });
+    track.addEventListener('mouseleave',startAuto);
+    window.addEventListener('resize',function(){ setWidths(); goTo(Math.min(current,maxIdx())); renderDots(); });
+    setWidths(); renderDots(); startAuto();
+  })();
+  </script>
 
   <!-- ══ REVIEWS ══ -->
   <section class="review-band">
@@ -587,127 +818,127 @@ ACTIVE_TAB: portfolio-coaching
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
           <p>"작품을 어떻게 배치해야 하는지 아예 몰랐는데, 코치님과 함께 구조 잡고 나니 완성도가 달라졌어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">김</div><div class="review-mini-info"><strong>김O민</strong><span>홍익대 시각디자인 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">김</div><div class="review-mini-info"><strong>김O민</strong><span>홍O대 시각디자인 대학원</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"경력을 학문 언어로 바꾸는 게 이렇게 어려운 줄 몰랐어요. 코치님 덕분에 MBA 합격했습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">이</div><div class="review-mini-info"><strong>이O석</strong><span>연세대 MBA</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">이</div><div class="review-mini-info"><strong>이O석</strong><span>연O대 MBA</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"레이아웃 가이드까지 받을 수 있어서 좋았어요. 시각적으로도 완성도 높은 포트폴리오가 됐습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">박</div><div class="review-mini-info"><strong>박O리</strong><span>국민대 디자인 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">박</div><div class="review-mini-info"><strong>박O리</strong><span>국O대 디자인 대학원</span></div></div>
         </div>
         <div class="review-mini accent-purple">
           <div class="star-row">★★★★★</div>
           <p>"영문 포트폴리오를 어떻게 써야 하는지 전혀 몰랐는데, 코치님과 함께 Pratt 합격했습니다!"</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">최</div><div class="review-mini-info"><strong>최O빈</strong><span>Pratt Institute MFA</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">최</div><div class="review-mini-info"><strong>최O빈</strong><span>P대 MFA</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"작품을 나열만 하던 포트폴리오가 스토리 있는 구성으로 바뀌었어요. 교수님께 칭찬받았어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">정</div><div class="review-mini-info"><strong>정O현</strong><span>이화여대 미술 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">정</div><div class="review-mini-info"><strong>정O현</strong><span>이O대 미술 대학원</span></div></div>
         </div>
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
           <p>"전공 코치님이 배정돼서 전공 내용을 같이 이해하면서 진행할 수 있었어요. 정말 만족합니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">한</div><div class="review-mini-info"><strong>한O준</strong><span>서울대 건축 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">한</div><div class="review-mini-info"><strong>한O준</strong><span>서O대 건축 대학원</span></div></div>
         </div>
         <!-- duplicate -->
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
           <p>"작품을 어떻게 배치해야 하는지 아예 몰랐는데, 코치님과 함께 구조 잡고 나니 완성도가 달라졌어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">김</div><div class="review-mini-info"><strong>김O민</strong><span>홍익대 시각디자인 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">김</div><div class="review-mini-info"><strong>김O민</strong><span>홍O대 시각디자인 대학원</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"경력을 학문 언어로 바꾸는 게 이렇게 어려운 줄 몰랐어요. 코치님 덕분에 MBA 합격했습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">이</div><div class="review-mini-info"><strong>이O석</strong><span>연세대 MBA</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">이</div><div class="review-mini-info"><strong>이O석</strong><span>연O대 MBA</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"레이아웃 가이드까지 받을 수 있어서 좋았어요. 시각적으로도 완성도 높은 포트폴리오가 됐습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">박</div><div class="review-mini-info"><strong>박O리</strong><span>국민대 디자인 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">박</div><div class="review-mini-info"><strong>박O리</strong><span>국O대 디자인 대학원</span></div></div>
         </div>
         <div class="review-mini accent-purple">
           <div class="star-row">★★★★★</div>
           <p>"영문 포트폴리오를 어떻게 써야 하는지 전혀 몰랐는데, 코치님과 함께 Pratt 합격했습니다!"</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">최</div><div class="review-mini-info"><strong>최O빈</strong><span>Pratt Institute MFA</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">최</div><div class="review-mini-info"><strong>최O빈</strong><span>P대 MFA</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"작품을 나열만 하던 포트폴리오가 스토리 있는 구성으로 바뀌었어요. 교수님께 칭찬받았어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">정</div><div class="review-mini-info"><strong>정O현</strong><span>이화여대 미술 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">정</div><div class="review-mini-info"><strong>정O현</strong><span>이O대 미술 대학원</span></div></div>
         </div>
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
           <p>"전공 코치님이 배정돼서 전공 내용을 같이 이해하면서 진행할 수 있었어요. 정말 만족합니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">한</div><div class="review-mini-info"><strong>한O준</strong><span>서울대 건축 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">한</div><div class="review-mini-info"><strong>한O준</strong><span>서O대 건축 대학원</span></div></div>
         </div>
       </div>
       <!-- ROW 2 -->
       <div class="review-marquee-row">
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
-          <p>"무제한 피드백이 정말 좋았어요. 계속 수정하면서 점점 더 좋아지는 게 눈에 보였습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">오</div><div class="review-mini-info"><strong>오O화</strong><span>중앙대 예술 대학원</span></div></div>
+          <p>"작품 선별부터 배치 순서까지 코치님이 논리적으로 짜줬어요. 심사 교수님이 흐름이 좋다고 하셨습니다."</p>
+          <div class="review-mini-meta"><div class="review-mini-avatar">오</div><div class="review-mini-info"><strong>오O화</strong><span>중O대 예술 대학원</span></div></div>
         </div>
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
           <p>"건축 포트폴리오를 처음 만들어봤는데 코치님이 전공 배경이 있으셔서 내용도 같이 봐주셨어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">윤</div><div class="review-mini-info"><strong>윤O성</strong><span>서울시립대 건축 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">윤</div><div class="review-mini-info"><strong>윤O성</strong><span>시O대 건축 대학원</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"합격 DB를 보여주시면서 내 포트폴리오와 비교해줘서 구체적으로 뭘 바꿔야 하는지 알았어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">강</div><div class="review-mini-info"><strong>강O서</strong><span>홍익대 회화 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">강</div><div class="review-mini-info"><strong>강O서</strong><span>홍O대 회화 대학원</span></div></div>
         </div>
         <div class="review-mini accent-purple">
           <div class="star-row">★★★★★</div>
           <p>"이력서처럼 만들던 걸 연구자 역량 중심으로 재구성하니 전혀 다른 포트폴리오가 됐어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">신</div><div class="review-mini-info"><strong>신O언</strong><span>KAIST 문화기술 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">신</div><div class="review-mini-info"><strong>신O언</strong><span>K대 문화기술 대학원</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"UCLA 영문 포트폴리오 준비했는데 학교별 기준을 분석해줘서 맞춤 준비할 수 있었어요. 합격했습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">임</div><div class="review-mini-info"><strong>임O나</strong><span>UCLA Design MFA</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">임</div><div class="review-mini-info"><strong>임O나</strong><span>U대 Design MFA</span></div></div>
         </div>
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
           <p>"콘텐츠 선별이 제일 어려웠는데 코치님이 기준을 딱 잡아주셔서 방향이 명확해졌어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">류</div><div class="review-mini-info"><strong>류O아</strong><span>성균관대 디자인 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">류</div><div class="review-mini-info"><strong>류O아</strong><span>성O대 디자인 대학원</span></div></div>
         </div>
         <!-- duplicate -->
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
-          <p>"무제한 피드백이 정말 좋았어요. 계속 수정하면서 점점 더 좋아지는 게 눈에 보였습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">오</div><div class="review-mini-info"><strong>오O화</strong><span>중앙대 예술 대학원</span></div></div>
+          <p>"작품 선별부터 배치 순서까지 코치님이 논리적으로 짜줬어요. 심사 교수님이 흐름이 좋다고 하셨습니다."</p>
+          <div class="review-mini-meta"><div class="review-mini-avatar">오</div><div class="review-mini-info"><strong>오O화</strong><span>중O대 예술 대학원</span></div></div>
         </div>
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
           <p>"건축 포트폴리오를 처음 만들어봤는데 코치님이 전공 배경이 있으셔서 내용도 같이 봐주셨어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">윤</div><div class="review-mini-info"><strong>윤O성</strong><span>서울시립대 건축 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">윤</div><div class="review-mini-info"><strong>윤O성</strong><span>시O대 건축 대학원</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"합격 DB를 보여주시면서 내 포트폴리오와 비교해줘서 구체적으로 뭘 바꿔야 하는지 알았어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">강</div><div class="review-mini-info"><strong>강O서</strong><span>홍익대 회화 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">강</div><div class="review-mini-info"><strong>강O서</strong><span>홍O대 회화 대학원</span></div></div>
         </div>
         <div class="review-mini accent-purple">
           <div class="star-row">★★★★★</div>
           <p>"이력서처럼 만들던 걸 연구자 역량 중심으로 재구성하니 전혀 다른 포트폴리오가 됐어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">신</div><div class="review-mini-info"><strong>신O언</strong><span>KAIST 문화기술 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">신</div><div class="review-mini-info"><strong>신O언</strong><span>K대 문화기술 대학원</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"UCLA 영문 포트폴리오 준비했는데 학교별 기준을 분석해줘서 맞춤 준비할 수 있었어요. 합격했습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">임</div><div class="review-mini-info"><strong>임O나</strong><span>UCLA Design MFA</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">임</div><div class="review-mini-info"><strong>임O나</strong><span>U대 Design MFA</span></div></div>
         </div>
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
           <p>"콘텐츠 선별이 제일 어려웠는데 코치님이 기준을 딱 잡아주셔서 방향이 명확해졌어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">류</div><div class="review-mini-info"><strong>류O아</strong><span>성균관대 디자인 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">류</div><div class="review-mini-info"><strong>류O아</strong><span>성O대 디자인 대학원</span></div></div>
         </div>
       </div>
       <!-- ROW 3 -->
@@ -715,22 +946,22 @@ ACTIVE_TAB: portfolio-coaching
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
           <p>"포트폴리오 만드는 게 처음이었는데 처음부터 끝까지 같이 만들어 주셔서 정말 든든했습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">장</div><div class="review-mini-info"><strong>장O원</strong><span>동국대 영상 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">장</div><div class="review-mini-info"><strong>장O원</strong><span>동O대 영상 대학원</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"설명 텍스트 쓰는 게 제일 어려웠는데 코치님이 핵심만 담는 방법을 알려주셔서 도움 많이 됐어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">권</div><div class="review-mini-info"><strong>권O진</strong><span>계원예술대 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">권</div><div class="review-mini-info"><strong>권O진</strong><span>계O대 대학원</span></div></div>
         </div>
         <div class="review-mini accent-purple">
           <div class="star-row">★★★★★</div>
           <p>"정책대학원 포트폴리오였는데 실무 경력을 정책 역량으로 재구성하는 전략이 정말 효과적이었어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">노</div><div class="review-mini-info"><strong>노O현</strong><span>서울대 행정대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">노</div><div class="review-mini-info"><strong>노O현</strong><span>서O대 행정대학원</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"다른 사람들 포트폴리오랑 차별화되는 구성을 잡아주셔서 면접에서도 좋은 반응을 받았습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">문</div><div class="review-mini-info"><strong>문O지</strong><span>이화여대 디자인 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">문</div><div class="review-mini-info"><strong>문O지</strong><span>이O대 디자인 대학원</span></div></div>
         </div>
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
@@ -739,29 +970,29 @@ ACTIVE_TAB: portfolio-coaching
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
-          <p>"무제한 수정이 진짜였어요. 10번 넘게 수정했는데 매번 더 나아지는 피드백을 주셔서 감사합니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">전</div><div class="review-mini-info"><strong>전O혁</strong><span>연세대 도시공학 대학원</span></div></div>
+          <p>"단계별로 피드백을 주시니 수정할 때마다 방향이 명확했어요. 결과물이 처음이랑 완전히 달라졌습니다."</p>
+          <div class="review-mini-meta"><div class="review-mini-avatar">전</div><div class="review-mini-info"><strong>전O혁</strong><span>연O대 도시공학 대학원</span></div></div>
         </div>
         <!-- duplicate -->
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
           <p>"포트폴리오 만드는 게 처음이었는데 처음부터 끝까지 같이 만들어 주셔서 정말 든든했습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">장</div><div class="review-mini-info"><strong>장O원</strong><span>동국대 영상 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">장</div><div class="review-mini-info"><strong>장O원</strong><span>동O대 영상 대학원</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"설명 텍스트 쓰는 게 제일 어려웠는데 코치님이 핵심만 담는 방법을 알려주셔서 도움 많이 됐어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">권</div><div class="review-mini-info"><strong>권O진</strong><span>계원예술대 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">권</div><div class="review-mini-info"><strong>권O진</strong><span>계O대 대학원</span></div></div>
         </div>
         <div class="review-mini accent-purple">
           <div class="star-row">★★★★★</div>
           <p>"정책대학원 포트폴리오였는데 실무 경력을 정책 역량으로 재구성하는 전략이 정말 효과적이었어요."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">노</div><div class="review-mini-info"><strong>노O현</strong><span>서울대 행정대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">노</div><div class="review-mini-info"><strong>노O현</strong><span>서O대 행정대학원</span></div></div>
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
           <p>"다른 사람들 포트폴리오랑 차별화되는 구성을 잡아주셔서 면접에서도 좋은 반응을 받았습니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">문</div><div class="review-mini-info"><strong>문O지</strong><span>이화여대 디자인 대학원</span></div></div>
+          <div class="review-mini-meta"><div class="review-mini-avatar">문</div><div class="review-mini-info"><strong>문O지</strong><span>이O대 디자인 대학원</span></div></div>
         </div>
         <div class="review-mini accent-blue">
           <div class="star-row">★★★★★</div>
@@ -770,15 +1001,437 @@ ACTIVE_TAB: portfolio-coaching
         </div>
         <div class="review-mini">
           <div class="star-row">★★★★★</div>
-          <p>"무제한 수정이 진짜였어요. 10번 넘게 수정했는데 매번 더 나아지는 피드백을 주셔서 감사합니다."</p>
-          <div class="review-mini-meta"><div class="review-mini-avatar">전</div><div class="review-mini-info"><strong>전O혁</strong><span>연세대 도시공학 대학원</span></div></div>
+          <p>"단계별로 피드백을 주시니 수정할 때마다 방향이 명확했어요. 결과물이 처음이랑 완전히 달라졌습니다."</p>
+          <div class="review-mini-meta"><div class="review-mini-avatar">전</div><div class="review-mini-info"><strong>전O혁</strong><span>연O대 도시공학 대학원</span></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PARTIAL: trust-proof.html -->
-  <!-- PARTIAL: faq-portfolio.html -->
-  <!-- PARTIAL: cta-portfolio.html -->
+  <!-- TRUST-PROOF PARTIAL ─────────────────────────────────────────────────────
+     자격증 · 이력 + 카카오 합격 후기 (동적 애니메이션)
+     cert  : assets/certificate/ (20장)
+     kakao : assets/kakao/       (49장)
+─────────────────────────────────────────────────────────────────────────── -->
+<style>
+/* ── TRUST SECTION ── */
+.trust-section{padding:90px 0;background:#fff}
+.trust-intro{text-align:center;max-width:560px;margin:0 auto 52px}
+.trust-intro h2{font-size:clamp(22px,2.8vw,36px);font-weight:700;color:var(--header-text,#17191f);margin-bottom:12px;letter-spacing:-0.04em}
+.trust-intro p{font-size:15px;color:var(--header-muted,#6e7687);line-height:1.8}
+.trust-label{font-size:12px;font-weight:800;color:var(--brand,#4a68ff);letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
 
-<!-- /MAIN -->
+/* ── CERT TICKER ── */
+.cert-ticker-wrap{overflow:hidden;position:relative;padding:4px 0}
+.cert-ticker-wrap::before,.cert-ticker-wrap::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:1;pointer-events:none}
+.cert-ticker-wrap::before{left:0;background:linear-gradient(to right,#fff 60%,transparent)}
+.cert-ticker-wrap::after{right:0;background:linear-gradient(to left,#fff 60%,transparent)}
+.cert-ticker{display:flex;gap:16px;width:max-content;animation:cert-tick 50s linear infinite}
+.cert-ticker:hover{animation-play-state:paused}
+.cert-ticker img{width:200px;height:140px;border-radius:14px;object-fit:cover;border:1px solid #e7ebf3;box-shadow:0 4px 16px rgba(0,0,0,.07);flex-shrink:0;transition:transform .25s}
+.cert-ticker img:hover{transform:scale(1.04)}
+@keyframes cert-tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── KAKAO FLIP GRID ── */
+.kakao-flip-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:44px}
+.kakao-flip-card{aspect-ratio:9/16;perspective:800px;cursor:pointer}
+.kakao-flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;border-radius:12px;
+  transition:transform .65s cubic-bezier(.4,.2,.2,1)}
+.kakao-flip-card.is-flipped .kakao-flip-inner{transform:rotateY(180deg)}
+.kakao-flip-front,.kakao-flip-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;overflow:hidden}
+.kakao-flip-front{background:linear-gradient(135deg,rgba(74,104,255,.1),rgba(127,146,255,.06));
+  border:1.5px solid rgba(74,104,255,.18);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.kakao-flip-front .kff-icon{font-size:22px;opacity:.7}
+.kakao-flip-front .kff-text{font-size:9px;font-weight:700;color:rgba(74,104,255,.55);text-align:center;padding:0 8px;line-height:1.45}
+.kakao-flip-back{transform:rotateY(180deg)}
+.kakao-flip-back img{width:100%;height:100%;object-fit:cover}
+
+/* ── SCATTER (꽃가루처럼 흩날리며 사라짐) ── */
+@keyframes tp-scatter{
+  0%  {opacity:1;transform:translateY(0) translateX(0) rotate(0deg) scale(1)}
+  100%{opacity:0;transform:translateY(var(--sy,-80px)) translateX(var(--sx,0px)) rotate(var(--sr,15deg)) scale(.55)}
+}
+.kakao-flip-card.is-scattering .kakao-flip-inner{
+  animation:tp-scatter .55s ease-out forwards;
+}
+/* ── FALL-IN (위에서 떨어지며 등장) ── */
+@keyframes tp-fallin{
+  0%  {opacity:0;transform:translateY(-50px) scale(.82)}
+  60% {opacity:1}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+.kakao-flip-card.is-falling .kakao-flip-inner{
+  animation:tp-fallin .45s ease-out forwards;
+  animation-delay:var(--fd,0ms);
+  opacity:0;
+}
+
+@media(max-width:900px){.kakao-flip-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:600px){
+  .kakao-flip-grid{grid-template-columns:repeat(3,1fr)}
+  .cert-ticker img{width:150px;height:105px}
+}
+</style>
+
+<section class="trust-section" id="trust">
+  <div class="wrap">
+    <div class="trust-intro">
+      <div class="section-eyebrow" style="color:var(--brand,#4a68ff);justify-content:center;margin-bottom:12px;">Trust &amp; Proof</div>
+      <h2>코치의 자격과 실력,<br>합격자가 증명합니다</h2>
+      <p>빅링커 코치진의 공인 자격증과 수강생이 직접 보내온 합격 후기를 확인하세요.</p>
+    </div>
+
+    <!-- 자격증 · 이력 ticker -->
+    <div class="trust-label">자격증 · 이력</div>
+    <div class="cert-ticker-wrap">
+      <div class="cert-ticker" id="certTicker">
+        <!-- SET A -->
+        <img src="./assets/certificate/KakaoTalk_20260413_193056294_08.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_01.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_02.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_03.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_04.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_05.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_06.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_07.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_08.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_09.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_02.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_03.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_10.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_12.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_15.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_19.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_26.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_29.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193346683.webp" alt="자격증" loading="lazy">
+        <!-- SET B (duplicate for seamless loop) -->
+        <img src="./assets/certificate/KakaoTalk_20260413_193056294_08.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_01.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_02.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_03.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_04.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_05.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_06.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_07.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_08.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193104956_09.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_02.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_03.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_10.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_12.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_15.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_19.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_26.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193340481_29.webp" alt="자격증" loading="lazy">
+        <img src="./assets/certificate/KakaoTalk_20260413_193346683.webp" alt="자격증" loading="lazy">
+      </div>
+    </div>
+
+    <!-- 카카오 합격 후기 flip grid -->
+    <div class="trust-label" style="margin-top:48px;">수강생 카카오톡 합격 후기</div>
+    <div class="kakao-flip-grid" id="kakaoFlipGrid">
+      <!-- 카드 12개는 JS로 렌더링 -->
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const KAKAO = [
+    "KakaoTalk_20260413_193056294.webp","KakaoTalk_20260413_193056294_01.webp",
+    "KakaoTalk_20260413_193056294_02.webp","KakaoTalk_20260413_193056294_03.webp",
+    "KakaoTalk_20260413_193056294_04.webp","KakaoTalk_20260413_193056294_05.webp",
+    "KakaoTalk_20260413_193056294_06.webp","KakaoTalk_20260413_193056294_07.webp",
+    "KakaoTalk_20260413_193104956.webp","KakaoTalk_20260413_193203932.webp",
+    "KakaoTalk_20260413_193233280.webp","KakaoTalk_20260413_193233280_01.webp",
+    "KakaoTalk_20260413_193233280_02.webp","KakaoTalk_20260413_193243331.webp",
+    "KakaoTalk_20260413_193243331_01.webp","KakaoTalk_20260413_193243331_02.webp",
+    "KakaoTalk_20260413_193243331_03.webp","KakaoTalk_20260413_193243331_04.webp",
+    "KakaoTalk_20260413_193243331_05.webp","KakaoTalk_20260413_193243331_06.webp",
+    "KakaoTalk_20260413_193243331_07.webp","KakaoTalk_20260413_193243331_08.webp",
+    "KakaoTalk_20260413_193243331_09.webp","KakaoTalk_20260413_193243331_10.webp",
+    "KakaoTalk_20260413_193243331_11.webp","KakaoTalk_20260413_193243331_12.webp",
+    "KakaoTalk_20260413_193243331_13.webp","KakaoTalk_20260413_193243331_14.webp",
+    "KakaoTalk_20260413_193340481_01.webp","KakaoTalk_20260413_193340481_04.webp",
+    "KakaoTalk_20260413_193340481_05.webp","KakaoTalk_20260413_193340481_06.webp",
+    "KakaoTalk_20260413_193340481_07.webp","KakaoTalk_20260413_193340481_08.webp",
+    "KakaoTalk_20260413_193340481_09.webp","KakaoTalk_20260413_193340481_11.webp",
+    "KakaoTalk_20260413_193340481_13.webp","KakaoTalk_20260413_193340481_14.webp",
+    "KakaoTalk_20260413_193340481_16.webp","KakaoTalk_20260413_193340481_17.webp",
+    "KakaoTalk_20260413_193340481_18.webp","KakaoTalk_20260413_193340481_20.webp",
+    "KakaoTalk_20260413_193340481_21.webp","KakaoTalk_20260413_193340481_22.webp",
+    "KakaoTalk_20260413_193340481_23.webp","KakaoTalk_20260413_193340481_24.webp",
+    "KakaoTalk_20260413_193340481_25.webp","KakaoTalk_20260413_193340481_27.webp",
+    "KakaoTalk_20260413_193340481_28.webp"
+  ];
+  let shuffled = KAKAO.slice().sort(()=>Math.random()-.5);
+  let idx = 0;
+
+  function nextImg(){
+    const src = './assets/kakao/' + shuffled[idx % shuffled.length];
+    idx++;
+    if(idx >= shuffled.length){ shuffled.sort(()=>Math.random()-.5); idx=0; }
+    return src;
+  }
+
+  function buildCard(){
+    const card = document.createElement('div');
+    card.className = 'kakao-flip-card';
+    card.innerHTML =
+      '<div class="kakao-flip-inner">' +
+        '<div class="kakao-flip-front"><span class="kff-text">합격 후기<br>확인하기</span></div>' +
+        '<div class="kakao-flip-back"><img src="" alt="합격 후기" loading="lazy"></div>' +
+      '</div>';
+    return card;
+  }
+
+  function init(){
+    const grid = document.getElementById('kakaoFlipGrid');
+    if(!grid) return;
+    const cols = window.innerWidth < 600 ? 3 : window.innerWidth < 900 ? 4 : 6;
+    const ROWS = 2;
+    const TOTAL = cols * ROWS;
+
+    // Build cards
+    for(let i=0;i<TOTAL;i++){
+      const card = buildCard();
+      card.querySelector('.kakao-flip-back img').src = nextImg();
+      grid.appendChild(card);
+    }
+
+    let phase = 'flipping';
+    let flipQueue = [];
+    let flipTimer = null;
+
+    function resetQueue(){
+      flipQueue = Array.from(grid.querySelectorAll('.kakao-flip-card'));
+      flipQueue.sort(()=>Math.random()-.5);
+    }
+    resetQueue();
+
+    function flipNextCard(){
+      if(phase !== 'flipping') return;
+      const unflipped = flipQueue.filter(c=>!c.classList.contains('is-flipped'));
+      if(unflipped.length === 0){
+        phase = 'scattering';
+        clearTimeout(flipTimer);
+        setTimeout(doScatter, 900);
+        return;
+      }
+      const card = unflipped[0];
+      card.classList.add('is-flipped');
+      flipTimer = setTimeout(flipNextCard, 320 + Math.random()*180);
+    }
+
+    function doScatter(){
+      const cards = grid.querySelectorAll('.kakao-flip-card');
+      cards.forEach(card=>{
+        const sx = (Math.random()-.5)*160;
+        const sy = -(60+Math.random()*100);
+        const sr = (Math.random()-.5)*40;
+        card.style.setProperty('--sx', sx+'px');
+        card.style.setProperty('--sy', sy+'px');
+        card.style.setProperty('--sr', sr+'deg');
+        card.classList.remove('is-flipped');
+        card.classList.add('is-scattering');
+      });
+      setTimeout(doReset, 650);
+    }
+
+    function doReset(){
+      const cards = grid.querySelectorAll('.kakao-flip-card');
+      cards.forEach((card,i)=>{
+        card.classList.remove('is-scattering');
+        // assign new image to back before fall-in
+        card.querySelector('.kakao-flip-back img').src = nextImg();
+        card.style.setProperty('--fd', (i*55)+'ms');
+        card.classList.add('is-falling');
+        setTimeout(()=>card.classList.remove('is-falling'), i*55+500);
+      });
+      const totalDelay = (cards.length-1)*55 + 500 + 400;
+      setTimeout(()=>{
+        phase = 'flipping';
+        resetQueue();
+        flipTimer = setTimeout(flipNextCard, 300);
+      }, totalDelay);
+    }
+
+    // Start first cycle
+    flipTimer = setTimeout(flipNextCard, 800);
+
+    // Manual flip on click
+    grid.addEventListener('click', e=>{
+      const card = e.target.closest('.kakao-flip-card');
+      if(!card || card.classList.contains('is-scattering') || card.classList.contains('is-falling')) return;
+      card.classList.toggle('is-flipped');
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+    <!-- ══ FAQ ══ -->
+  <section class="faq-band" id="faq">
+    <div class="wrap" style="max-width:780px;">
+      <div class="section-eyebrow center" style="color:rgba(255,255,255,0.3);justify-content:center;margin-bottom:8px;">FAQ</div>
+      <h2 class="faq-title">포트폴리오 코칭 시작 전<br>꼭 알아두세요</h2>
+      <details open>
+        <summary><span>Q. 포트폴리오 코칭은 얼마나 일찍 시작해야 하나요?</span><span class="faq-arrow">▾</span></summary>
+        <p>원서 접수 2~3개월 전에 시작하는 것이 가장 이상적입니다. 콘텐츠 선별·초안 제작·반복 수정까지 충분한 시간이 필요하기 때문입니다. 제출 일정이 촉박한 경우에도 2~3주 집중 코스로 완성이 가능하니 먼저 상담을 신청해 주세요.</p>
+      </details>
+      <details>
+        <summary><span>Q. 작품이 적어도 포트폴리오 코칭이 가능한가요?</span><span class="faq-arrow">▾</span></summary>
+        <p>네, 가능합니다. 작품 수보다 선별의 전략이 중요합니다. 적은 수의 작품이라도 지원 대학원 기준에 맞게 잘 편집하면 오히려 더 강한 인상을 줄 수 있습니다. 상담에서 보유 자료를 먼저 파악한 후 최적의 구성 전략을 수립합니다.</p>
+      </details>
+
+      <details>
+        <summary><span>Q. 레이아웃·디자인 작업도 도와주나요?</span><span class="faq-arrow">▾</span></summary>
+        <p>콘텐츠 전략과 함께 레이아웃·시각 구성 가이드를 제공합니다. 직접 디자인 제작 대행은 아니지만, 어떻게 배치하고 어떤 시각 언어를 쓸지 구체적인 방향을 제시합니다. 필요 시 디자인 전공 코치를 통해 더 심화된 지원도 가능합니다.</p>
+      </details>
+      <details>
+        <summary><span>Q. 해외 대학원 영문 포트폴리오도 코칭받을 수 있나요?</span><span class="faq-arrow">▾</span></summary>
+        <p>네, 미국·영국·캐나다·호주 대학원 영문 포트폴리오 코칭을 제공합니다. 학교별 요구 기준을 분석하고 영문 작품 설명·아티스트 스테이트먼트·CV까지 함께 완성합니다.</p>
+      </details>
+    </div>
+  </section>
+
+    <!-- ══ CTA ══ -->
+  <section class="cta-band" id="cta">
+    <div class="wrap">
+      <h2>포트폴리오는 전략으로<br>합격을 만듭니다</h2>
+      <p>보유한 자료를 어떻게 편집하느냐가 합격을 결정합니다.<br>빅링커 포트폴리오리드코칭이 완성까지 함께합니다.</p>
+      <div class="cta-actions">
+        <a class="btn-cta" href="https://pf.kakao.com/_wzmxdn/chat" target="_blank" rel="noopener">카카오톡 무료 상담 →</a>
+        <a class="btn-cta-outline" href="tel:02-2039-8584">전화 상담 02-2039-8584</a>
+      </div>
+    </div>
+  </section>
+
+
+<style>
+  .site-footer { background:#07090e; border-top:1px solid rgba(255,255,255,0.07); color:rgba(255,255,255,0.5); font-size:13px; }
+  .footer-inner { max-width:1320px; margin:0 auto; padding:64px 28px 40px; }
+  .footer-top { display:grid; grid-template-columns:280px 1fr; gap:60px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,0.07); }
+  .footer-logo { font-size:20px; font-weight:900; color:#fff; letter-spacing:-0.04em; margin-bottom:14px; }
+  .footer-brand-desc { font-size:13px; color:rgba(255,255,255,0.42); line-height:1.7; margin-bottom:20px; }
+  .footer-sns { display:flex; gap:8px; }
+  .footer-sns-btn { width:34px; height:34px; border-radius:9px; border:1px solid rgba(255,255,255,0.12); background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.55); font-size:13px; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.18s,border-color 0.18s,color 0.18s; }
+  .footer-sns-btn:hover { background:rgba(74,104,255,0.15); border-color:rgba(74,104,255,0.35); color:#7f92ff; }
+  .footer-nav-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .footer-nav-group h4 { font-size:12px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.28); margin-bottom:16px; }
+  .footer-nav-group a { display:block; font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:10px; transition:color 0.18s; text-decoration:none; }
+  .footer-nav-group a:hover { color:#fff; }
+  .footer-bottom { display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:28px; }
+  .footer-legal { font-size:12px; color:rgba(255,255,255,0.25); line-height:1.7; }
+  .footer-policy-links { display:flex; gap:20px; flex-shrink:0; }
+  .footer-policy-links a { font-size:12px; color:rgba(255,255,255,0.3); text-decoration:none; transition:color 0.18s; }
+  .footer-policy-links a:hover { color:rgba(255,255,255,0.7); }
+  @media(max-width:860px){ .footer-top{grid-template-columns:1fr;gap:40px;} }
+  @media(max-width:540px){ .footer-inner{padding:48px 20px 32px;} .footer-nav-grid{grid-template-columns:repeat(2,1fr);} .footer-bottom{flex-direction:column;align-items:flex-start;gap:12px;} .footer-policy-links{gap:14px;} }
+</style>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand-area">
+          <div class="footer-logo">BigLinker</div>
+          <p class="footer-brand-desc">대학원·논문·면접·포트폴리오 코칭 전문.<br>지원자의 연구와 역량을 합격의 언어로 설계합니다.</p>
+          <div class="footer-sns">
+            <button class="footer-sns-btn" aria-label="Instagram">IG</button>
+            <button class="footer-sns-btn" aria-label="YouTube">YT</button>
+            <button class="footer-sns-btn" aria-label="Blog">BL</button>
+          </div>
+        </div>
+        <div class="footer-nav-grid">
+          <div class="footer-nav-group">
+            <h4>서비스</h4>
+            <a href="./paper-coaching.html">페이퍼리드코칭</a>
+            <a href="./interview-coaching.html">면접리드코칭</a>
+            <a href="./portfolio-coaching.html">포트폴리오리드코칭</a>
+            <a href="./thesis-coaching.html">논문리드코칭</a>
+          </div>
+          <div class="footer-nav-group">
+            <h4>콘텐츠</h4>
+            <a href="#">블로그</a>
+            <a href="#">리얼 TIP</a>
+            <a href="#">합격 사례</a>
+            <a href="#">가이드북</a>
+          </div>
+          <div class="footer-nav-group">
+            <h4>회사</h4>
+            <a href="#">소개</a>
+            <a href="#">코치 소개</a>
+            <a href="#">상담 신청</a>
+            <a href="#">FAQ</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-legal">
+          © 2026 BigLinker. All rights reserved.<br>
+          상호: 주식회사 빅링커 &nbsp;|&nbsp; 대표: 이재현, 이가형 &nbsp;|&nbsp; 개인정보관리책임자: 이재현<br>
+          전화: 02-2039-8584 &nbsp;|&nbsp; 이메일: biglinkerkor@gmail.com<br>
+          강남센터: 서울특별시 강남구 영동대로602 6층<br>
+          가산센터: 서울특별시 금천구 디지털로9길 32, B동 1901호<br>
+          사업자등록번호: 538-81-03520
+        </div>
+        <div class="footer-policy-links">
+          <a href="https://gobiglinker.com/siteinfo/terms" target="_blank" rel="noopener">이용약관</a>
+          <a href="https://gobiglinker.com/siteinfo/privacy" target="_blank" rel="noopener">개인정보처리방침</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <!-- Social Proof Toast Layer -->
+  <div class="sp-layer" aria-label="실시간 현황">
+    <div id="sp-visitor" class="sp-toast sp-toast--visitor is-hidden" role="status" aria-live="polite">
+      <span class="sp-toast__dot"></span>
+      <span class="sp-toast__text">현재 <strong id="sp-visitor-count">23</strong>명이 보고 계십니다</span>
+    </div>
+    <div id="sp-success" class="sp-toast sp-toast--success is-hidden" role="status" aria-live="polite">
+      <span class="sp-toast__avatar"></span>
+      <div class="sp-toast__body">
+        <span class="sp-toast__name"></span>
+        <span class="sp-toast__action"></span>
+        <span class="sp-toast__time"></span>
+      </div>
+    </div>
+  </div>
+
+﻿  <script>
+    const topShell = document.getElementById('topShell');
+    let lastY = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > 220 && y > lastY) topShell.classList.add('is-collapsed');
+      else topShell.classList.remove('is-collapsed');
+      lastY = y;
+    }, { passive: true });
+  </script>
+  <script src="./script.js"></script>
+  <script src="./consult-panel.js"></script>
+<script>
+(function(){
+  var w=window;if(w.ChannelIO){return;}
+  var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(args){ch.q.push(args);};w.ChannelIO=ch;
+  var s=document.createElement('script');s.type='text/javascript';s.async=true;
+  s.src='https://cdn.channel.io/plugin/ch-plugin-web.js';
+  document.head.appendChild(s);
+})();
+ChannelIO('boot',{pluginKey:'42d31a03-0427-4b30-93bc-9f3ea7fb66bb',hideChannelButtonOnBoot:true});
+</script>
+
+</body>
+</html>
